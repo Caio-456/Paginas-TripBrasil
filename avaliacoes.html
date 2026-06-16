@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Avaliações - TripBrasil</title>
+    <style>
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ccc;
+        }
+
+        header input[type="text"] {
+            width: 100%;
+            max-width: 400px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        header button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            margin-left: -35px;
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+
+        .sidebar {
+            width: 25%;
+            border-right: 1px solid #ccc;
+            padding-right: 10px;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .main-content {
+            width: 75%;
+            padding-left: 20px;
+        }
+
+        .filters {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .filters label {
+            margin-right: 15px;
+        }
+
+        .user-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-info {
+            line-height: 1.5;
+        }
+
+        .delete-btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete-btn img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <input type="text" placeholder="Pesquisar Avaliações">
+        <button>
+            🔍
+        </button>
+    </header>
+
+    <div class="container">
+        <section class="main-content">
+            <div class="filters">
+                Mostrar:
+                <label><input type="checkbox"> Anunciantes</label>
+                <label><input type="checkbox"> Assinantes</label>
+            </div>
+
+            <div class="user-card">
+                <div class="user-info">
+                    <strong>Nome:</strong> Avaliação 1<br>
+                    <strong>Denunciada:</strong> Nenhum<br>
+                    <strong>Data:</strong> 01/01/0001
+                </div>
+                <button class="delete-btn"><img src="assets/img/trash_icon.svg" alt="Excluir"></button>
+            </div>
+
+            <div class="user-card">
+                <div class="user-info">
+                    <strong>Nome:</strong> Avaliação 2<br>
+                    <strong>Denunciada:</strong> Nenhum<br>
+                    <strong>Data:</strong> 22/03/2021
+                </div>
+                <button class="delete-btn"><img src="assets/img/trash_icon.svg" alt="Excluir"></button>
+            </div>
+
+            <div class="user-card">
+                <div class="user-info">
+                    <strong>Nome:</strong> Avaliação 3<br>
+                    <strong>Denunciada:</strong> Sim<br>
+                    <strong>Data:</strong> 06/07/2023
+                </div>
+                <button class="delete-btn"><img src="assets/img/trash_icon.svg" alt="Excluir"></button>
+            </div>
+
+            <div class="user-card">
+                <div class="user-info">
+                    <strong>Nome:</strong> Avaliação 4<br>
+                    <strong>Denunciada:</strong> Nenhum<br>
+                    <strong>Data:</strong> 06/12/2026
+                </div>
+                <button class="delete-btn">

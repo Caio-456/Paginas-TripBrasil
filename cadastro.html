@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripBrasil</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Red Hat Display', sans-serif;
+        color: white;
+
+        background:
+            linear-gradient(
+                rgba(0, 0, 0, 0.50),
+                rgba(0, 0, 0, 0.50)
+            ),
+            url('assets/img/fundo.webp');
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+        min-height: 100vh;
+    }
+
+    /* HERO */
+
+    .hero {
+        min-height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 120px 20px 40px;
+    }
+
+    /* CARD PRINCIPAL */
+
+    .cadastro-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .cadastro-card {
+        width: 100%;
+        max-width: 1200px;
+
+        padding: 45px;
+
+        border-radius: 28px;
+
+        background: rgba(255, 255, 255, 0.10);
+
+        backdrop-filter: blur(15px);
+
+        border: 1px solid rgba(255, 255, 255, 0.20);
+
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    /* BOTÃO VOLTAR */
+
+    .back-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 48px;
+        height: 48px;
+
+        margin-bottom: 30px;
+
+        border-radius: 50%;
+
+        background: rgba(255,255,255,0.12);
+
+        border: 1px solid rgba(255,255,255,0.15);
+
+        transition: 0.3s;
+    }
+
+    .back-button:hover {
+        background: rgba(255,255,255,0.20);
+        transform: translateX(-4px);
+    }
+
+    .icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* GRID */
+
+    .cadastro-grid {
+        display: flex;
+        gap: 40px;
+        align-items: stretch;
+    }
+
+    /* FORMULÁRIO */
+
+    .form-box {
+        width: 45%;
+
+        padding: 40px;
+
+        border-radius: 24px;
+
+        background: rgba(255,255,255,0.08);
+
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .form-box h2 {
+        font-family: 'Outfit', sans-serif;
+
+        font-size: 2.2rem;
+
+        margin-bottom: 10px;
+    }
+
+    .form-box p {
+        color: rgba(255,255,255,0.80);
+
+        margin-bottom: 35px;
+
+        line-height: 1.6;
+    }
+
+    .form-box label {
+        display: block;
+
+        margin-bottom: 8px;
+        margin-top: 18px;
+
+        font-size: 0.95rem;
+
+        color: rgba(255,255,255,0.85);
+    }
+
+    .form-box input {
+        width: 100%;
+
+        padding: 16px 18px;
+
+        border-radius: 14px;
+
+        border: 1px solid rgba(255,255,255,0.20);
+
+        background: rgba(255,255,255,0.12);
+
+        color: white;
+
+        font-size: 15px;
+
+        transition: 0.3s;
+    }
+
+    .form-box input::placeholder {
+        color: rgba(255,255,255,0.55);
+    }
+
+    .form-box input:focus {
+        outline: none;
+
+        border-color: #70AE6E;
+
+        box-shadow:
+            0 0 0 3px rgba(112, 174, 110, 0.25);
+    }
+
+    /* BOTÃO */
+
+    .btn-salvar {
+        margin-top: 35px;
+
+        width: 100%;
+
+        padding: 16px;
+
+        border: none;
+
+        border-radius: 14px;
+
+        background: #70AE6E;
+
+        color: white;
+
+        font-size: 16px;
+
+        font-weight: 700;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+    }
+
+    .btn-salvar:hover {
+        background: #5A9758;
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 8px 20px rgba(112, 174, 110, 0.35);
+    }
+
+    /* IMAGENS */
+
+    .img-grid {
+        width: 55%;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        grid-template-rows: 220px 220px;
+
+        gap: 15px;
+    }
+
+    .img-grid img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        border-radius: 20px;
+
+        transition: 0.35s;
+
+        box-shadow:
+            0 5px 20px rgba(0,0,0,0.15);
+    }
+
+    .img-grid img:hover {
+        transform: scale(1.03);
+
+        box-shadow:
+            0 10px 30px rgba(0,0,0,0.30);
+    }
+
+    .img1 {
+        grid-column: span 2;
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 992px) {
+
+        .cadastro-grid {
+            flex-direction: column;
+        }
+
+        .form-box,
+        .img-grid {
+            width: 100%;
+        }
+
+        .img-grid {
+            grid-template-rows:
+                200px
+                160px
+                160px;
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        .hero {
+            padding-top: 150px;
+        }
+
+        .cadastro-card {
+            padding: 30px 20px;
+        }
+
+        .form-box {
+            padding: 30px 25px;
+        }
+
+        .form-box h2 {
+            font-size: 1.9rem;
+        }
+
+        .img-grid {
+            grid-template-columns: 1fr;
+
+            grid-template-rows:
+                180px
+                180px
+                180px;
+        }
+
+        .img1 {
+            grid-column: span 1;
+        }
+    }
+
+    .login-link {
+        text-align: center;
+
+        margin-top: 20px;
+
+        color: rgba(255,255,255,0.80);
+    }
+
+    .login-link a {
+        color: #70AE6E;
+
+        text-decoration: none;
+
+        font-weight: 700;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <!-- MAIN -->
+    <main class="hero">
+
+        <div class="cadastro-wrapper">
+
+            <div class="cadastro-card">
+
+                <a href="home.html" class="back-button">
+                <img src="./assets/img/seta.svg" alt="voltar" class="icon" width="30" height="30">
+                </a>
+
+                <div class="cadastro-grid">
+
+                    <!-- FORM -->
+                    <div class="form-box">
+
+                        <h2>Junte-se ao TripBrasil</h2>
+
+                        <p>
+                            Planeje viagens, descubra destinos incríveis
+                            e conecte-se com experiências autênticas em
+                            todo o Brasil.
+                        </p>
+
+                        <label>Nome completo</label>
+                        <input type="text" placeholder="Digite seu nome">
+
+                        <label>Nome de usuário</label>
+                        <input type="text" placeholder="Escolha um nome de usuário">
+
+                        <label>E-mail:</label>
+                        <input type="email" placeholder="seuemail@exemplo.com">
+
+                        <label>Senha:</label>
+                        <input type="password" placeholder="Crie uma senha">
+
+                        <label>Confirmar senha:</label>
+                        <input type="password" placeholder="Repita a senha">
+
+                        <button class="btn-salvar">
+                            Criar conta
+                        </button>
+
+                        <p class="login-link">
+                            Já possui uma conta?
+                            <a href="login.html">Entrar</a>
+                        </p>
+
+                    </div>
+
+                    <!-- IMAGENS -->
+                    <div class="img-grid">
+
+                        <img src="assets/img/cadastro/img1.webp" class="img1">
+                        <img src="assets/img/cadastro/img2.webp">
+                        <img src="assets/img/cadastro/img3.webp">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+<script>
+fetch('header.html')
+  .then(response => {
+    if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
+    return response.text();
+  })
+  .then(data => {
+    document.getElementById('header').innerHTML = data;
+  })
+  .catch(err => console.error(err));
+</script>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripBrasil</title>
+    <style>
+        body {
+            font-family: 'Red Hat Display ';
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .column {
+            width: 22%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .column h2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .column li {
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .arrow {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id = "header"></div>
+    <div class="container">
+        <div class="column">
+            <h2>Usuários <span class="arrow">></span></h2>
+            <ul>
+                <li>Usuário 1</li>
+                <li>Usuário 2</li>
+                <li>Usuário 3</li>
+                <li>Usuário 4</li>
+                <li>Usuário 5</li>
+                <li>Usuário 6</li>
+                <li>Usuário 7</li>
+                <li>Usuário 8</li>
+                <li>Usuário 9</li>
+                <li>Usuário 10</li>
+                <li>Usuário 11</li>
+            </ul>
+        </div>
+
+        <div class="column">
+            <h2>Avaliações <span class="arrow">></span></h2>
+            <ul>
+                <li>Avaliação 1</li>
+                <li>Avaliação 2</li>
+                <li>Avaliação 3</li>
+                <li>Avaliação 4</li>
+                <li>Avaliação 5</li>
+                <li>Avaliação 6</li>
+                <li>Avaliação 7</li>
+                <li>Avaliação 8</li>
+                <li>Avaliação 9</li>
+                <li>Avaliação 10</li>
+                <li>Avaliação 11</li>
+            </ul>
+        </div>
+
+        <div class="column">
+            <h2>Locais <span class="arrow">></span></h2>
+            <ul>
+                <li>Local 1</li>
+                <li>Local 2</li>
+                <li>Local 3</li>
+                <li>Local 4</li>
+                <li>Local 5</li>
+                <li>Local 6</li>
+                <li>Local 7</li>
+                <li>Local 8</li>
+                <li>Local 9</li>
+                <li>Local 10</li>
+                <li>Local 11</li>
+            </ul>
+        </div>
+
+        <div class="column">
+            <h2>Anúncios <span class="arrow">></span></h2>
+            <ul>
+                <li>Anúncio 1</li>
+                <li>Anúncio 2</li>
+                <li>Anúncio 3</li>
+                <li>Anúncio 4</li>
+                <li>Anúncio 5</li>
+                <li>Anúncio 6</li>
+                <li>Anúncio 7</li>
+                <li>Anúncio 8</li>
+                <li>Anúncio 9</li>
+                <li>Anúncio 10</li>
+                <li>Anúncio 11</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+<script>
+fetch('header.html')
+  .then(response => {
+    if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
+    return response.text();
+  })
+  .then(data => {
+    document.getElementById('header').innerHTML = data;
+  })
+  .catch(err => console.error(err));
+</script>
+</html>
