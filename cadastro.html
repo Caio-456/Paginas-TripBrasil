@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>TripBrasil</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
@@ -47,12 +48,6 @@
     }
 
     /* CARD PRINCIPAL */
-
-    .cadastro-wrapper {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
 
     .cadastro-card {
         width: 100%;
@@ -334,16 +329,14 @@
 
     <!-- MAIN -->
     <main class="hero">
-
-        <div class="cadastro-wrapper">
-
+        <div class="container">
             <div class="cadastro-card">
 
                 <a href="home.html" class="back-button">
                 <img src="./assets/img/seta.svg" alt="voltar" class="icon" width="30" height="30">
                 </a>
 
-                <div class="cadastro-grid">
+                <div class="row g-4 align-items-stretch">
 
                     <!-- FORM -->
                     <div class="form-box">
@@ -356,20 +349,28 @@
                             todo o Brasil.
                         </p>
 
-                        <label>Nome completo</label>
-                        <input type="text" placeholder="Digite seu nome">
+                        <div class="mb-3">
+                            <label class="form-label">Nome completo</label>
+                            <input type="text"
+                                class="form-control custom-input"
+                                placeholder="Digite seu nome">
+                        
 
                         <label>Nome de usuário</label>
-                        <input type="text" placeholder="Escolha um nome de usuário">
+                        <input type="text"
+                                class="form-control custom-input"
+                                placeholder="Escolha um nome de usuário">
 
                         <label>E-mail:</label>
-                        <input type="email" placeholder="seuemail@exemplo.com">
+                        <input type="email" class="form-control custom-input" placeholder="seuemail@exemplo.com">
 
                         <label>Senha:</label>
-                        <input type="password" placeholder="Crie uma senha">
+                        <input type="password" class="form-control custom-input" placeholder="Crie uma senha">
 
                         <label>Confirmar senha:</label>
-                        <input type="password" placeholder="Repita a senha">
+                        <input type="password" class="form-control custom-input" placeholder="Repita a senha">
+                        
+                        </div>
 
                         <button class="btn-salvar">
                             Criar conta

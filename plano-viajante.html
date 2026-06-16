@@ -10,6 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         * {
@@ -41,13 +42,8 @@
 
         /* CONTEÚDO */
 
-        .container {
-            display: flex;
-            gap: 50px;
-            margin: 0 8%;
+        .plan-content {
             margin-top: 100px;
-            width: 100%;
-            align-items: center;
         }
 
         /* FORM */
@@ -136,7 +132,7 @@
         }
 
         .benefits-card,
-        .payment-card  {
+        .payment-card {
 
             background: rgba(255, 255, 255, 0.10);
 
@@ -195,16 +191,16 @@
 
             border-radius: 12px;
 
-            border: 1px solid rgba(255,255,255,0.20);
+            border: 1px solid rgba(255, 255, 255, 0.20);
 
-            background: rgba(255,255,255,0.12);
+            background: rgba(255, 255, 255, 0.12);
 
             color: white;
         }
 
         .payment-card input::placeholder {
 
-            color: rgba(255,255,255,0.60);
+            color: rgba(255, 255, 255, 0.60);
         }
 
         .payment-card small {
@@ -213,36 +209,36 @@
 
             margin-top: 20px;
 
-            color: rgba(255,255,255,0.75);
+            color: rgba(255, 255, 255, 0.75);
 
             text-align: center;
         }
 
         .btn-primary {
 
-        background: #70AE6E;
+            background: #70AE6E;
 
-        border: none;
+            border: none;
 
-        color: white;
+            color: white;
 
-        padding: 16px 32px;
+            padding: 16px 32px;
 
-        border-radius: 14px;
+            border-radius: 14px;
 
-        font-weight: 700;
+            font-weight: 700;
 
-        cursor: pointer;
+            cursor: pointer;
 
-        transition: 0.3s;
-    }
+            transition: 0.3s;
+        }
 
-    .btn-primary:hover {
+        .btn-primary:hover {
 
-        background: #5A9758;
+            background: #5A9758;
 
-        transform: translateY(-2px);
-    }
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 
@@ -252,89 +248,100 @@
 
     <main class="hero">
 
-        <div class="container">
+        <div class="container plan-content">
 
-            <section class="benefits-card">
+            <div class="row g-4 align-items-center">
 
-                <h2>O que está incluso?</h2>
+                <div class="col-lg-3">
 
-                <ul>
+                    <section class="benefits-card h-100">
 
-                    <li>• Roteiros personalizados com IA</li>
+                        <h2>O que está incluso?</h2>
 
-                    <li>• Salvar destinos ilimitados</li>
+                        <ul>
 
-                    <li>• Sugerir destinos</li>
+                            <li>• Roteiros personalizados com IA</li>
 
-                </ul>
+                            <li>• Salvar destinos ilimitados</li>
 
-            </section>
+                            <li>• Sugerir destinos</li>
 
-            <!-- FORM -->
-            <section class="payment-card">
+                        </ul>
 
-                <h2>Assinar Plano</h2>
+                    </section>
+                </div>
 
-                <p class="payment-price">
-                    R$ 9,99/mês
-                </p>
+                <!-- FORM -->
+                <div class="col-lg-4">
 
-                <form>
+                    <section class="payment-card h-100">
 
-                    <input type="text" placeholder="Nome completo">
+                        <h2>Assinar Plano</h2>
 
-                    <input type="email" placeholder="E-mail">
+                        <p class="payment-price">
+                            R$ 9,99/mês
+                        </p>
 
-                    <input type="text" placeholder="CPF">
+                        <form>
 
-                    <select>
+                            <input type="text" placeholder="Nome completo">
 
-                        <option>
-                            Pix via Mercado Pago
-                        </option>
+                            <input type="email" placeholder="E-mail">
 
-                        <option>
-                            Cartão de crédito
-                        </option>
+                            <input type="text" placeholder="CPF">
 
-                        <option>
-                            Boleto bancário
-                        </option>
+                            <select>
 
-                    </select>
+                                <option>
+                                    Pix via Mercado Pago
+                                </option>
 
-                    <button class="btn-primary">
+                                <option>
+                                    Cartão de crédito
+                                </option>
 
-                        Continuar para pagamento
+                                <option>
+                                    Boleto bancário
+                                </option>
 
-                    </button>
+                            </select>
 
-                </form>
+                            <button class="btn-primary">
 
-                <small>
+                                Continuar para pagamento
 
-                    O pagamento será processado com segurança
-                    pelo Mercado Pago.
+                            </button>
 
-                </small>
-            </section>
-            <!-- TEXTO -->
-            <div class="desc">
-                <h1>Viaje com mais praticidade</h1>
+                        </form>
 
-                <p>
-                    O Plano Viajante oferece praticidade e personalização no planejamento de viagens,
-                    permitindo gerar roteiros inteligentes com IA e sugestões de destinos.
-                </p>
+                        <small>
 
-                <p>
-                    Organize tudo em um só lugar, economize tempo e tenha uma experiência
-                    de viagem mais eficiente, flexível e personalizada.
-                </p>
+                            O pagamento será processado com segurança
+                            pelo Mercado Pago.
+
+                        </small>
+                    </section>
+                </div>
+                <!-- TEXTO -->
+                <div class="col-lg-5">
+
+                    <div class="desc">
+                        <h1>Viaje com mais praticidade</h1>
+
+                        <p>
+                            O Plano Viajante oferece praticidade e personalização no planejamento de viagens,
+                            permitindo gerar roteiros inteligentes com IA e sugestões de destinos.
+                        </p>
+
+                        <p>
+                            Organize tudo em um só lugar, economize tempo e tenha uma experiência
+                            de viagem mais eficiente, flexível e personalizada.
+                        </p>
+                    </div>
+                </div>
+
             </div>
-
         </div>
-
     </main>
 
 </body>
