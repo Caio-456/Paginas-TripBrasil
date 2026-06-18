@@ -1,187 +1,185 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TripBrasil - Cancelar Assinatura</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
+
+    <title>Cancelar Assinatura - TripBrasil</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
+            font-family: 'Red Hat Display', sans-serif;
+            color: white;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            font-family: var(--font-main);
-            background-color: #fff;
-            font-size: 1.3rem;
-            color: #000;
-            font-weight: 400; /* Garante que não haja negrito global */
         }
 
-        /* Conteúdo */
-        .cancel-container {
-            flex: 1;
+        /* HERO / BACKGROUND COMPLETO */
+        .hero {
+            min-height: 100vh;
+            width: 100%;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+                url('assets/img/fundo.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding-top: 100px;
+            padding-bottom: 60px;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 15%;
+        }
+
+        /* CARD DE VIDRO (GLASSMORPHISM) */
+        .main-content {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 32px;
+            padding: 80px 40px; /* Padding aumentado para compensar a falta do ícone */
             position: relative;
+            width: 100%;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
         }
 
-        .back-button {
+        /* BOTÃO VOLTAR */
+        .btn-back {
             position: absolute;
-            top: 20px;
-            left: 30px;
-            color: #000;
-            text-decoration: none;
-        }
-
-        .greeting {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            font-weight: 400;
-        }
-
-        .message-body {
-            max-width: 850px;
-            line-height: 1.3;
-            margin-bottom: 40px;
-        }
-
-        /* Botão */
-        .btn-cancel-subscription {
-            background-color: #000;
-            color: #fff;
-            font-size: 1.6rem;
-            padding: 12px 60px;
-            border-radius: 50px;
+            top: 25px;
+            left: 25px;
+            background: none;
             border: none;
-            font-weight: 400;
-            transition: transform 0.2s ease;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            z-index: 10;
+        }
+
+        .btn-back:hover {
+            transform: translateX(-3px);
+            opacity: 0.8;
+        }
+
+        /* TEXTO DE DESPEDIDA */
+        .cancel-text-container {
+            max-width: 850px;
+            margin: 0 auto 50px auto;
+            text-align: center;
+        }
+
+        .cancel-text-container h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* DESTAQUE VERDE NA EQUIPE */
+        .team-highlight {
+            color: #70AE6E;
+            font-weight: 700;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* BOTÃO CANCELAR PRETO */
+        .btn-cancel-subscription {
+            background: #000000;
+            color: white;
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px 50px;
+            border-radius: 50px;
+            transition: 0.3s;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
 
         .btn-cancel-subscription:hover {
-            background-color: #222;
-            transform: scale(1.03);
-        }
-
-        .illustration-box {
-            position: fixed;
-            bottom: 30px;
-            right: 50px;
-            width: 140px;
+            background: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
         }
 
         @media (max-width: 768px) {
-            .cancel-container { padding: 60px 8%; }
-            .illustration-box { 
-                position: static; 
-                margin-top: 30px; 
-                width: 100px;
+            .cancel-text-container h1 {
+                font-size: 1.6rem;
             }
-            .greeting { font-size: 2.2rem; }
-        }
-
-        body {
-            font-family: 'Red Hat Display';
-            margin: 0;
-            padding: 0;
-            /* Fundo com imagem e fading */
-            background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.5)), url('assets/img/fundo.webp');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        header {
-            background-color: rgba(245, 245, 245, 0.9);
-            border-bottom: 1px solid #ccc;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-
-        h1 {
-            font-family: 'Outfit';
-            font-size: 10vw;
-            margin-top: 5vw;
-            margin-bottom: 5px;
-            line-height: 1.2;
-        }
-
-        h2 {
-            font-family: 'Red Hat Display';
-            font-size: 3vw;
-            margin-top: 5px;  
-            margin-bottom: 5px;
-            line-height: 1.2;
-        }
-
-        .left-padding {
-            padding-left: 4vw;
-        }
-
-        button {
-            background-color: #70AE6E;
-            border: none;
-            color: white;
-            padding: 14px 28px;
-            text-align: center;
-            font-size: 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        button:hover {
-            background-color: #50A04E;
-            transform: translateY(-2px);
+            .main-content {
+                padding: 60px 20px;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div id = "header"></div>
 
-    <main class="cancel-container">
-        <a href="#" class="back-button"><i class="bi bi-arrow-left fs-3"></i></a>
+    <div id="header"></div>
 
-        <div class="greeting">Olá,</div>
+    <main class="hero">
+        <div class="container">
+            
+            <div class="main-content">
+                
+                <button class="btn-back" onclick="window.history.back()" aria-label="Voltar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                    </svg>
+                </button>
 
-        <div class="message-body">
-            <p>Lamentamos ver você partir e agradecemos por ter feito parte da nossa comunidade de viajantes. Esperamos ter contribuído com boas experiências e inspirações.</p>
-            <p>Se quiser compartilhar seu feedback, será muito bem-vindo. E lembre-se: estaremos aqui sempre que quiser planejar sua próxima viagem de maneira personalizada.</p>
-            <p class="mt-4">Até breve,</p>
-            <p>Equipe TripBrasil</p>
+                <div class="cancel-text-container">
+                    <h1>
+                        Olá,<br>
+                        Lamentamos ver você partir e agradecemos por ter feito parte da nossa comunidade de viajantes. Esperamos ter contribuído com boas experiências e inspirações.<br>
+                        Se quiser compartilhar seu feedback, será muito bem-vindo. E lembre-se: estaremos aqui sempre que quiser planejar sua próxima viagem de maneira personalizada.<br>
+                        Até breve,<br>
+                        <span class="team-highlight">Equipe TripBrasil</span>
+                    </h1>
+                </div>
+
+                <button class="btn-cancel-subscription">
+                    Cancelar Assinatura
+                </button>
+
+            </div>
+
         </div>
-
-        <button class="btn-cancel-subscription shadow">
-            Cancelar Assinatura
-        </button>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Injeção dinâmica do cabeçalho unificado
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(err => console.error(err));
+    </script>
+
 </body>
-<script>
-fetch('header.html')
-  .then(response => {
-    if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
-    return response.text();
-  })
-  .then(data => {
-    document.getElementById('header').innerHTML = data;
-  })
-  .catch(err => console.error(err));
-</script>
+
 </html>
