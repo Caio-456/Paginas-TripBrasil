@@ -1,173 +1,360 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Painel de Usuários - TripBrasil</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Red Hat Display', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            box-sizing: border-box;
         }
 
-        header {
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            color: white;
+            background-color: #121212;
+        }
+
+        /* CONFIGURAÇÃO DO HEADER - Transparente e por cima da imagem */
+        #header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: transparent !important;
+        }
+
+        /* HERO - Imagem de fundo online aplicada com escurecimento para leitura */
+        .hero {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+                url('assets/img/fundo.webp'); /* Imagem de teste. Quando quiser usar a sua, mude para 'assets/img/fundo.webp' */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding-bottom: 60px;
+        }
+
+        /* CONTEÚDO principal */
+        .users-content {
+            padding-top: 130px; /* Joga o conteúdo para baixo do header */
+            max-width: 1400px !important;
+        }
+
+        /* BARRA DE PESQUISA */
+        .search-box {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            padding: 14px 24px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
-            padding: 10px 20px;
-            background-color: #fff;
-            border-bottom: 1px solid #ccc;
+            gap: 15px;
         }
 
-        header input[type="text"] {
-            width: 100%;
-            max-width: 400px;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        header button {
-            background-color: transparent;
+        .search-box input {
+            background: transparent;
             border: none;
-            cursor: pointer;
-            margin-left: -35px;
+            color: white;
+            width: 100%;
+            font-size: 1.1rem;
+            outline: none;
         }
 
-        .container {
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-box svg {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* CONTAINER DO DASHBOARD */
+        .main-dashboard {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(147, 51, 234, 0.35);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* COLUNA DA ESQUERDA */
+        .sidebar-users {
+            background: rgba(0, 0, 0, 0.25);
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 30px 0;
+        }
+
+        .sidebar-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 0 30px 18px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            margin-bottom: 10px;
+        }
+
+        .user-menu-item {
+            padding: 14px 30px;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: 0.2s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .user-menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* PAINEL DA DIREITA */
+        .main-panel {
+            padding: 30px;
+        }
+
+        /* Área de Filtros */
+        .filter-area {
             display: flex;
-            padding: 20px;
+            align-items: center;
+            gap: 25px;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        .sidebar {
-            width: 25%;
-            border-right: 1px solid #ccc;
-            padding-right: 10px;
+        .filter-area span {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
         }
 
-        .sidebar h3 {
-            margin-bottom: 10px;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar li {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            margin-bottom: 5px;
-            padding: 8px;
-            border-radius: 4px;
+        .form-check-input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
             cursor: pointer;
+            width: 1.1em;
+            height: 1.1em;
         }
 
-        .main-content {
-            width: 75%;
-            padding-left: 20px;
+        .form-check-input:checked {
+            background-color: #70AE6E;
+            border-color: #70AE6E;
         }
 
-        .filters {
-            margin-bottom: 15px;
-            font-weight: bold;
+        /* LISTA DE CARDS */
+        .user-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 8px;
         }
 
-        .filters label {
-            margin-right: 15px;
+        .user-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .user-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
         }
 
+        /* Card Individual */
         .user-card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 20px 28px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: 0.2s;
         }
 
-        .user-info {
-            line-height: 1.5;
+        .user-card:hover {
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
-        .delete-btn {
-            background-color: transparent;
+        .user-info p {
+            margin: 0;
+            margin-bottom: 5px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .user-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .user-info p strong {
+            color: white;
+        }
+
+        /* Botão Deletar */
+        .btn-delete {
+            background: transparent;
             border: none;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 10px;
+            border-radius: 50%;
             cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .delete-btn img {
-            width: 20px;
-            height: 20px;
+        .btn-delete:hover {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-users {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            }
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <input type="text" placeholder="Pesquisar usuários">
-        <button>
-            🔍
-        </button>
-    </header>
 
-    <div class="container">
-        <aside class="sidebar">
-            <h3>Usuários Recentes:</h3>
-            <ul>
-                <li>Usuário 1</li>
-                <li>Usuário 2</li>
-                <li>Usuário 3</li>
-                <li>Usuário 4</li>
-                <li>Usuário 5</li>
-                <li>Usuário 6</li>
-                <li>Usuário 7</li>
-                <li>Usuário 8</li>
-                <li>Usuário 9</li>
-                <li>Usuário 10</li>
-            </ul>
-        </aside>
+    <div id="header"></div>
 
-        <section class="main-content">
-            <div class="filters">
-                Mostrar:
-                <label><input type="checkbox"> Anunciantes</label>
-                <label><input type="checkbox"> Assinantes</label>
+    <main class="hero">
+        <div class="container users-content">
+            
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="search-box">
+                        <input type="text" placeholder="Pesquisar usuários...">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </div>
+                </div>
             </div>
 
-            <div class="user-card">
-                <div class="user-info">
-                    <strong>Nome:</strong> Usuário 1<br>
-                    <strong>Role:</strong> Nenhum<br>
-                    <strong>Data de cadastro:</strong> 01/01/0001
-                </div>
-                <button class="delete-btn"><img src="assets/img/trash_icon.svg" alt="Excluir"></button>
-            </div>
+            <div class="main-dashboard">
+                <div class="row g-0">
+                    
+                    <div class="col-md-4 col-lg-3 sidebar-users">
+                        <div class="sidebar-title">Usuários Recentes:</div>
+                        <div class="user-menu-item">Usuário 1</div>
+                        <div class="user-menu-item">Usuário 2</div>
+                        <div class="user-menu-item">Usuário 3</div>
+                        <div class="user-menu-item">Usuário 4</div>
+                        <div class="user-menu-item">Usuário 5</div>
+                        <div class="user-menu-item">Usuário 6</div>
+                        <div class="user-menu-item">Usuário 7</div>
+                        <div class="user-menu-item">Usuário 8</div>
+                        <div class="user-menu-item">Usuário 9</div>
+                        <div class="user-menu-item">Usuário 10</div>
+                    </div>
 
-            <div class="user-card">
-                <div class="user-info">
-                    <strong>Nome:</strong> Usuário 2<br>
-                    <strong>Role:</strong> Nenhum<br>
-                    <strong>Data de cadastro:</strong> 22/03/2021
-                </div>
-                <button class="delete-btn"><img src="assets/img/trash_icon.svg" alt="Excluir"></button>
-            </div>
+                    <div class="col-md-8 col-lg-9 main-panel">
+                        
+                        <div class="filter-area">
+                            <span>Mostrar:</span>
+                            
+                            <div class="form-check form-check-inline m-0 ms-2">
+                                <input class="form-check-input" type="checkbox" id="checkAnunciantes">
+                                <label class="form-check-label ms-1" for="checkAnunciantes">Anunciantes</label>
+                            </div>
 
-            <div class="user-card">
-                <div class="user-info">
-                    <strong>Nome:</strong> Usuário 3<br>
-                    <strong>Role:</strong> Nenhum<br>
-                    <strong>Data de cadastro:</strong> 06/07/2023
-                </div>
-                <button class="delete-btn"><img src="assets/img/trash_icon.svg" alt="Excluir"></button>
-            </div>
+                            <div class="form-check form-check-inline m-0 ms-2">
+                                <input class="form-check-input" type="checkbox" id="checkAssinantes">
+                                <label class="form-check-label ms-1" for="checkAssinantes">Assinantes</label>
+                            </div>
+                        </div>
 
-            <div class="user-card">
-                <div class="user-info">
-                    <strong>Nome:</strong> Usuário 4<br>
-                    <strong>Role:</strong> Nenhum<br>
-                    <strong>Data de cadastro:</strong> 06/12/2026
+                        <div class="user-list">
+                            
+                            <div class="user-card">
+                                <div class="user-info">
+                                    <p><strong>Nome:</strong> Usuário 1</p>
+                                    <p><strong>Role:</strong> Nenhum</p>
+                                    <p><strong>Data de cadastro:</strong> 01/01/0001</p>
+                                </div>
+                                <button class="btn-delete" title="Excluir Usuário">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="user-card">
+                                <div class="user-info">
+                                    <p><strong>Nome:</strong> Usuário 2</p>
+                                    <p><strong>Role:</strong> Nenhum</p>
+                                    <p><strong>Data de cadastro:</strong> 22/03/2021</p>
+                                </div>
+                                <button class="btn-delete" title="Excluir Usuário">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="user-card">
+                                <div class="user-info">
+                                    <p><strong>Nome:</strong> Usuário 3</p>
+                                    <p><strong>Role:</strong> Nenhum</p>
+                                    <p><strong>Data de cadastro:</strong> 06/07/2023</p>
+                                </div>
+                                <button class="btn-delete" title="Excluir Usuário">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
-                <button class="delete-btn">
+            </div>
+        </div>
+    </main>
+
+   
+
+
+
+
+
+</body>
+<script>
+fetch('header.html')
+  .then(response => {
+    if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
+    return response.text();
+  })
+  .then(data => {
+    document.getElementById('header').innerHTML = data;
+  })
+  .catch(err => console.error(err));
+</script>
+</html>
