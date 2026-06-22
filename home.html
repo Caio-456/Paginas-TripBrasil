@@ -1,344 +1,447 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<style>* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Red Hat Display', sans-serif;
-    color: white;
-}
-
-/* HERO */
-
-.hero {
-    min-height: 100vh;
-
-    background:
-        linear-gradient(
-            rgba(0, 0, 0, 0.45),
-            rgba(0, 0, 0, 0.45)
-        ),
-        url('assets/img/fundo.webp');
-
-    background-size: cover;
-    background-position: center;
-
-    display: flex;
-    align-items: center;
-}
-
-/* HERO CONTENT */
-
-.hero-content {
-    max-width: 700px;
-
-    margin-left: 8%;
-
-    padding-top: 80px;
-}
-
-.badge {
-    display: inline-block;
-
-    padding: 10px 18px;
-
-    margin-bottom: 25px;
-
-    background: rgba(255, 255, 255, 0.15);
-
-    border: 1px solid rgba(255, 255, 255, 0.2);
-
-    border-radius: 50px;
-
-    font-size: 0.95rem;
-}
-
-.hero-content h1 {
-    font-family: 'Outfit', sans-serif;
-
-    font-size: clamp(3rem, 7vw, 5.5rem);
-
-    line-height: 1.1;
-
-    margin-bottom: 25px;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-
-    line-height: 1.7;
-
-    margin-bottom: 40px;
-
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-/* BOTÕES */
-
-.btn-primary,
-.btn-secondary {
-    text-decoration: none;
-
-    padding: 16px 30px;
-
-    border-radius: 12px;
-
-    font-weight: 600;
-
-    transition: 0.3s;
-}
-
-.btn-primary {
-    background: #113601;
-    color: white;
-}
-
-.btn-primary:hover {
-    background: #0d2901;
-    transform: translateY(-3px);
-}
-
-.btn-secondary {
-    border: 2px solid white;
-    color: white;
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-/* RESPONSIVO */
-
-@media (max-width: 900px) {
-
-    header {
-        flex-direction: column;
-        gap: 20px;
+<style>
+    :root {
+        --primary: #70AE6E;
+        --primary-hover: #5A9758;
+        --glass: rgba(255, 255, 255, .10);
+        --glass-border: rgba(255, 255, 255, .18);
     }
 
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
+
+    body {
+
+        font-family: 'Red Hat Display', sans-serif;
+
+        color: white;
+
+        background:
+            linear-gradient(rgba(0, 0, 0, .55),
+                rgba(0, 0, 0, .55)),
+            url('assets/img/fundo.webp');
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+        min-height: 100vh;
+    }
+
+    /* HERO */
+
+    .hero {
+        min-height: 100vh;
+
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.45),
+                rgba(0, 0, 0, 0.45)),
+            url('assets/img/fundo.webp');
+
+        background-size: cover;
+        background-position: center;
+
+        display: flex;
+        align-items: center;
+    }
+
+    /* HERO CONTENT */
 
     .hero-content {
-        margin: 0 30px;
-        text-align: center;
+        max-width: 700px;
+
+        margin-left: 8%;
+
+        padding-top: 80px;
+    }
+
+    .badge {
+        display: inline-block;
+
+        padding: 10px 18px;
+
+        margin-bottom: 25px;
+
+        background: rgba(255, 255, 255, 0.15);
+
+        border: 1px solid rgba(255, 255, 255, 0.2);
+
+        border-radius: 50px;
+
+        font-size: 0.95rem;
+    }
+
+    .hero-content h1 {
+        font-family: 'Outfit', sans-serif;
+
+        font-size: clamp(3rem, 7vw, 5.5rem);
+
+        line-height: 1.1;
+
+        margin-bottom: 25px;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+
+        line-height: 1.7;
+
+        margin-bottom: 40px;
+
+        color: rgba(255, 255, 255, 0.9);
     }
 
     .hero-buttons {
-        justify-content: center;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
     }
+
+    /* BOTÕES */
+
+    .btn-primary,
+    .btn-secondary {
+        text-decoration: none;
+
+        padding: 16px 30px;
+
+        border-radius: 12px;
+
+        font-weight: 600;
+
+        transition: 0.3s;
+    }
+
+    .btn-primary {
+        background: #113601;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #0d2901;
+        transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+        border: 2px solid white;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 900px) {
+
+        header {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        nav {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-content {
+            margin: 0 30px;
+            text-align: center;
+        }
+
+        .hero-buttons {
+            justify-content: center;
+        }
+    }
+
+    .explore-section,
+    .destinations-section,
+    .map-section {
+
+        padding: 90px 20px;
+
+        background: transparent;
+    }
+
+    .section-container {
+
+        max-width: 1200px;
+
+        margin: auto;
+    }
+
+    /* BUSCA */
+
+    .search-card{
+
+    background: rgba(255,255,255,.08);
+
+    backdrop-filter: blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:32px;
+
+    padding:50px;
 }
 
-.explore-section,
-.destinations-section,
-.map-section {
+    .search-card h2 {
 
-    background: #113601;
+        font-family: 'Outfit';
 
-    color: #1F2937;
+        margin-bottom: 30px;
+    }
 
-    padding: 90px 20px;
+    .search-box {
+
+        display: flex;
+
+        gap: 15px;
+    }
+
+    .search-box input {
+
+        flex: 1;
+
+        padding: 18px;
+
+        border-radius: 14px;
+
+        border: 1px solid #D1D5DB;
+
+        font-size: 16px;
+    }
+
+    .search-box button {
+
+        background: #113601;
+
+        color: white;
+
+        border: none;
+
+        border-radius: 14px;
+
+        padding: 0 30px;
+
+        cursor: pointer;
+    }
+
+    /* FILTROS */
+
+    .filters {
+
+        margin-top: 30px;
+
+        display: flex;
+
+        gap: 15px;
+
+        flex-wrap: wrap;
+    }
+
+    .filter-chip {
+
+        background: #EDF5EC;
+
+        color: #113601;
+
+        border: none;
+
+        padding: 12px 20px;
+
+        border-radius: 999px;
+
+        cursor: pointer;
+    }
+
+    .filter-chip:hover{
+
+        background:var(--primary);
+
+        border-color:var(--primary);
+
+        transform:translateY(-2px);
+    }
+
+    /* DESTINOS */
+
+    .destinations-section h2,
+    .map-card h2 {
+
+        font-family: 'Outfit';
+
+        margin-bottom: 35px;
+    }
+
+    .destinations-grid {
+
+        display: grid;
+
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+        gap: 25px;
+    }
+
+    .destination-card {
+
+        background: white;
+
+        border-radius: 24px;
+
+        overflow: hidden;
+
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.08);
+
+        transition: 0.3s;
+    }
+
+    .destination-card:hover {
+
+        transform: translateY(-8px);
+    }
+
+    .destination-card img {
+
+        width: 100%;
+
+        height: 220px;
+
+        object-fit: cover;
+    }
+
+    .card-content {
+
+        padding: 25px;
+    }
+
+    .card-content h3 {
+
+        margin-bottom: 12px;
+    }
+
+    /* MAPA */
+
+    .map-card {
+
+        background: white;
+
+        border-radius: 28px;
+
+        padding: 45px;
+
+        text-align: center;
+
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .map-card p {
+
+        color: #6B7280;
+
+        max-width: 700px;
+
+        margin:
+            0 auto 40px;
+    }
+
+    .map-placeholder {
+
+        padding: 30px;
+    }
+
+    .map-placeholder img {
+
+        width: 100%;
+
+        max-width: 700px;
+    }
+
+    .stats-section {
+
+        padding: 40px 20px;
+    }
+
+    .stats-grid {
+
+        max-width: 1200px;
+
+        margin: auto;
+
+        display: grid;
+
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+        gap: 25px;
+    }
+
+    .stat-card {
+
+        background: var(--glass);
+
+        backdrop-filter: blur(15px);
+
+        border: 1px solid var(--glass-border);
+
+        border-radius: 24px;
+
+        padding: 30px;
+
+        text-align: center;
+    }
+
+    .stat-card h3 {
+
+        color: var(--primary);
+
+        font-size: 2.5rem;
+
+        margin-bottom: 10px;
+    }
+
+    .section-header{
+
+    text-align:center;
+
+    margin-bottom:50px;
 }
 
-.section-container {
+.section-header span{
 
-    max-width: 1200px;
+    color:var(--primary);
 
-    margin: auto;
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
 }
 
-/* BUSCA */
+.section-header h2{
 
-.search-card {
+    font-family:'Outfit',sans-serif;
 
-    background: white;
+    font-size:2.8rem;
 
-    border-radius: 28px;
-
-    padding: 40px;
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,0.08);
+    margin-top:10px;
 }
 
-.search-card h2 {
+.section-header p{
 
-    font-family: 'Outfit';
+    max-width:700px;
 
-    margin-bottom: 30px;
+    margin:20px auto 0;
+
+    color:rgba(255,255,255,.75);
 }
-
-.search-box {
-
-    display: flex;
-
-    gap: 15px;
-}
-
-.search-box input {
-
-    flex: 1;
-
-    padding: 18px;
-
-    border-radius: 14px;
-
-    border: 1px solid #D1D5DB;
-
-    font-size: 16px;
-}
-
-.search-box button {
-
-    background: #113601;
-
-    color: white;
-
-    border: none;
-
-    border-radius: 14px;
-
-    padding: 0 30px;
-
-    cursor: pointer;
-}
-
-/* FILTROS */
-
-.filters {
-
-    margin-top: 30px;
-
-    display: flex;
-
-    gap: 15px;
-
-    flex-wrap: wrap;
-}
-
-.filter-chip {
-
-    background: #EDF5EC;
-
-    color: #113601;
-
-    border: none;
-
-    padding: 12px 20px;
-
-    border-radius: 999px;
-
-    cursor: pointer;
-}
-
-/* DESTINOS */
-
-.destinations-section h2,
-.map-card h2 {
-
-    font-family: 'Outfit';
-
-    margin-bottom: 35px;
-}
-
-.destinations-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-    gap: 25px;
-}
-
-.destination-card {
-
-    background: white;
-
-    border-radius: 24px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.08);
-
-    transition: 0.3s;
-}
-
-.destination-card:hover {
-
-    transform: translateY(-8px);
-}
-
-.destination-card img {
-
-    width: 100%;
-
-    height: 220px;
-
-    object-fit: cover;
-}
-
-.card-content {
-
-    padding: 25px;
-}
-
-.card-content h3 {
-
-    margin-bottom: 12px;
-}
-
-/* MAPA */
-
-.map-card {
-
-    background: white;
-
-    border-radius: 28px;
-
-    padding: 45px;
-
-    text-align: center;
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,0.08);
-}
-
-.map-card p {
-
-    color: #6B7280;
-
-    max-width: 700px;
-
-    margin:
-        0 auto
-        40px;
-}
-
-.map-placeholder {
-
-    padding: 30px;
-}
-
-.map-placeholder img {
-
-    width: 100%;
-
-    max-width: 700px;
-}
-
 </style>
 
 <head>
@@ -350,7 +453,8 @@ body {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -392,108 +496,78 @@ body {
 
     </main>
 
+    <div class="section-header">
+
+    <span>Explorar</span>
+
+    <h2>Descubra novos destinos</h2>
+
+    <p>
+        Encontre praias, montanhas,
+        experiências culturais e muito mais.
+    </p>
+
+</div>
+
+    <section class="stats-section">
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <h3>27</h3>
+                <p>Estados disponíveis</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>1.200+</h3>
+                <p>Destinos cadastrados</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>850+</h3>
+                <p>Avaliações</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>300+</h3>
+                <p>Empreendimentos locais</p>
+            </div>
+
+        </div>
+
+    </section>
+
     <section class="explore-section">
 
-    <div class="section-container">
+        <div class="section-container">
 
-        <div class="search-card">
+            <div class="search-card">
 
-            <h2>Encontre seu próximo destino</h2>
+                <h2>Encontre seu próximo destino</h2>
 
-            <div class="search-box">
+                <div class="search-box">
 
-                <input
-                    type="text"
-                    placeholder="Para onde você quer viajar?">
+                    <input type="text" placeholder="Para onde você quer viajar?">
 
-                <button>
-                    Buscar
-                </button>
-
-            </div>
-
-            <div class="filters">
-
-                <button class="filter-chip">🏖 Praia</button>
-
-                <button class="filter-chip">🌿 Ecoturismo</button>
-
-                <button class="filter-chip">⛰ Montanha</button>
-
-                <button class="filter-chip">🍽 Gastronomia</button>
-
-                <button class="filter-chip">🏛 História</button>
-
-                <button class="filter-chip">🚣 Aventura</button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section class="destinations-section">
-
-    <div class="section-container">
-
-        <h2>Destinos populares</h2>
-
-        <div class="destinations-grid">
-
-            <div class="destination-card">
-
-                <img src="assets/img/vitoria.jpg">
-
-                <div class="card-content">
-
-                    <h3>Vitória - ES</h3>
-
-                    <p>Praias urbanas e gastronomia capixaba.</p>
+                    <button>
+                        Buscar
+                    </button>
 
                 </div>
 
-            </div>
+                <div class="filters">
 
-            <div class="destination-card">
+                    <button class="filter-chip">🏖 Praia</button>
 
-                <img src="assets/img/rio.jpg">
+                    <button class="filter-chip">🌿 Ecoturismo</button>
 
-                <div class="card-content">
+                    <button class="filter-chip">⛰ Montanha</button>
 
-                    <h3>Rio de Janeiro - RJ</h3>
+                    <button class="filter-chip">🍽 Gastronomia</button>
 
-                    <p>Cartões-postais mundialmente conhecidos.</p>
+                    <button class="filter-chip">🏛 História</button>
 
-                </div>
-
-            </div>
-
-            <div class="destination-card">
-
-                <img src="assets/img/salvador.jpg">
-
-                <div class="card-content">
-
-                    <h3>Salvador - BA</h3>
-
-                    <p>Cultura, música e praias incríveis.</p>
-
-                </div>
-
-            </div>
-
-            <div class="destination-card">
-
-                <img src="assets/img/florianopolis.jpg">
-
-                <div class="card-content">
-
-                    <h3>Florianópolis - SC</h3>
-
-                    <p>Natureza e qualidade de vida.</p>
+                    <button class="filter-chip">🚣 Aventura</button>
 
                 </div>
 
@@ -501,47 +575,115 @@ body {
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<section class="map-section">
+    <section class="destinations-section">
 
-    <div class="section-container">
+        <div class="section-container">
 
-        <div class="map-card">
+            <h2>Destinos populares</h2>
 
-            <h2>Explore o Brasil pelo mapa</h2>
+            <div class="destinations-grid">
 
-            <p>
-                Clique em um estado para descobrir
-                destinos, experiências e empreendimentos locais.
-            </p>
+                <div class="destination-card">
 
-            <div class="map-placeholder">
+                    <img src="assets/img/vitoria.jpg">
 
-                <img
-                    src="assets/img/mapa-brasil.svg"
-                    alt="Mapa do Brasil">
+                    <div class="card-content">
+
+                        <h3>Vitória - ES</h3>
+
+                        <p>Praias urbanas e gastronomia capixaba.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="destination-card">
+
+                    <img src="assets/img/rio.jpg">
+
+                    <div class="card-content">
+
+                        <h3>Rio de Janeiro - RJ</h3>
+
+                        <p>Cartões-postais mundialmente conhecidos.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="destination-card">
+
+                    <img src="assets/img/salvador.jpg">
+
+                    <div class="card-content">
+
+                        <h3>Salvador - BA</h3>
+
+                        <p>Cultura, música e praias incríveis.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="destination-card">
+
+                    <img src="assets/img/florianopolis.jpg">
+
+                    <div class="card-content">
+
+                        <h3>Florianópolis - SC</h3>
+
+                        <p>Natureza e qualidade de vida.</p>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+
+    <section class="map-section">
+
+        <div class="section-container">
+
+            <div class="map-card">
+
+                <h2>Explore o Brasil pelo mapa</h2>
+
+                <p>
+                    Clique em um estado para descobrir
+                    destinos, experiências e empreendimentos locais.
+                </p>
+
+                <div class="map-placeholder">
+
+                    <img src="assets/img/mapa-brasil.svg" alt="Mapa do Brasil">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 </body>
 <script>
-fetch('header.html')
-  .then(response => {
-    if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
-    return response.text();
-  })
-  .then(data => {
-    document.getElementById('header').innerHTML = data;
-  })
-  .catch(err => console.error(err));
+    fetch('header.html')
+        .then(response => {
+            if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+        .catch(err => console.error(err));
 </script>
+
 </html>
