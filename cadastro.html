@@ -4,17 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>TripBrasil</title>
+    <title>TripBrasil - Cadastro</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
 
     <style>
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     body {
@@ -39,32 +38,29 @@
 
     .hero {
         min-height: 100vh;
-
         display: flex;
         justify-content: center;
         align-items: center;
-
         padding: 120px 20px 40px;
     }
 
     /* CARD PRINCIPAL */
 
+    .cadastro-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
     .cadastro-card {
         width: 100%;
         max-width: 1200px;
-
         padding: 45px;
-
         border-radius: 28px;
-
         background: rgba(255, 255, 255, 0.10);
-
         backdrop-filter: blur(15px);
-
         border: 1px solid rgba(255, 255, 255, 0.20);
-
-        box-shadow:
-            0 15px 40px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
     }
 
     /* BOTÃO VOLTAR */
@@ -73,18 +69,12 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-
         width: 48px;
         height: 48px;
-
         margin-bottom: 30px;
-
         border-radius: 50%;
-
         background: rgba(255,255,255,0.12);
-
         border: 1px solid rgba(255,255,255,0.15);
-
         transition: 0.3s;
     }
 
@@ -98,70 +88,52 @@
         height: 22px;
     }
 
-    /* GRID */
+    /* GRID PRINCIPAL FLUIDO */
 
     .cadastro-grid {
         display: flex;
         gap: 40px;
-        align-items: stretch;
+        align-items: stretch; /* Força os dois lados a compartilharem a mesma linha de altura de forma flexível */
     }
 
-    /* FORMULÁRIO */
+    /* FORMULÁRIO (DITA A ALTURA DO CARD) */
 
     .form-box {
         width: 45%;
-
-        padding: 40px;
-
+        padding: 35px 40px;
         border-radius: 24px;
-
         background: rgba(255,255,255,0.08);
-
         border: 1px solid rgba(255,255,255,0.15);
     }
 
     .form-box h2 {
         font-family: 'Outfit', sans-serif;
-
         font-size: 2.2rem;
-
         margin-bottom: 10px;
     }
 
     .form-box p {
         color: rgba(255,255,255,0.80);
-
         margin-bottom: 35px;
-
         line-height: 1.6;
     }
 
     .form-box label {
         display: block;
-
         margin-bottom: 8px;
         margin-top: 18px;
-
         font-size: 0.95rem;
-
         color: rgba(255,255,255,0.85);
     }
 
     .form-box input {
         width: 100%;
-
         padding: 16px 18px;
-
         border-radius: 14px;
-
         border: 1px solid rgba(255,255,255,0.20);
-
         background: rgba(255,255,255,0.12);
-
         color: white;
-
         font-size: 15px;
-
         transition: 0.3s;
     }
 
@@ -171,91 +143,86 @@
 
     .form-box input:focus {
         outline: none;
-
         border-color: #70AE6E;
-
-        box-shadow:
-            0 0 0 3px rgba(112, 174, 110, 0.25);
+        box-shadow: 0 0 0 3px rgba(112, 174, 110, 0.25);
     }
 
     /* BOTÃO */
 
     .btn-salvar {
         margin-top: 35px;
-
         width: 100%;
-
         padding: 16px;
-
         border: none;
-
         border-radius: 14px;
-
         background: #70AE6E;
-
         color: white;
-
         font-size: 16px;
-
         font-weight: 700;
-
         cursor: pointer;
-
         transition: 0.3s;
     }
 
     .btn-salvar:hover {
         background: #5A9758;
-
         transform: translateY(-2px);
-
-        box-shadow:
-            0 8px 20px rgba(112, 174, 110, 0.35);
+        box-shadow: 0 8px 20px rgba(112, 174, 110, 0.35);
     }
 
-    /* IMAGENS */
+    .login-link {
+        text-align: center;
+        margin-top: 20px;
+        color: rgba(255,255,255,0.80);
+    }
+
+    .login-link a {
+        color: #70AE6E;
+        text-decoration: none;
+        font-weight: 700;
+}
+
+    /* ==========================================================================
+       NOVA LOGICA DO GRID DE IMAGENS TOTALMENTE TRAVADO NA CAIXA AO LADO
+       ========================================================================== */
 
     .img-grid {
         width: 55%;
-
         display: grid;
-
         grid-template-columns: 1fr 1fr;
-
-        grid-template-rows: 220px 220px;
-
+        grid-template-rows: 1.2fr 1fr 1.2fr; 
         gap: 15px;
+        
+        /* O segredo da correção absoluta está aqui: */
+        flex: 1;           
+        height: 0;         
+        min-height: 100%;  /* Força o grid a ser um espelho exato da altura gerada pelo formulário */
     }
 
     .img-grid img {
         width: 100%;
         height: 100%;
-
-        object-fit: cover;
-
+        object-fit: cover; 
         border-radius: 20px;
-
         transition: 0.35s;
-
-        box-shadow:
-            0 5px 20px rgba(0,0,0,0.15);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
     }
 
     .img-grid img:hover {
-        transform: scale(1.03);
-
-        box-shadow:
-            0 10px 30px rgba(0,0,0,0.30);
+        transform: scale(1.02);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.30);
     }
 
-    .img1 {
+    .img-cima {
+        grid-column: span 2;
+    }
+
+    .img-baixo {
         grid-column: span 2;
     }
 
     /* RESPONSIVO */
 
     @media (max-width: 992px) {
-
         .cadastro-grid {
             flex-direction: column;
         }
@@ -266,15 +233,13 @@
         }
 
         .img-grid {
-            grid-template-rows:
-                200px
-                160px
-                160px;
+            grid-template-rows: 200px 160px 200px;
+            height: auto;
+            min-height: auto;
         }
     }
 
     @media (max-width: 768px) {
-
         .hero {
             padding-top: 150px;
         }
@@ -293,32 +258,12 @@
 
         .img-grid {
             grid-template-columns: 1fr;
-
-            grid-template-rows:
-                180px
-                180px
-                180px;
+            grid-template-rows: repeat(4, 180px);
         }
 
-        .img1 {
+        .img-cima, .img-baixo {
             grid-column: span 1;
         }
-    }
-
-    .login-link {
-        text-align: center;
-
-        margin-top: 20px;
-
-        color: rgba(255,255,255,0.80);
-    }
-
-    .login-link a {
-        color: #70AE6E;
-
-        text-decoration: none;
-
-        font-weight: 700;
     }
     </style>
 </head>
@@ -327,18 +272,18 @@
 
     <div id="header"></div>
 
-    <!-- MAIN -->
     <main class="hero">
-        <div class="container">
+
+        <div class="cadastro-wrapper">
+
             <div class="cadastro-card">
 
-                <a href="home.html" class="back-button">
-                <img src="./assets/img/seta.svg" alt="voltar" class="icon" width="30" height="30">
+                <a href="index.html" class="back-button">
+                    <img src="./assets/img/seta.svg" alt="voltar" class="icon" width="30" height="30">
                 </a>
 
-                <div class="row g-4 align-items-stretch">
+                <div class="cadastro-grid">
 
-                    <!-- FORM -->
                     <div class="form-box">
 
                         <h2>Junte-se ao TripBrasil</h2>
@@ -349,28 +294,20 @@
                             todo o Brasil.
                         </p>
 
-                        <div class="mb-3">
-                            <label class="form-label">Nome completo</label>
-                            <input type="text"
-                                class="form-control custom-input"
-                                placeholder="Digite seu nome">
-                        
+                        <label>Nome completo</label>
+                        <input type="text" placeholder="Digite seu nome">
 
                         <label>Nome de usuário</label>
-                        <input type="text"
-                                class="form-control custom-input"
-                                placeholder="Escolha um nome de usuário">
+                        <input type="text" placeholder="Escolha um nome de usuário">
 
                         <label>E-mail:</label>
-                        <input type="email" class="form-control custom-input" placeholder="seuemail@exemplo.com">
+                        <input type="email" placeholder="seuemail@exemplo.com">
 
                         <label>Senha:</label>
-                        <input type="password" class="form-control custom-input" placeholder="Crie uma senha">
+                        <input type="password" placeholder="Crie uma senha">
 
                         <label>Confirmar senha:</label>
-                        <input type="password" class="form-control custom-input" placeholder="Repita a senha">
-                        
-                        </div>
+                        <input type="password" placeholder="Repita a senha">
 
                         <button class="btn-salvar">
                             Criar conta
@@ -383,13 +320,11 @@
 
                     </div>
 
-                    <!-- IMAGENS -->
                     <div class="img-grid">
-
-                        <img src="assets/img/cadastro/img1.webp" class="img1">
+                        <img src="assets/img/cadastro/img1.webp" class="img-cima">
                         <img src="assets/img/cadastro/img2.webp">
                         <img src="assets/img/cadastro/img3.webp">
-
+                        <img src="assets/img/cadastro/img4.webp" class="img-baixo">
                     </div>
 
                 </div>
@@ -397,8 +332,7 @@
             </div>
 
         </div>
-
-    </main>
+</main>
 
 </body>
 <script>
