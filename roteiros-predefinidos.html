@@ -27,7 +27,7 @@
             background-attachment: fixed;
 
             height: 100vh;
-            overflow: hidden; /* REMOVE scroll da página */
+            overflow: hidden;
         }
 
         .page {
@@ -41,8 +41,8 @@
             width: 100%;
             max-width: 1200px;
             height: 100%;
-            max-height: calc(100vh - 180px); /* limita altura */
-            
+            max-height: calc(100vh - 180px);
+
             padding: 45px;
             border-radius: 28px;
 
@@ -54,10 +54,37 @@
             display: flex;
             flex-direction: column;
 
-            overflow-y: auto; /* SCROLL AQUI */
+            overflow-y: auto;
+
+            position: relative;
         }
 
-        /* SCROLL BONITO */
+        /* BOTÃO VOLTAR */
+        .btn-voltar {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+
+            padding: 8px 16px;
+            border-radius: 999px;
+
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+
+            font-size: 0.9rem;
+            font-weight: 500;
+
+            cursor: pointer;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-voltar:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateX(-3px);
+        }
+
         .container-box::-webkit-scrollbar {
             width: 8px;
         }
@@ -148,7 +175,7 @@
 
         @media (max-width: 768px) {
             body {
-                overflow: auto; /* mobile volta scroll normal */
+                overflow: auto;
             }
 
             .container-box {
@@ -175,15 +202,17 @@
 
     <div class="container-box">
 
-        <h1 class="title">Roteiros prontos
-        </h1>
+        <!-- BOTÃO VOLTAR -->
+        <button class="btn-voltar" onclick="history.back()">
+            ← Voltar
+        </button>
+
+        <h1 class="title">Roteiros prontos</h1>
         <p class="subtitle">
             Descubra experiências incríveis já planejadas ou criadas por outros usuários.
         </p>
 
         <div class="roteiros">
-
-            <!-- VÁRIOS CARDS PRA TESTAR SCROLL -->
 
             <div class="roteiro-card">
                 <img src="assets/img/roteiros-predefinidos/img1.webp" class="roteiro-img">
@@ -212,8 +241,6 @@
                 </div>
             </div>
 
-            <!-- EXTRA PRA GERAR SCROLL -->
-
             <div class="roteiro-card">
                 <img src="assets/img/roteiros-predefinidos/img4.webp" class="roteiro-img">
                 <div class="roteiro-info">
@@ -231,7 +258,6 @@
                     <p>Locais escondidos e menos turísticos.</p>
                 </div>
             </div>
-
 
         </div>
 
