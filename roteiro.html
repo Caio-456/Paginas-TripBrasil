@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripBrasil - Roteiro</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.45),
+                    rgba(0, 0, 0, 0.45)
+                ),
+                url('assets/img/fundo.webp');
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            min-height: 100vh;
+        }
+
+        /* ESTRUTURA PRINCIPAL */
+
+        .roteiro-page {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Centraliza verticalmente e horizontalmente */
+            padding: 130px 20px 60px;
+        }
+
+        .roteiro-card {
+            width: 100%;
+            max-width: 1100px;
+            padding: 50px 60px;
+            
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        /* CABEÇALHO DO CARD (TÍTULO E BOTÕES) */
+
+        .roteiro-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .title-group {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .back-button {
+            color: #f8f8f871; /* <--- ADICIONE ESTA LINHA (muda a cor da seta) */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: rgba(255,255,255,0.20);
+            transform: translateX(-4px);
+        }
+
+        .title-group h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+        }
+
+        .btn-salvar {
+            padding: 12px 40px;
+            border: 2px solid white;
+            border-radius: 50px;
+            background: transparent;
+            color: white;
+            font-size: 1.1rem;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-salvar:hover {
+            background: white;
+            color: black;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* CORPO DO ROTEIRO (DUAS COLUNAS) */
+
+        .roteiro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            position: relative;
+        }
+
+        /* LINHA TRACEJADA DIVISÓRIA */
+        .roteiro-content::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            border-left: 2px dashed rgba(255, 255, 255, 0.25);
+        }
+
+        .dia-box {
+            margin-bottom: 35px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .dia-box h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #9bd799; /* Cor de destaque amigável com o fundo verde */
+        }
+
+        .dia-box ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .dia-box li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .dia-box li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #70AE6E;
+            font-weight: bold;
+            font-size: 1.2rem;
+            top: -2px;
+        }
+
+        /* RESPONSIVO */
+
+        @media (max-width: 992px) {
+            .roteiro-card {
+                padding: 40px;
+            }
+            .title-group h1 {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .roteiro-page {
+                padding-top: 140px;
+                align-items: flex-start;
+            }
+
+            .roteiro-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+            }
+
+            .btn-salvar {
+                width: 100%;
+            }
+
+            .roteiro-content {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            /* Remove a linha tracejada no mobile pois vira uma coluna só */
+            .roteiro-content::after {
+                display: none;
+            }
+            
+            .dia-box {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <main class="roteiro-page">
+
+        <div class="roteiro-card">
+
+            <div class="roteiro-header">
+                <div class="title-group">
+                    <a href="javascript:history.back()" class="back-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </a>
+                    <h1>4 dias em Ouro Preto</h1>
+                </div>
+
+                <button class="btn-salvar">Salvar como favorito</button>
+            </div>
+
+            <div class="roteiro-content">
+
+                <div class="coluna">
+                    <div class="dia-box">
+                        <h3>Dia 1 — Centro histórico</h3>
+                        <ul>
+                            <li>Café da manhã na Café das Flores</li>
+                            <li>Praça Tiradentes</li>
+                            <li>Museu da Inconfidência</li>
+                            <li>Igreja de São Francisco de Assis</li>
+                            <li>Igreja Nossa Senhora do Pilar</li>
+                            <li>Jantar na Bené da Flauta</li>
+                        </ul>
+                    </div>
+
+                    <div class="dia-box">
+                        <h3>Dia 2 — Minas e Mariana</h3>
+                        <ul>
+                            <li>Tour na Mina da Passagem</li>
+                            <li>Passeio no centro histórico de Mariana</li>
+                            <li>Visita à Catedral da Sé de Mariana</li>
+                            <li>Café na Império dos Sabores</li>
+                            <li>Noite no bar Escadabaixo Bar Cozinha</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="coluna">
+                    <div class="dia-box">
+                        <h3>Dia 3 — Lavras Novas</h3>
+                        <ul>
+                            <li>Bate-volta para Lavras Novas</li>
+                            <li>Mirante da Pedra</li>
+                            <li>Cachoeira dos Namorados</li>
+                            <li>Almoço na Pierina Trattoria</li>
+                            <li>Café na Taberna Casa Antiga</li>
+                            <li>Pôr do sol nos mirantes da região</li>
+                        </ul>
+                    </div>
+
+                    <div class="dia-box">
+                        <h3>Dia 4 — Cultura e vista bonita</h3>
+                        <ul>
+                            <li>Casa dos Contos</li>
+                            <li>Feira de artesanato local</li>
+                            <li>Passeio pela Rua Direita</li>
+                            <li>Almoço na O Passo Pizza Jazz</li>
+                            <li>Encerrar no Mirante do Morro São Sebastião</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(err => console.error(err));
+    </script>
+
+</body>
+
+</html>
