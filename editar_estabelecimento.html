@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripBrasil - Editar Estabelecimento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+                        url('assets/img/fundo.webp') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        /* --- CONTAINER PRINCIPAL --- */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 120px auto 40px auto; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .page-title span {
+            color: #e6c594;
+            font-weight: 700;
+        }
+
+        /* --- GRID DE FORMULÁRIO --- */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        /* --- INPUTS --- */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            padding: 12px 15px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #63b880;
+        }
+
+        select option {
+            background: #253329 !important;
+            color: #ffffff !important;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* --- MAPA --- */
+        .map-placeholder {
+            width: 100%;
+            height: 180px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* --- MÍDIA / UPLOAD --- */
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .upload-main {
+            grid-row: span 2;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .upload-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .upload-thumb {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 24px;
+        }
+
+        /* --- BOTÕES --- */
+        .footer-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+
+        .btn-submit {
+            background-color: #63b880;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        .btn-submit:hover {
+            background-color: #4fa36c;
+            transform: translateY(-2px);
+        }
+
+        /* --- MODAL DE CONFIRMAÇÃO --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 9999;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            font-size: 50px;
+            color: #63b880;
+            margin-bottom: 20px;
+        }
+
+        .modal-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .modal-card p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .btn-modal-close {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header"></div>
+
+    <main class="main-container">
+        <h1 class="page-title">Atualize seu <span>estabelecimento</span> no TripBrasil!</h1>
+
+        <form id="form-editar" onsubmit="event.preventDefault(); openModal();">
+            <div class="form-grid">
+                
+                <div class="column">
+                    <section>
+                        <h2 class="section-title"><i class="fa-solid fa-pen-to-square"></i> Informações Básicas</h2>
+                        <div class="input-group">
+                            <label>Nome do Estabelecimento</label>
+                            <input type="text" value="Casa de shows Pitanguinha" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Descrição</label>
+                            <textarea required>Casa de shows onde fazem shows legais!!!!!</textarea>
+                        </div>
+                    </section>
+
+                    <section style="margin-top: 30px;">
+                        <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> Localização</h2>
+                        <div class="row">
+                            <div class="input-group">
+                                <label>Estado</label>
+                                <select id="select-estado" required>
+                                    <option value="">Carregando estados...</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Cidade</label>
+                                <select id="select-cidade" required disabled>
+                                    <option value="">Selecione um estado antes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label>Marque a localização no mapa:</label>
+                        <div class="map-placeholder">
+                            <i class="fa-solid fa-map-pin" style="font-size: 30px; margin-bottom: 10px;"></i>
+                            O mapa já está apontando para as coordenadas salvas.
+                        </div>
+                    </section>
+                </div>
+
+                <div class="column">
+                    <section>
+                        <h2 class="section-title"><i class="fa-solid fa-images"></i> Detalhes e Mídia</h2>
+                        
+                        <div class="row" style="align-items: flex-end; margin-bottom: 20px;">
+                            <div class="input-group" style="margin-bottom: 0;">
+                                <label>Preço de entrada</label>
+                                <input type="text" value="R$ 50,00">
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px; padding-bottom: 12px; font-size: 14px;">
+                                <input type="checkbox" id="gratuito" style="width: auto;">
+                                <label for="gratuito" style="margin-bottom: 0;">Gratuito</label>
+                            </div>
+                        </div>
+
+                        <label>Mídia (Fotos Atuais)</label>
+                        <div class="media-grid">
+                            <div class="upload-main">
+                                <img src="https://images.unsplash.com/photo-1514525253361-bee8718a34a1?q=80&w=1000&auto=format&fit=crop" alt="Foto atual">
+                            </div>
+                            <div class="upload-thumb"><i class="fa-solid fa-image" style="color: rgba(255,255,255,0.5)"></i></div>
+                            <div class="upload-thumb"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="footer-actions">
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-floppy-disk"></i> Salvar Alterações
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <div class="modal-overlay" id="modalConfirmacao">
+        <div class="modal-card">
+            <div class="modal-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>Atualizado!</h3>
+            <p>As alterações na **Casa de shows Pitanguinha** foram salvas com sucesso e já estão ao vivo.</p>
+            <button class="btn-modal-close" onclick="closeModal()">Entendido</button>
+        </div>
+    </div>
+
+    <script>
+        const selectEstado = document.getElementById('select-estado');
+        const selectCidade = document.getElementById('select-cidade');
+
+        // Dados para simular o "Carregar do Banco"
+        const DADOS_SALVOS = {
+            uf: "MG",
+            cidade: "Araxá"
+        };
+
+        // 1. Carrega o Header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        // 2. Busca Estados e pré-seleciona
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+                .then(response => response.json())
+                .then(estados => {
+                    estados.sort((a, b) => a.nome.localeCompare(b.nome));
+                    selectEstado.innerHTML = '<option value="">Selecione o Estado</option>';
+                    
+                    estados.forEach(estado => {
+                        const option = document.createElement('option');
+                        option.value = estado.sigla;
+                        option.textContent = `${estado.nome} (${estado.sigla})`;
+                        if(estado.sigla === DADOS_SALVOS.uf) option.selected = true;
+                        selectEstado.appendChild(option);
+                    });
+
+                    // Se já tem estado, carrega cidades
+                    if(DADOS_SALVOS.uf) carregarCidades(DADOS_SALVOS.uf, DADOS_SALVOS.cidade);
+                });
+        });
+
+        // 3. Monitora mudança no Estado
+        selectEstado.addEventListener('change', function() {
+            carregarCidades(this.value);
+        });
+
+        function carregarCidades(sgUF, cidadePreSelecionada = null) {
+            if (!sgUF) {
+                selectCidade.innerHTML = '<option value="">Selecione um estado antes</option>';
+                selectCidade.disabled = true;
+                return;
+            }
+
+            selectCidade.innerHTML = '<option value="">Carregando cidades...</option>';
+            selectCidade.disabled = false;
+
+            fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${sgUF}/municipios`)
+                .then(response => response.json())
+                .then(cidades => {
+                    cidades.sort((a, b) => a.nome.localeCompare(b.nome));
+                    selectCidade.innerHTML = '<option value="">Selecione a Cidade</option>';
+                    
+                    cidades.forEach(cidade => {
+                        const option = document.createElement('option');
+                        option.value = cidade.nome;
+                        option.textContent = cidade.nome;
+                        if(cidadePreSelecionada && cidade.nome === cidadePreSelecionada) option.selected = true;
+                        selectCidade.appendChild(option);
+                    });
+                });
+        }
+
+        function openModal() {
+            document.getElementById('modalConfirmacao').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalConfirmacao').classList.remove('active');
+        }
+    </script>
+
+</body>
+</html>

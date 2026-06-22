@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripBrasil - Aumentar Nosso Catálogo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+                        url('assets/img/fundo.webp') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        /* --- CONTAINER PRINCIPAL --- */
+        .main-container {
+            width: 90%;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 50px 40px;
+            margin: 120px auto 40px auto;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .page-title span {
+            color: #e6c594;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+
+        /* --- CARDS GRID --- */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .option-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.3s ease, background 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(230, 197, 148, 0.15);
+            color: #e6c594;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .option-card:hover .card-icon {
+            background: #e6c594;
+            color: #1a241e;
+        }
+
+        /* Variação de cor para o segundo card para equilibrar o design */
+        .option-card.establishment .card-icon {
+            background: rgba(99, 184, 128, 0.15);
+            color: #63b880;
+        }
+
+        .option-card.establishment:hover .card-icon {
+            background: #63b880;
+            color: #1a241e;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            min-height: 70px;
+        }
+
+        /* --- BOTÕES --- */
+        .btn-action {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-gold {
+            background: #e6c594;
+            color: #1a241e;
+            border: none;
+        }
+
+        .btn-gold:hover {
+            background: #f1d7b3;
+        }
+
+        .btn-green {
+            background: #63b880;
+            color: white;
+            border: none;
+        }
+
+        .btn-green:hover {
+            background: #4fa36c;
+        }
+
+        /* --- FOOTER BANNER --- */
+        .footer-info {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-info i {
+            color: #e6c594;
+            font-size: 18px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header"></div>
+
+    <main class="main-container">
+        <h1 class="page-title">Aumentar Nosso <span>Catálogo</span></h1>
+        <p class="subtitle">
+            O TripBrasil cresce junto com a nossa comunidade! Se você conhece um canto incrível que ainda não está listado ou quer sugerir um novo negócio, selecione uma das opções abaixo para colaborar.
+        </p>
+
+        <div class="catalog-grid">
+            
+            <div class="option-card tourist-spot">
+                <div class="card-icon">
+                    <i class="fa-solid fa-mountain-sun"></i>
+                </div>
+                <div>
+                    <h2 class="card-title">Sugerir Ponto Turístico</h2>
+                    <p class="card-description">
+                        Compartilhe praias, mirantes, cachoeiras, praças históricas ou qualquer lugar público e de interesse cultural/natural que mereça ser visitado.
+                    </p>
+                </div>
+                <a href="sugerir-ponto.html" class="btn-action btn-gold">
+                    <i class="fa-solid fa-plus"></i> Indicar Ponto Turístico
+                </a>
+            </div>
+
+            <div class="option-card establishment">
+                <div class="card-icon">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <div>
+                    <h2 class="card-title">Sugerir Estabelecimento</h2>
+                    <p class="card-description">
+                        Indique restaurantes, pousadas, hotéis, lanchonetes ou comércios locais voltados ao suporte e experiência do viajante.
+                    </p>
+                </div>
+                <a href="sugerir-estabelecimento.html" class="btn-action btn-green">
+                    <i class="fa-solid fa-plus"></i> Indicar Estabelecimento
+                </a>
+            </div>
+
+        </div>
+
+        <div class="footer-info">
+            <i class="fa-solid fa-shield-heart"></i>
+            <span>Todas as sugestões passam por uma revisão da nossa equipe técnica antes de ficarem públicas na plataforma.</span>
+        </div>
+    </main>
+
+    <script>
+        // Carrega o Header dinamicamente conforme padrão do projeto
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(err => console.error('Erro ao carregar o header:', err));
+    </script>
+
+</body>
+</html>
