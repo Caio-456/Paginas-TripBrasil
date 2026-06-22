@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Área do Anunciante - TripBrasil</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            color: white;
+            min-height: 100vh;
+            background-color: #0c0c0c;
+        }
+
+        /* HEADER FIXO E TRANSLÚCIDO */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1100;
+            background: rgba(0, 0, 0, 0.2) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* HERO / BACKGROUND */
+        .hero {
+            min-height: 100vh;
+            width: 100%;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('assets/img/fundo.webp'),
+                url('https://images.unsplash.com/photo-1464146072230-91cabc968266?q=80&w=1920'); /* Fundo panorâmico sofisticado */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding-top: 120px; 
+            padding-bottom: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* PAINEL PRINCIPAL AMPLIADO (GLASSMORPHISM) */
+        .dashboard-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 40px;
+            padding: 45px;
+            position: relative;
+            width: 100%;
+            max-width: 1150px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        /* BOTÃO VOLTAR */
+        .btn-back {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            z-index: 20;
+        }
+
+        .btn-back:hover {
+            background: white;
+            color: black;
+            transform: translateX(-5px);
+        }
+
+        /* TÍTULO DE BOAS-VINDAS */
+        .welcome-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 35px;
+            padding-left: 20px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* SEÇÃO DO GRÁFICO (COLUNA ESQUERDA) */
+        .graph-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .graph-box-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #70AE6E;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CONTAINER DOS BOTÕES DE AÇÃO */
+        .action-buttons-gap {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-dash-action {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 50px;
+            padding: 12px 28px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-dash-primary {
+            background: #70AE6E;
+            color: white;
+        }
+
+        .btn-dash-primary:hover {
+            background: #5c945a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(112, 174, 110, 0.3);
+            color: white;
+        }
+
+        .btn-dash-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        .btn-dash-secondary:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* LISTA DE ESTABELECIMENTOS (COLUNA DIREITA) */
+        .list-box {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 25px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .list-box-header {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
+        }
+
+        .list-scroll-area {
+            max-height: 380px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        /* Custom Scrollbar */
+        .list-scroll-area::-webkit-scrollbar {
+            width: 6px;
+        }
+        .list-scroll-area::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .establishment-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .establishment-item:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .est-name {
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .est-status {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 2px;
+        }
+
+        .est-status span {
+            color: #70AE6E;
+            font-weight: 600;
+        }
+
+        .est-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-action-icon {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .btn-action-icon:hover {
+            color: white;
+        }
+
+        .btn-action-icon.delete:hover {
+            color: #ff5252;
+        }
+
+        @media (max-width: 991px) {
+            .dashboard-card { padding: 40px 20px; }
+            .welcome-title { padding-left: 50px; font-size: 1.7rem; }
+            .list-box { margin-top: 30px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <main class="hero">
+        <div class="container d-flex justify-content-center">
+            
+            <div class="dashboard-card">
+                
+                <button class="btn-back" onclick="window.history.back()" title="Voltar">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+
+                <h1 class="welcome-title">Bem-vindo à área do anunciante!</h1>
+
+                <div class="row g-4">
+                    
+                    <div class="col-lg-5 d-flex flex-column justify-content-between">
+                        
+                        <div class="graph-box">
+                            <div class="graph-box-title">
+                                <i class="fa-solid fa-chart-simple"></i>
+                                <span>Visualizações</span>
+                            </div>
+                            <div style="position: relative; height: 240px; width: 100%;">
+                                <canvas id="viewsChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons-gap">
+                            <a href="cadastrar-local.html" class="btn-dash-action btn-dash-primary">
+                                <i class="fa-solid fa-plus"></i>
+                                Cadastrar estabelecimento
+                            </a>
+                            <button class="btn-dash-action btn-dash-secondary">
+                                <i class="fa-solid fa-arrow-up-right-dots"></i>
+                                Contratar resultados
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-7">
+                        
+                        <div class="list-box">
+                            <div class="list-box-header">
+                                <span>Meus estabelecimentos</span>
+                                <i class="fa-solid fa-store" style="color: rgba(255,255,255,0.4); font-size: 1.2rem;"></i>
+                            </div>
+
+                            <div class="list-scroll-area">
+                                
+                                <div class="establishment-item">
+                                    <div>
+                                        <div class="est-name">Pousada Recanto do Sol</div>
+                                        <div class="est-status">Anunciando: <span>Sim</span></div>
+                                    </div>
+                                    <div class="est-actions">
+                                        <button class="btn-action-icon" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="btn-action-icon delete" title="Excluir"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="establishment-item">
+                                    <div>
+                                        <div class="est-name">Restaurante Sabor Capixaba</div>
+                                        <div class="est-status">Anunciando: <span>Sim</span></div>
+                                    </div>
+                                    <div class="est-actions">
+                                        <button class="btn-action-icon" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="btn-action-icon delete" title="Excluir"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="establishment-item">
+                                    <div>
+                                        <div class="est-name">Bistrô das Montanhas</div>
+                                        <div class="est-status">Anunciando: <span>Sim</span></div>
+                                    </div>
+                                    <div class="est-actions">
+                                        <button class="btn-action-icon" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="btn-action-icon delete" title="Excluir"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="establishment-item">
+                                    <div>
+                                        <div class="est-name">Hotel Marina Blue</div>
+                                        <div class="est-status">Anunciando: <span>Sim</span></div>
+                                    </div>
+                                    <div class="est-actions">
+                                        <button class="btn-action-icon" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="btn-action-icon delete" title="Excluir"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // CONFIGURAÇÃO DO GRÁFICO DE BARRAS CUSTOMIZADO
+        const ctx = document.getElementById('viewsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['1', '2', '3', '4'],
+                datasets: [{
+                    label: 'Visualizações',
+                    data: [5, 10, 2, 8],
+                    backgroundColor: 'rgba(174, 212, 241, 0.7)', // Azul claro pastel translúcido
+                    borderColor: 'rgba(174, 212, 241, 1)',
+                    borderWidth: 1,
+                    borderRadius: 8,
+                    borderSkipped: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false } // Oculta a legenda para ficar minimalista
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: 'rgba(255, 255, 255, 0.6)', fontFamily: 'Outfit' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        ticks: { color: 'rgba(255, 255, 255, 0.6)', stepSize: 2, fontFamily: 'Outfit' }
+                    }
+                }
+            }
+        });
+
+        // Injeção dinâmica do menu superior unificado
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(err => {
+                document.getElementById('header').innerHTML = `
+                    <nav style="padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <a href="#" style="color: white; font-weight: 700; font-size: 1.5rem; text-decoration: none; font-family: 'Outfit';">TripBrasil</a>
+                        <div style="display: flex; gap: 30px; font-family: 'Outfit';">
+                            <a href="#" style="color: white; text-decoration: none; opacity: 0.8;">Explorar</a>
+                            <a href="#" style="color: #70AE6E; text-decoration: none; font-weight: 600;">Plano viajante</a>
+                            <a href="#" style="color: white; text-decoration: none; opacity: 0.8;">Perfil</a>
+                        </div>
+                    </nav>
+                `;
+            });
+    </script>
+</body>
+</html>
