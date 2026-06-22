@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sugerir Local - TripBrasil</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            color: white;
+            min-height: 100vh;
+            background-color: #0c0c0c;
+        }
+
+        /* HEADER FIXO E TRANSLÚCIDO */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1100;
+            background: rgba(0, 0, 0, 0.2) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* HERO / BACKGROUND */
+        .hero {
+            min-height: 100vh;
+            width: 100%;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+                url('assets/img/fundo.webp'),
+                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding-top: 120px; 
+            padding-bottom: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* CARD CENTRAL AMPLIADO (GLASSMORPHISM) */
+        .profile-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 40px;
+            padding: 50px 60px;
+            position: relative;
+            width: 100%;
+            max-width: 950px; 
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        /* BOTÃO VOLTAR */
+        .btn-back {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            z-index: 20;
+        }
+
+        .btn-back:hover {
+            background: white;
+            color: black;
+            transform: translateX(-5px);
+        }
+
+        /* TEXTO DE INTRODUÇÃO */
+        .welcome-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            line-height: 1.4;
+            text-align: center;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .welcome-text strong {
+            font-weight: 700;
+        }
+
+        .welcome-text .highlight-title {
+            display: block;
+            margin-top: 10px;
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #70AE6E;
+            letter-spacing: 1px;
+        }
+
+        /* QUADRO INTERNO DO FORMULÁRIO (AMARELO ADAPTADO) */
+        .form-box-container {
+            background: rgba(255, 193, 7, 0.12);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        /* CABEÇALHO DO QUADRO INTERNO */
+        .form-box-header {
+            background: #FFC107;
+            color: #121212;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 15px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        /* CONTEÚDO DO FORMULÁRIO */
+        .form-box-body {
+            padding: 40px;
+        }
+
+        .form-label-custom {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #FFC107;
+        }
+
+        .form-control-custom {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            border-radius: 12px;
+            color: white;
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 1.05rem;
+            padding: 12px 18px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control-custom:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #FFC107;
+            box-shadow: 0 0 15px rgba(255, 193, 7, 0.25);
+            outline: none;
+            color: white;
+        }
+
+        select.form-control-custom option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        /* BOTÃO ENVIAR SUGESTÃO */
+        .btn-submit-custom {
+            background: #FFC107;
+            color: #121212;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-submit-custom:hover {
+            background: #ffe082;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 193, 7, 0.4);
+        }
+
+        /* POPUP NOTIFICAÇÃO DE SUCESSO */
+        .custom-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(20, 40, 25, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid #70AE6E;
+            color: #daffde;
+            padding: 16px 28px;
+            border-radius: 16px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(150px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 2000;
+        }
+
+        .custom-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card { padding: 50px 25px 35px 25px; margin: 0 15px; }
+            .form-box-body { padding: 25px 20px; }
+            .welcome-text { font-size: 1.4rem; }
+            .welcome-text .highlight-title { font-size: 1.8rem; }
+            .custom-toast { left: 20px; right: 20px; bottom: 20px; text-align: center; justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <div id="successToast" class="custom-toast">
+        <i class="fa-solid fa-circle-check" style="color: #70AE6E; font-size: 1.4rem;"></i>
+        <span>Sugestão enviada com sucesso! Obrigado por colaborar.</span>
+    </div>
+
+    <main class="hero">
+        <div class="container d-flex justify-content-center">
+            
+            <div class="profile-card">
+                
+                <button class="btn-back" onclick="window.history.back()" title="Voltar">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+
+                <div class="welcome-text">
+                    Olá <strong>Viajante</strong>, querendo sugerir um novo ponto turístico?<br>
+                    <span class="highlight-title">CONTE PARA NÓS!!</span>
+                </div>
+
+                <div class="form-box-container">
+                    <div class="form-box-header">
+                        Sugerir Ponto Turístico
+                    </div>
+                    
+                    <div class="form-box-body">
+                        <form id="suggestionForm">
+                            <div class="row g-4">
+                                
+                                <div class="col-md-6">
+                                    <label class="form-label-custom">Nome do Local:</label>
+                                    <input type="text" class="form-control-custom w-100" required placeholder="Ex: Praia do Forno">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label-custom">Categoria:</label>
+                                    <select class="form-control-custom w-100" required>
+                                        <option value="" disabled selected>Selecione uma opção</option>
+                                        <option value="ponto-turistico">Ponto Turístico</option>
+                                        
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label-custom">Estado (UF):</label>
+                                    <input type="text" class="form-control-custom w-100" required placeholder="Ex: RJ">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label-custom">Cidade:</label>
+                                    <input type="text" class="form-control-custom w-100" required placeholder="Ex: Arraial do Cabo">
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label-custom">Descrição / Justificativa:</label>
+                                    <textarea class="form-control-custom w-100" rows="3" required placeholder="Conte-nos um pouco sobre este local e por que ele deve estar na TripBrasil..."></textarea>
+                                </div>
+
+                                <div class="col-12 text-end mt-4">
+                                    <button type="submit" class="btn-submit-custom">
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                        <span>Enviar Sugestão</span>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // INTERCEPTADOR DE ENVIO DO FORMULÁRIO COM TOAST POPUP
+        document.getElementById('suggestionForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o reload real da página
+
+            const toast = document.getElementById('successToast');
+            toast.classList.add('show'); // Ativa a mensagem flutuante
+
+            // Reseta o formulário após o envio simulado
+            this.reset();
+
+            // Oculta a notificação após 4 segundos
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        });
+
+        // Injeção dinâmica do menu superior unificado
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) throw new Error("Erro CORS");
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(err => {
+                document.getElementById('header').innerHTML = `
+                    <nav style="padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <a href="#" style="color: white; font-weight: 700; font-size: 1.5rem; text-decoration: none; font-family: 'Outfit';">TripBrasil</a>
+                        <div style="display: flex; gap: 30px; font-family: 'Outfit';">
+                            <a href="#" style="color: white; text-decoration: none; opacity: 0.8;">Explorar</a>
+                            <a href="#" style="color: #70AE6E; text-decoration: none; font-weight: 600;">Perfil</a>
+                        </div>
+                    </nav>
+                `;
+            });
+    </script>
+</body>
+</html>
