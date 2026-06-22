@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripBrasil - Login Administrativo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+                        url('assets/img/fundo.webp') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- CONTÊINER PARA RECONHECER O HEADER DINÂMICO --- */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* --- CORREÇÃO DO ESPAÇAMENTO DO CONTEÚDO --- */
+        .login-wrapper-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 120px; /* Garante que fique abaixo do cabeçalho de vidro */
+            padding: 20px;
+        }
+
+        /* --- CARD DE LOGIN GLASSMORPHISM --- */
+        .login-container {
+            width: 100%;
+            max-width: 440px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* --- HEADER DO CARD --- */
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .admin-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(230, 197, 148, 0.15);
+            color: #e6c594;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(230, 197, 148, 0.3);
+        }
+
+        .login-header h1 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .login-header h1 span {
+            color: #e6c594;
+            font-weight: 700;
+        }
+
+        .login-header p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* --- FORMULÁRIO --- */
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i.input-icon {
+            position: absolute;
+            left: 15px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            padding: 12px 15px 12px 42px;
+            color: white;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #63b880;
+        }
+
+        .btn-toggle-pass {
+            position: absolute;
+            right: 15px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 5px;
+        }
+
+        .btn-toggle-pass:hover {
+            color: white;
+        }
+
+        /* --- BOTÃO ENTRAR --- */
+        .btn-login {
+            width: 100%;
+            background-color: #63b880;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 15px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-login:hover {
+            background-color: #4fa36c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 184, 128, 0.3);
+        }
+
+        /* --- FOOTER CARD --- */
+        .login-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 12px;
+        }
+
+        .login-footer a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .login-footer a:hover {
+            color: #e6c594;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header"></div>
+
+    <div class="login-wrapper-content">
+        <main class="login-container">
+            <div class="login-header">
+                <div class="admin-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h1>TripBrasil <span>Admin</span></h1>
+                <p>Acesso exclusivo ao painel de gerenciamento e moderação</p>
+            </div>
+
+            <form id="form-login-admin" onsubmit="handleLogin(event)">
+                
+                <div class="input-group">
+                    <label>E-mail Corporativo</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope input-icon"></i>
+                        <input type="email" placeholder="nome@tripbrasil.com" required autocomplete="username">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Senha Administrativa</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input type="password" id="password" placeholder="••••••••••••" required autocomplete="current-password">
+                        <button type="button" class="btn-toggle-pass" onclick="togglePasswordVisibility()">
+                            <i class="fa-solid fa-eye" id="pass-icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    <i class="fa-solid fa-right-to-bracket"></i> Autenticar no Painel
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <a href="login.html"><i class="fa-solid fa-arrow-left-long"></i> Voltar para login de usuário comum</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const passIcon = document.getElementById('pass-icon');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                passIcon.classList.remove('fa-eye');
+                passIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                passIcon.classList.remove('fa-eye-slash');
+                passIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Função corrigida para forçar o redirecionamento na mesma pasta raiz
+        function handleLogin(event) {
+            event.preventDefault(); 
+            window.location.href = './admin-avaliacoes.html';
+        }
+
+        // Carregamento assíncrono do header original do seu projeto
+        fetch('header.html')
+          .then(response => {
+            if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
+            return response.text();
+          })
+          .then(data => {
+            document.getElementById('header').innerHTML = data;
+          })
+          .catch(err => console.error(err));
+    </script>
+
+</body>
+</html>
