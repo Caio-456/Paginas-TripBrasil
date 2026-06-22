@@ -93,7 +93,7 @@
     .cadastro-grid {
         display: flex;
         gap: 40px;
-        align-items: stretch; /* Força os dois lados a compartilharem a mesma linha de altura de forma flexível */
+        align-items: stretch;
     }
 
     /* FORMULÁRIO (DITA A ALTURA DO CARD) */
@@ -179,11 +179,9 @@
         color: #70AE6E;
         text-decoration: none;
         font-weight: 700;
-}
+    }
 
-    /* ==========================================================================
-       NOVA LOGICA DO GRID DE IMAGENS TOTALMENTE TRAVADO NA CAIXA AO LADO
-       ========================================================================== */
+    /* GRID DE IMAGENS */
 
     .img-grid {
         width: 55%;
@@ -191,11 +189,9 @@
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1.2fr 1fr 1.2fr; 
         gap: 15px;
-        
-        /* O segredo da correção absoluta está aqui: */
-        flex: 1;           
+        flex: 1;          
         height: 0;         
-        min-height: 100%;  /* Força o grid a ser um espelho exato da altura gerada pelo formulário */
+        min-height: 100%;  
     }
 
     .img-grid img {
@@ -220,6 +216,48 @@
         grid-column: span 2;
     }
 
+    /* TOAST NOTIFICATION (MENSAGEM NA TELA) */
+    
+    .toast-notification {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: rgba(112, 174, 110, 0.2);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(112, 174, 110, 0.4);
+        color: #e2f3e1;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        padding: 16px 28px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .toast-notification.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .toast-notification .check-icon {
+        background: #70AE6E;
+        color: white;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
+
     /* RESPONSIVO */
 
     @media (max-width: 992px) {
@@ -236,6 +274,13 @@
             grid-template-rows: 200px 160px 200px;
             height: auto;
             min-height: auto;
+        }
+
+        .toast-notification {
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            justify-content: center;
         }
     }
 
@@ -272,6 +317,10 @@
 
     <div id="header"></div>
 
+    <div id="toastMessage" class="toast-notification">
+        <span class="check-icon">✓</span> Alterações salvas com sucesso!
+    </div>
+
     <main class="hero">
 
         <div class="cadastro-wrapper">
@@ -284,7 +333,7 @@
 
                 <div class="cadastro-grid">
 
-                    <div class="form-box">
+                    <form class="form-box" id="cadastroForm" onsubmit="salvarAlteracoes(event)">
 
                         <h2>Junte-se ao TripBrasil</h2>
 
@@ -295,21 +344,21 @@
                         </p>
 
                         <label>Nome completo</label>
-                        <input type="text" placeholder="Digite seu nome">
+                        <input type="text" placeholder="Digite seu nome" required>
 
                         <label>Nome de usuário</label>
-                        <input type="text" placeholder="Escolha um nome de usuário">
+                        <input type="text" placeholder="Escolha um nome de usuário" required>
 
                         <label>E-mail:</label>
-                        <input type="email" placeholder="seuemail@exemplo.com">
+                        <input type="email" placeholder="seuemail@exemplo.com" required>
 
                         <label>Senha:</label>
-                        <input type="password" placeholder="Crie uma senha">
+                        <input type="password" placeholder="Crie uma senha" required>
 
                         <label>Confirmar senha:</label>
-                        <input type="password" placeholder="Repita a senha">
+                        <input type="password" placeholder="Repita a senha" required>
 
-                        <button class="btn-salvar">
+                        <button type="submit" class="btn-salvar">
                             Criar conta
                         </button>
 
@@ -318,7 +367,7 @@
                             <a href="login.html">Entrar</a>
                         </p>
 
-                    </div>
+                    </form>
 
                     <div class="img-grid">
                         <img src="assets/img/cadastro/img1.webp" class="img-cima">
@@ -334,8 +383,21 @@
         </div>
 </main>
 
-</body>
 <script>
+function salvarAlteracoes(event) {
+    event.preventDefault(); // Evita o reload da página
+    
+    const toast = document.getElementById('toastMessage');
+    
+    // Adiciona a classe para subir e mostrar o elemento
+    toast.classList.add('show');
+    
+    // Remove o elemento após 3 segundos (3000ms)
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
 fetch('header.html')
   .then(response => {
     if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
@@ -346,4 +408,5 @@ fetch('header.html')
   })
   .catch(err => console.error(err));
 </script>
+</body>
 </html>
