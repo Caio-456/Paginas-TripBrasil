@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripBrasil - Editar Local (Admin)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+                        url('assets/img/fundo.webp') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        /* --- CONTAINER PRINCIPAL --- */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 120px auto 40px auto;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .page-title span {
+            color: #e6c594;
+            font-weight: 700;
+        }
+
+        /* --- GRID --- */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        /* --- INPUTS E LABELS --- */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        input[type="text"], textarea, select {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            padding: 12px 15px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus, textarea:focus, select:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #63b880;
+        }
+
+        select option {
+            background: #253329 !important;
+            color: #ffffff !important;
+        }
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        /* --- RADIO GROUP & CHECKBOX --- */
+        .radio-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .radio-option input, .checkbox-option input {
+            accent-color: #63b880;
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+
+        .status-box {
+            background: rgba(99, 184, 128, 0.1);
+            border: 1px dashed rgba(99, 184, 128, 0.4);
+            padding: 12px 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        /* --- MAPA --- */
+        .map-placeholder {
+            width: 100%;
+            height: 150px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* --- FOTOS --- */
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .upload-main {
+            grid-row: span 2;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .upload-main:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #63b880;
+        }
+
+        .thumb-wrapper {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-delete-thumb {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(235, 94, 94, 0.8);
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-delete-thumb:hover {
+            background: rgb(235, 94, 94);
+            transform: scale(1.1);
+        }
+
+        /* --- BOTÕES --- */
+        .footer-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+
+        .btn-submit {
+            background-color: #63b880;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        .btn-submit:hover {
+            background-color: #4fa36c;
+            transform: translateY(-2px);
+        }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 9999;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            font-size: 50px;
+            color: #63b880;
+            margin-bottom: 20px;
+        }
+
+        .btn-modal-close {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header"></div>
+
+    <main class="main-container">
+        <h1 class="page-title">Painel Admin - <span>Editar Local</span></h1>
+
+        <form id="form-admin-editar" onsubmit="event.preventDefault(); openModal();">
+            <div class="form-grid">
+                
+                <div class="column">
+                    <section>
+                        <h2 class="section-title"><i class="fa-solid fa-sliders"></i> Dados Gerais</h2>
+                        
+                        <div class="input-group">
+                            <label>Nome:</label>
+                            <input type="text" value="Patinhas" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Descrição:</label>
+                            <textarea required>Sorveteria legal</textarea>
+                        </div>
+
+                        <label>Tipo:</label>
+                        <div class="radio-container">
+                            <label class="radio-option">
+                                <input type="radio" name="tipo-local" value="estabelecimento" checked>
+                                Estabelecimento
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="tipo-local" value="ponto-turistico">
+                                Ponto turístico
+                            </label>
+                        </div>
+
+                        <div class="status-box">
+                            <label class="checkbox-option">
+                                <input type="checkbox" id="anunciando" checked>
+                                <strong>Anunciando: [ X ]</strong>
+                            </label>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="column">
+                    <section>
+                        <h2 class="section-title"><i class="fa-solid fa-map-pin"></i> Localização e Fotos</h2>
+                        
+                        <div class="input-group">
+                            <label>Estado:</label>
+                            <select id="select-estado" required></select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Cidade:</label>
+                            <select id="select-cidade" required disabled></select>
+                        </div>
+
+                        <label>Localização:</label>
+                        <div class="map-placeholder">
+                            <i class="fa-solid fa-earth-americas" style="font-size: 24px; margin-bottom: 8px; color: #e6c594;"></i>
+                            Mapa carregado com coordenadas de Marataízes
+                        </div>
+
+                        <label>Fotos:</label>
+                        <div class="media-grid">
+                            <div class="upload-main">
+                                <i class="fa-solid fa-plus" style="font-size: 24px; color: rgba(255,255,255,0.6);"></i>
+                                <span style="font-size: 12px; margin-top: 5px;">Adicionar</span>
+                            </div>
+                            <div class="thumb-wrapper">
+                                <i class="fa-regular fa-image" style="font-size: 20px; color: rgba(255,255,255,0.4)"></i>
+                                <button type="button" class="btn-delete-thumb"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                            <div class="thumb-wrapper">
+                                <i class="fa-regular fa-image" style="font-size: 20px; color: rgba(255,255,255,0.4)"></i>
+                                <button type="button" class="btn-delete-thumb"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+
+            <div class="footer-actions">
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-square-check"></i> Salvar
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <div class="modal-overlay" id="modalConfirmacao">
+        <div class="modal-card">
+            <div class="modal-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3>Alterações Salvas!</h3>
+            <p>O local foi atualizado com sucesso na base de dados do sistema.</p>
+            <button class="btn-modal-close" onclick="closeModal()">Ok</button>
+        </div>
+    </div>
+
+    <script>
+        const selectEstado = document.getElementById('select-estado');
+        const selectCidade = document.getElementById('select-cidade');
+
+        // Estado: Espírito Santo (ES), Cidade: Marataízes conforme o seu wireframe
+        const DADOS_INICIAIS = {
+            uf: "ES",
+            cidade: "Marataízes"
+        };
+
+        // Carrega o Header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data)
+            .catch(err => console.error(err));
+
+        // Carrega Estados do IBGE
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+                .then(response => response.json())
+                .then(estados => {
+                    estados.sort((a, b) => a.nome.localeCompare(b.nome));
+                    selectEstado.innerHTML = '<option value="">Selecione o Estado</option>';
+                    
+                    estados.forEach(estado => {
+                        const option = document.createElement('option');
+                        option.value = estado.sigla;
+                        option.textContent = estado.nome;
+                        if(estado.sigla === DADOS_INICIAIS.uf) option.selected = true;
+                        selectEstado.appendChild(option);
+                    });
+
+                    if(DADOS_INICIAIS.uf) carregarCidades(DADOS_INICIAIS.uf, DADOS_INICIAIS.cidade);
+                });
+        });
+
+        selectEstado.addEventListener('change', function() {
+            carregarCidades(this.value);
+        });
+
+        function carregarCidades(sgUF, cidadePreSelecionada = null) {
+            if (!sgUF) {
+                selectCidade.innerHTML = '<option value="">Selecione o estado antes</option>';
+                selectCidade.disabled = true;
+                return;
+            }
+
+            selectCidade.innerHTML = '<option value="">Carregando...</option>';
+            selectCidade.disabled = false;
+
+            fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${sgUF}/municipios`)
+                .then(response => response.json())
+                .then(cidades => {
+                    cidades.sort((a, b) => a.nome.localeCompare(b.nome));
+                    selectCidade.innerHTML = '<option value="">Selecione a Cidade</option>';
+                    
+                    cidades.forEach(cidade => {
+                        const option = document.createElement('option');
+                        option.value = cidade.nome;
+                        option.textContent = cidade.nome;
+                        if(cidadePreSelecionada && cidade.nome === cidadePreSelecionada) option.selected = true;
+                        selectCidade.appendChild(option);
+                    });
+                });
+        }
+
+        function openModal() {
+            document.getElementById('modalConfirmacao').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalConfirmacao').classList.remove('active');
+        }
+    </script>
+
+</body>
+</html>
