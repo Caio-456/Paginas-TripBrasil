@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripBrasil - Cadastrar Estabelecimento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+                        url('assets/img/fundo.webp') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        /* --- CONTAINER PRINCIPAL --- */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 120px auto 40px auto; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .page-title span {
+            color: #e6c594;
+            font-weight: 700;
+        }
+
+        /* --- GRID DE FORMULÁRIO --- */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        /* --- INPUTS --- */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.12); /* Aumentado a opacidade para melhor leitura */
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            padding: 12px 15px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #63b880;
+        }
+
+        /* CORREÇÃO DO SELECT: Fundo escuro para as opções não ficarem transparentes ou invisíveis */
+        select option {
+            background: #253329 !important;
+            color: #ffffff !important;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* --- MAPA --- */
+        .map-placeholder {
+            width: 100%;
+            height: 180px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* --- MÍDIA / UPLOAD --- */
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .upload-main {
+            grid-row: span 2;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .upload-main:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #63b880;
+        }
+
+        .upload-thumb {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 24px;
+        }
+
+        /* --- BOTÕES --- */
+        .footer-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+
+        .btn-submit {
+            background-color: #63b880;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        .btn-submit:hover {
+            background-color: #4fa36c;
+            transform: translateY(-2px);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        /* --- MODAL DE CONFIRMAÇÃO --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 9999;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            font-size: 50px;
+            color: #63b880;
+            margin-bottom: 20px;
+        }
+
+        .modal-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .modal-card p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .btn-modal-close {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header"></div>
+
+    <main class="main-container">
+        <h1 class="page-title">Anuncie seu <span>estabelecimento</span> e impulsione seu negócio!</h1>
+
+        <form id="form-estabelecimento" onsubmit="event.preventDefault(); openModal();">
+            <div class="form-grid">
+                
+                <div class="column">
+                    <section>
+                        <h2 class="section-title"><i class="fa-solid fa-circle-info"></i> Informações Básicas</h2>
+                        <div class="input-group">
+                            <label>Nome do Estabelecimento</label>
+                            <input type="text" placeholder="Ex: Pousada Recanto do Sol" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Descrição</label>
+                            <textarea placeholder="Conte um pouco sobre o local..." required></textarea>
+                        </div>
+                    </section>
+
+                    <section style="margin-top: 30px;">
+                        <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> Localização</h2>
+                        <div class="row">
+                            <div class="input-group">
+                                <label>Estado</label>
+                                <select id="select-estado" required>
+                                    <option value="">Carregando estados...</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Cidade</label>
+                                <select id="select-cidade" required disabled>
+                                    <option value="">Selecione um estado antes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label>Marque a localização no mapa:</label>
+                        <div class="map-placeholder">
+                            <i class="fa-solid fa-map-pin" style="font-size: 30px; margin-bottom: 10px;"></i>
+                            O mapa será carregado aqui interativamente
+                        </div>
+                    </section>
+                </div>
+
+                <div class="column">
+                    <section>
+                        <h2 class="section-title"><i class="fa-solid fa-tags"></i> Detalhes e Mídia</h2>
+                        
+                        <div class="row" style="align-items: flex-end; margin-bottom: 20px;">
+                            <div class="input-group" style="margin-bottom: 0;">
+                                <label>Preço de entrada</label>
+                                <input type="text" placeholder="R$ 0,00">
+                            </div>
+                            <div class="checkbox-group" style="padding-bottom: 12px;">
+                                <input type="checkbox" id="gratuito">
+                                <label for="gratuito" style="margin-bottom: 0;">Gratuito</label>
+                            </div>
+                        </div>
+
+                        <label>Mídia (Fotos)</label>
+                        <div class="media-grid">
+                            <div class="upload-main">
+                                <i class="fa-solid fa-cloud-arrow-up" style="font-size: 40px; margin-bottom: 10px; color: #63b880;"></i>
+                                <span style="font-size: 13px;">Adicione a imagem principal</span>
+                            </div>
+                            <div class="upload-thumb"><i class="fa-regular fa-image"></i></div>
+                            <div class="upload-thumb"><i class="fa-regular fa-image"></i></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="footer-actions">
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-plus-circle"></i> Cadastrar Estabelecimento
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <div class="modal-overlay" id="modalConfirmacao">
+        <div class="modal-card">
+            <div class="modal-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3>Sucesso!</h3>
+            <p>Seu estabelecimento foi enviado para a nossa equipe e estará disponível no TripBrasil em breve.</p>
+            <button class="btn-modal-close" onclick="closeModal()">Ótimo</button>
+        </div>
+    </div>
+
+    <script>
+        const selectEstado = document.getElementById('select-estado');
+        const selectCidade = document.getElementById('select-cidade');
+
+        // 1. Carrega o Header
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(err => console.error(err));
+
+        // 2. Busca Estados da API do IBGE
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+                .then(response => response.json())
+                .then(estados => {
+                    estados.sort((a, b) => a.nome.localeCompare(b.nome));
+                    
+                    selectEstado.innerHTML = '<option value="">Selecione o Estado</option>';
+                    estados.forEach(estado => {
+                        const option = document.createElement('option');
+                        option.value = estado.sigla;
+                        option.textContent = `${estado.nome} (${estado.sigla})`;
+                        selectEstado.appendChild(option);
+                    });
+                })
+                .catch(err => {
+                    console.error("Erro ao buscar estados:", err);
+                    selectEstado.innerHTML = '<option value="">Erro ao carregar estados</option>';
+                });
+        });
+
+        // 3. Monitora mudança no Estado e atualiza Cidades
+        selectEstado.addEventListener('change', function() {
+            const sgUF = this.value;
+
+            if (!sgUF) {
+                selectCidade.innerHTML = '<option value="">Selecione um estado antes</option>';
+                selectCidade.disabled = true;
+                return;
+            }
+
+            selectCidade.innerHTML = '<option value="">Carregando cidades...</option>';
+            selectCidade.disabled = false;
+
+            fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${sgUF}/municipios`)
+                .then(response => response.json())
+                .then(cidades => {
+                    cidades.sort((a, b) => a.nome.localeCompare(b.nome));
+                    
+                    selectCidade.innerHTML = '<option value="">Selecione a Cidade</option>';
+                    cidades.forEach(cidade => {
+                        const option = document.createElement('option');
+                        option.value = cidade.nome;
+                        option.textContent = cidade.nome;
+                        selectCidade.appendChild(option);
+                    });
+                })
+                .catch(err => {
+                    console.error("Erro ao buscar cidades:", err);
+                    selectCidade.innerHTML = '<option value="">Erro ao carregar cidades</option>';
+                });
+        });
+
+        // Funções do Modal
+        function openModal() {
+            document.getElementById('modalConfirmacao').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalConfirmacao').classList.remove('active');
+            document.getElementById('form-estabelecimento').reset();
+            selectCidade.innerHTML = '<option value="">Selecione um estado antes</option>';
+            selectCidade.disabled = true;
+        }
+    </script>
+
+</body>
+</html>
