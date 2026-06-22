@@ -1,146 +1,365 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TripBrasil</title>
+
+    <title>Painel Administrativo - TripBrasil</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
+
     <style>
+        :root {
+            --primary: #70AE6E;
+            --primary-hover: #5A9758;
+        }
+
         body {
-            font-family: 'Red Hat Display ';
-            margin: 0;
-            padding: 0;
+            font-family: 'Red Hat Display', sans-serif;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, .55),
+                    rgba(0, 0, 0, .55)),
+                url('assets/img/fundo.webp');
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            color: white;
+            min-height: 100vh;
         }
-        header {
-            background-color: #f5f5f5;
-            border-bottom: 1px solid #ccc;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        .dashboard {
+            padding-top: 130px;
+            padding-bottom: 40px;
         }
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
+
+        .glass-card {
+
+            background: rgba(255, 255, 255, .10);
+
+            backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, .20);
+
+            border-radius: 24px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, .20);
         }
-        .container {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px;
-        }
-        .column {
-            width: 22%;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-        }
-        .column h2 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 18px;
+
+        .page-title {
+
+            font-family: 'Outfit', sans-serif;
+
+            font-size: 3rem;
+
             margin-bottom: 10px;
         }
-        .column ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+
+        .subtitle {
+
+            color: rgba(255, 255, 255, .75);
         }
-        .column li {
-            border: 1px solid #ddd;
-            margin-bottom: 5px;
-            padding: 5px;
-            border-radius: 3px;
+
+        .metric-card {
+
+            text-align: center;
+
+            transition: .3s;
         }
-        .arrow {
-            font-weight: bold;
-            color: #555;
+
+        .metric-card:hover {
+
+            transform: translateY(-4px);
+        }
+
+        .metric-number {
+
+            font-size: 2.3rem;
+
+            font-weight: 700;
+
+            color: var(--primary);
+        }
+
+        .metric-label {
+
+            color: rgba(255, 255, 255, .8);
+        }
+
+        .quick-link {
+
+            text-decoration: none;
+
+            color: white;
+        }
+
+        .quick-link .glass-card {
+
+            height: 100%;
+
+            text-align: center;
+
+            transition: .3s;
+        }
+
+        .quick-link:hover .glass-card {
+
+            border-color: var(--primary);
+
+            transform: translateY(-5px);
+        }
+
+        .quick-icon {
+
+            font-size: 2rem;
+
+            margin-bottom: 15px;
+        }
+
+        .chart-container {
+
+            height: 350px;
+        }
+
+        .section-title {
+
+            font-family: 'Outfit', sans-serif;
+
+            margin-bottom: 20px;
+        }
+
+        .btn-admin {
+
+            background: var(--primary);
+
+            border: none;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 12px;
+
+            font-weight: 600;
+        }
+
+        .btn-admin:hover {
+
+            background: var(--primary-hover);
         }
     </style>
+
 </head>
+
 <body>
-    <div id = "header"></div>
-    <div class="container">
-        <div class="column">
-            <h2>Usuários <span class="arrow">></span></h2>
-            <ul>
-                <li>Usuário 1</li>
-                <li>Usuário 2</li>
-                <li>Usuário 3</li>
-                <li>Usuário 4</li>
-                <li>Usuário 5</li>
-                <li>Usuário 6</li>
-                <li>Usuário 7</li>
-                <li>Usuário 8</li>
-                <li>Usuário 9</li>
-                <li>Usuário 10</li>
-                <li>Usuário 11</li>
-            </ul>
+
+    <div id="header"></div>
+
+    <div class="container dashboard">
+
+        <!-- TÍTULO -->
+
+        <div class="glass-card mb-4">
+
+            <h1 class="page-title">
+                Dashboard Administrativo
+            </h1>
+
+            <p class="subtitle">
+                Acompanhe o crescimento da plataforma TripBrasil.
+            </p>
+
         </div>
 
-        <div class="column">
-            <h2>Avaliações <span class="arrow">></span></h2>
-            <ul>
-                <li>Avaliação 1</li>
-                <li>Avaliação 2</li>
-                <li>Avaliação 3</li>
-                <li>Avaliação 4</li>
-                <li>Avaliação 5</li>
-                <li>Avaliação 6</li>
-                <li>Avaliação 7</li>
-                <li>Avaliação 8</li>
-                <li>Avaliação 9</li>
-                <li>Avaliação 10</li>
-                <li>Avaliação 11</li>
-            </ul>
+        <!-- MÉTRICAS -->
+
+        <div class="row g-4 mb-4">
+
+            <div class="col-lg-3 col-md-6">
+                <div class="glass-card metric-card">
+                    <div class="metric-number">1.248</div>
+                    <div class="metric-label">Usuários</div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="glass-card metric-card">
+                    <div class="metric-number">357</div>
+                    <div class="metric-label">Locais</div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="glass-card metric-card">
+                    <div class="metric-number">892</div>
+                    <div class="metric-label">Avaliações</div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="glass-card metric-card">
+                    <div class="metric-number">41</div>
+                    <div class="metric-label">Anúncios</div>
+                </div>
+            </div>
+
         </div>
 
-        <div class="column">
-            <h2>Locais <span class="arrow">></span></h2>
-            <ul>
-                <li>Local 1</li>
-                <li>Local 2</li>
-                <li>Local 3</li>
-                <li>Local 4</li>
-                <li>Local 5</li>
-                <li>Local 6</li>
-                <li>Local 7</li>
-                <li>Local 8</li>
-                <li>Local 9</li>
-                <li>Local 10</li>
-                <li>Local 11</li>
-            </ul>
+        <!-- GRÁFICO 1 -->
+
+        <div class="glass-card mb-4">
+
+            <h3 class="section-title">
+                Novos usuários por mês
+            </h3>
+
+            <div class="chart-container">
+                <img src="assets/img/dashboard-adm/Exemplo-grafico1.png" alt="Exemplo de gráficos de novos usuários" width="831" height="239">
+            </div>
+
         </div>
 
-        <div class="column">
-            <h2>Anúncios <span class="arrow">></span></h2>
-            <ul>
-                <li>Anúncio 1</li>
-                <li>Anúncio 2</li>
-                <li>Anúncio 3</li>
-                <li>Anúncio 4</li>
-                <li>Anúncio 5</li>
-                <li>Anúncio 6</li>
-                <li>Anúncio 7</li>
-                <li>Anúncio 8</li>
-                <li>Anúncio 9</li>
-                <li>Anúncio 10</li>
-                <li>Anúncio 11</li>
-            </ul>
+        <!-- GRÁFICO 2 -->
+
+        <div class="glass-card mb-4">
+
+            <h3 class="section-title">
+                Distribuição dos anúncios
+            </h3>
+
+            <div class="chart-container">
+
+                <img src="assets/img/dashboard-adm/Exemplo-grafico2.png" alt="Exemplo de gráficos de novos usuários" width="831" height="239">
+
+            </div>
+
         </div>
+
+        <!-- ATALHOS -->
+
+        <div class="glass-card">
+
+            <h3 class="section-title">
+                Gestão da Plataforma
+            </h3>
+
+            <div class="row g-4">
+
+                <div class="col-md-3">
+
+                    <a href="#" class="quick-link">
+
+                        <div class="glass-card">
+
+                            <div class="quick-icon"><i class="bi bi-people-fill"></i></div>
+
+                            <h5>Usuários</h5>
+
+                            <p>
+                                Gerenciar contas.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <a href="#" class="quick-link">
+
+                        <div class="glass-card">
+
+                            <div class="quick-icon"><i class="bi bi-geo-alt-fill"></i></div>
+
+                            <h5>Locais</h5>
+
+                            <p>
+                                Revisar destinos.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <a href="#" class="quick-link">
+
+                        <div class="glass-card">
+
+                            <div class="quick-icon"><i class="bi bi-star-fill"></i></div>
+
+                            <h5>Avaliações</h5>
+
+                            <p>
+                                Moderação.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <a href="#" class="quick-link">
+
+                        <div class="glass-card">
+
+                            <div class="quick-icon"><i class="bi bi-megaphone-fill"></i></div>
+
+                            <h5>Anúncios</h5>
+
+                            <p>
+                                Aprovar campanhas.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
+
+    <script>
+
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok)
+                    throw new Error("Erro ao carregar cabeçalho");
+
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(err => console.error(err));
+
+    </script>
+
 </body>
 
-<script>
-fetch('header.html')
-  .then(response => {
-    if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
-    return response.text();
-  })
-  .then(data => {
-    document.getElementById('header').innerHTML = data;
-  })
-  .catch(err => console.error(err));
-</script>
 </html>
