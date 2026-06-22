@@ -6,225 +6,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TripBrasil - Entrar</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         body {
             margin: 0;
-
             font-family: 'Red Hat Display', sans-serif;
-
             background:
                 linear-gradient(rgba(0, 0, 0, 0.45),
                     rgba(0, 0, 0, 0.45)),
                 url('assets/img/fundo.webp');
-
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-
             min-height: 100vh;
         }
 
         .login-page {
             min-height: 100vh;
-
             display: flex;
             justify-content: center;
             align-items: center;
-
             padding: 120px 20px 40px;
         }
 
-        .login-card {
-
+        /* Container relativo para permitir posicionar a seta do lado fora */
+        .login-card-wrapper {
+            position: relative;
             width: 100%;
             max-width: 450px;
-
-            padding: 45px;
-
-            border-radius: 24px;
-
-            background: rgba(255, 255, 255, 0.12);
-
-            backdrop-filter: blur(15px);
-
-            border: 1px solid rgba(255, 255, 255, 0.2);
-
-            color: white;
-
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
+        .login-card {
+            width: 100%;
+            padding: 45px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- SETA DO LADO DE FORA EM UMA BOLINHA --- */
         .back-button {
-
-            color: rgba(255, 255, 255, 0.85);
-
+            position: absolute;
+            left: -65px; /* Joga a seta para fora do container na esquerda */
+            top: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            transition: 0.3s;
             text-decoration: none;
-
-            font-weight: 500;
         }
 
         .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
             color: white;
         }
 
-        .login-card h1 {
-
+        /* --- TÍTULO CENTRALIZADO EM UMA LINHA --- */
+        .title-group h1 {
             font-family: 'Outfit', sans-serif;
-
-            margin-bottom: 10px;
+            font-size: 2.2rem; /* Tamanho ajustado para garantir uma linha só */
+            font-weight: 700;
+            text-align: center; /* Centraliza o texto */
+            white-space: nowrap; /* Força o texto a ficar em uma única linha */
+            margin: 0 0 20px 0;
+            line-height: 1.2;
         }
 
         .login-card p {
-
             color: rgba(255, 255, 255, 0.85);
-
             margin-bottom: 35px;
-
             line-height: 1.6;
+            text-align: center; /* Centraliza a descrição para combinar com o título */
         }
 
         form {
-
             display: flex;
             flex-direction: column;
-
             gap: 18px;
         }
 
         input {
-
             padding: 16px;
-
             border-radius: 12px;
-
             border: 1px solid rgba(255, 255, 255, 0.2);
-
             background: rgba(255, 255, 255, 0.12);
-
             color: white;
-
             font-size: 16px;
         }
 
         input::placeholder {
-
             color: rgba(255, 255, 255, 0.7);
         }
 
         input:focus {
-
             outline: none;
-
             border-color: #70AE6E;
         }
 
         .forgot-password {
-
             text-decoration: none;
-
             color: #9bd799;
-
             text-align: right;
-
             font-size: 14px;
         }
 
         button {
-
             border: none;
-
             cursor: pointer;
-
             transition: 0.3s;
         }
 
         form button {
-
             background: #70AE6E;
-
             color: white;
-
             padding: 16px;
-
             border-radius: 12px;
-
             font-size: 16px;
-
             font-weight: 700;
         }
 
         form button:hover {
-
             background: #5a9758;
-
             transform: translateY(-2px);
         }
 
         .divider {
-
             text-align: center;
-
             margin: 25px 0;
-
             color: rgba(255, 255, 255, 0.8);
         }
 
         .google-button {
-
             width: 100%;
-
             display: flex;
             justify-content: center;
             align-items: center;
-
             gap: 10px;
-
             padding: 15px;
-
             border-radius: 12px;
-
             background: rgba(255, 255, 255, 0.12);
-
             border: 1px solid rgba(255, 255, 255, 0.2);
-
             color: white;
         }
 
         .google-button:hover {
-
             background: rgba(255, 255, 255, 0.2);
         }
 
         .google-button img {
-
             width: 20px;
         }
 
         .signup {
-
             text-align: center;
-
             margin-top: 25px;
-
             color: rgba(255, 255, 255, 0.85);
         }
 
         .signup a {
-
             color: #9bd799;
-
             font-weight: 700;
-
             text-decoration: none;
+        }
+
+        /* Ajuste responsivo: no mobile a seta entra para cima do card para não quebrar a tela */
+        @media (max-width: 576px) {
+            .back-button {
+                position: static;
+                margin-bottom: 15px;
+            }
+            .login-card-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .title-group h1 {
+                font-size: 1.8rem; /* Diminui um pouco mais no mobile para manter em uma linha */
+             white-space: normal; /* Permite quebrar apenas se a tela for extremamente pequena */
+            }
         }
     </style>
 </head>
-
 
 <body>
     <div id="header"></div>
@@ -232,92 +208,82 @@
     <main class="login-page">
 
         <div class="container">
-
             <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-6 col-xl-5 d-flex justify-content-center">
 
-                <div class="col-12 col-md-10 col-lg-6 col-xl-5">
-
-                    <div class="login-card">
-
+                    <div class="login-card-wrapper">
+                        
                         <a href="home.html" class="back-button">
-                            <img src="./assets/img/seta.svg" alt="voltar" class="icon" width="30" height="30">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
                         </a>
 
+                        <div class="login-card">
 
-                        <h1>Bem-vindo de volta</h1>
-
-                        <p>
-                            Continue sua jornada e descubra
-                            novos destinos pelo Brasil.
-                        </p>
-
-                        <form>
-
-
-
-                            <div class="mb-3">
-
-                                <input type="email" class="form-control custom-input" placeholder="E-mail ou usuário"
-                                    required>
-
+                            <div class="title-group">
+                                <h1>Bem-vindo de volta!</h1>
                             </div>
 
-                            <div class="mb-3">
+                            <p>
+                                Continue sua jornada e descubra novos destinos pelo Brasil.
+                            </p>
 
-                                <input type="password" class="form-control custom-input" placeholder="Senha" required>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control custom-input" placeholder="E-mail ou usuário" required>
+                                </div>
 
+                                <div class="mb-3">
+                                    <input type="password" class="form-control custom-input" placeholder="Senha" required>
+                                </div>
+
+                                <a href="#" class="forgot-password">
+                                    Esqueceu sua senha?
+                                </a>
+
+                                <button type="submit">
+                                    Entrar
+                                </button>
+                            </form>
+
+                            <div class="divider">
+                                ou
                             </div>
 
-                            <a href="#" class="forgot-password">
-                                Esqueceu sua senha?
-                            </a>
-
-                            <button type="submit">
-                                Entrar
+                            <button class="google-button">
+                                <img src="https://www.google.com/favicon.ico" alt="Google">
+                                Continuar com Google
                             </button>
 
-                        </form>
-
-                        <div class="divider">
-                            ou
-                        </div>
-
-                        <button class="google-button">
-
-                            <img src="https://www.google.com/favicon.ico" alt="Google">
-
-                            Continuar com Google
-
-                        </button>
-
-                        <div class="signup">
-
-                            Não possui uma conta?
-
-                            <a href="#">
-                                Cadastre-se
-                            </a>
+                            <div class="signup">
+                                Não possui uma conta?
+                                <a href="#">
+                                    Cadastre-se
+                                </a>
+                            </div>
 
                         </div>
-
                     </div>
+
                 </div>
             </div>
         </div>
 
     </main>
 
+    <script>
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            })
+            .catch(err => console.error(err));
+    </script>
 </body>
 
 </html>
-<script>
-    fetch('header.html')
-        .then(response => {
-            if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-        })
-        .catch(err => console.error(err));
-</script>
