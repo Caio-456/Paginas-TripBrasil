@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TripBrasil</title>
+    <title>TripBrasil - Explorar roteiros</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
@@ -37,9 +37,16 @@
             justify-content: center;
         }
 
-        .container-box {
+        /* WRAPPER ADICIONADO PARA POSICIONAR A SETA DO LADO DE FORA */
+        .content-wrapper {
+            position: relative;
             width: 100%;
             max-width: 1200px;
+            height: 100%;
+        }
+
+        .container-box {
+            width: 100%;
             height: 100%;
             max-height: calc(100vh - 180px);
 
@@ -55,34 +62,32 @@
             flex-direction: column;
 
             overflow-y: auto;
-
-            position: relative;
         }
 
-        /* BOTÃO VOLTAR */
+        /* BOTÃO VOLTAR - POSICIONADO DO LADO DE FORA */
         .btn-voltar {
             position: absolute;
-            top: 25px;
-            left: 25px;
+            left: -65px; /* Joga a seta para fora do container na esquerda */
+            top: 20px;
 
-            padding: 8px 16px;
-            border-radius: 999px;
-
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: white;
-
-            font-size: 0.9rem;
-            font-weight: 500;
-
-            cursor: pointer;
+            color: rgba(255, 255, 255, 0.8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
             transition: 0.3s;
-            backdrop-filter: blur(10px);
+            cursor: pointer;
         }
 
         .btn-voltar:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateX(-3px);
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
+            color: white;
         }
 
         .container-box::-webkit-scrollbar {
@@ -90,7 +95,7 @@
         }
 
         .container-box::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
         }
 
@@ -173,6 +178,18 @@
             color: white;
         }
 
+        /* AJUSTES DE RESPONSIVIDADE */
+        @media (max-width: 1340px) {
+            /* Evita que a seta suma para fora da tela se a janela do navegador for menor que o container + a seta */
+            .btn-voltar {
+                left: 0;
+                top: -60px;
+            }
+            .page {
+                padding-top: 180px;
+            }
+        }
+
         @media (max-width: 768px) {
             body {
                 overflow: auto;
@@ -200,67 +217,72 @@
 
 <main class="page">
 
-    <div class="container-box">
+    <div class="content-wrapper">
 
-        <!-- BOTÃO VOLTAR -->
         <button class="btn-voltar" onclick="history.back()">
-            ← Voltar
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
         </button>
 
-        <h1 class="title">Roteiros prontos</h1>
-        <p class="subtitle">
-            Descubra experiências incríveis já planejadas ou criadas por outros usuários.
-        </p>
+        <div class="container-box">
 
-        <div class="roteiros">
+            <h1 class="title">Roteiros prontos</h1>
+            <p class="subtitle">
+                Descubra experiências incríveis já planejadas ou criadas por outros usuários.
+            </p>
 
-            <div class="roteiro-card">
-                <img src="assets/img/roteiros-predefinidos/img1.webp" class="roteiro-img">
-                <div class="roteiro-info">
-                    <span class="badge-tipo">Pré-definido</span>
-                    <h3>Rio de Janeiro em 5 dias</h3>
-                    <p>Praias, Cristo Redentor e vida noturna.</p>
+            <div class="roteiros">
+
+                <div class="roteiro-card">
+                    <img src="assets/img/roteiros-predefinidos/img1.webp" class="roteiro-img">
+                    <div class="roteiro-info">
+                        <span class="badge-tipo">Pré-definido</span>
+                        <h3>Rio de Janeiro em 5 dias</h3>
+                        <p>Praias, Cristo Redentor e vida noturna.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="roteiro-card">
-                <img src="assets/img/roteiros-predefinidos/img2.webp" class="roteiro-img">
-                <div class="roteiro-info">
-                    <span class="badge-tipo">Pré-definido</span>
-                    <h3>Nordeste paradisíaco</h3>
-                    <p>Dunas, praias e águas cristalinas.</p>
+                <div class="roteiro-card">
+                    <img src="assets/img/roteiros-predefinidos/img2.webp" class="roteiro-img">
+                    <div class="roteiro-info">
+                        <span class="badge-tipo">Pré-definido</span>
+                        <h3>Nordeste paradisíaco</h3>
+                        <p>Dunas, praias e águas cristalinas.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="roteiro-card">
-                <img src="assets/img/roteiros-predefinidos/img3.webp" class="roteiro-img">
-                <div class="roteiro-info">
-                    <span class="badge-tipo badge-user">Criado por usuário</span>
-                    <h3>Gramado econômico</h3>
-                    <p>Viagem incrível gastando pouco.</p>
+                <div class="roteiro-card">
+                    <img src="assets/img/roteiros-predefinidos/img3.webp" class="roteiro-img">
+                    <div class="roteiro-info">
+                        <span class="badge-tipo badge-user">Criado por usuário</span>
+                        <h3>Gramado econômico</h3>
+                        <p>Viagem incrível gastando pouco.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="roteiro-card">
-                <img src="assets/img/roteiros-predefinidos/img4.webp" class="roteiro-img">
-                <div class="roteiro-info">
-                    <span class="badge-tipo">Pré-definido</span>
-                    <h3>Amazônia selvagem</h3>
-                    <p>Experiência imersiva na floresta.</p>
+                <div class="roteiro-card">
+                    <img src="assets/img/roteiros-predefinidos/img4.webp" class="roteiro-img">
+                    <div class="roteiro-info">
+                        <span class="badge-tipo">Pré-definido</span>
+                        <h3>Amazônia selvagem</h3>
+                        <p>Experiência imersiva na floresta.</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="roteiro-card">
-                <img src="assets/img/roteiros-predefinidos/img5.webp" class="roteiro-img">
-                <div class="roteiro-info">
-                    <span class="badge-tipo badge-user">Criado por usuário</span>
-                    <h3>Rio alternativo</h3>
-                    <p>Locais escondidos e menos turísticos.</p>
+                <div class="roteiro-card">
+                    <img src="assets/img/roteiros-predefinidos/img5.webp" class="roteiro-img">
+                    <div class="roteiro-info">
+                        <span class="badge-tipo badge-user">Criado por usuário</span>
+                        <h3>Rio alternativo</h3>
+                        <p>Locais escondidos e menos turísticos.</p>
+                    </div>
                 </div>
+
             </div>
 
         </div>
-
     </div>
 
 </main>
