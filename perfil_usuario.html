@@ -199,35 +199,35 @@
 
                 <div class="profile-grid">
                     
-                    <a href="alterar-senha.html" class="btn-profile-action">
+                    <a href="redefinir_senha.html" class="btn-profile-action">
                         <i class="fa-solid fa-lock"></i>
                         <span>Alterar Senha</span>
                     </a>
 
-                    <button class="btn-profile-action">
+                    <a href="editar_perfil.html" class="btn-profile-action">
                         <i class="fa-solid fa-user-pen"></i>
                         <span>Editar informações</span>
-                    </button>
+                    </a>
 
                     <a href="excluir-conta.html" class="btn-profile-action btn-danger-custom">
                         <i class="fa-solid fa-trash-can"></i>
                         <span>Excluir conta</span>
                     </a>
 
-                    <button class="btn-profile-action">
+                    <a href="favoritos.html" class="btn-profile-action btn-danger-custom">
                         <i class="fa-solid fa-heart"></i>
                         <span>Favoritos</span>
-                    </button>
+                    </a>
 
                     <a href="meus-roteiros.html" class="btn-profile-action">
                         <i class="fa-solid fa-map-location-dot"></i>
                         <span>Meus roteiros</span>
                     </a>
 
-                    <button class="btn-profile-action">
+                    <a href="minhas_avaliacoes.html" class="btn-profile-action">
                         <i class="fa-solid fa-star"></i>
                         <span>Minhas avaliações</span>
-                    </button>
+                    </a>
 
                 </div>
 
@@ -238,7 +238,7 @@
 
     <script>
         // Carrega o cabeçalho oficial ou injeta o reserva (CORS)
-        fetch('header.html')
+        fetch('header-cadastrado.html')
             .then(response => {
                 if (!response.ok) throw new Error("Erro ao carregar");
                 return response.text();

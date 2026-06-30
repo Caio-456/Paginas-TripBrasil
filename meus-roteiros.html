@@ -35,12 +35,13 @@
             background: transparent !important;
         }
 
-       /* HERO - Imagem de fundo online aplicada com escurecimento para leitura */
+        /* HERO - Imagem de fundo online aplicada com escurecimento para leitura */
         .hero {
             min-height: 100vh;
             background:
                 linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-                url('assets/img/fundo.webp'); /* Imagem de teste. Quando quiser usar a sua, mude para 'assets/img/fundo.webp' */
+                url('assets/img/fundo.webp');
+            /* Imagem de teste. Quando quiser usar a sua, mude para 'assets/img/fundo.webp' */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -124,7 +125,8 @@
             border: 1px solid transparent;
         }
 
-        .roteiro-item:hover, .roteiro-item.active {
+        .roteiro-item:hover,
+        .roteiro-item.active {
             background: rgba(255, 255, 255, 0.12);
             border-color: rgba(255, 255, 255, 0.2);
         }
@@ -181,6 +183,7 @@
         .grid-roteiros::-webkit-scrollbar {
             width: 6px;
         }
+
         .grid-roteiros::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.2);
             border-radius: 4px;
@@ -304,6 +307,32 @@
             background: rgba(239, 68, 68, 0.15);
         }
 
+        .back-button {
+            position: relative;
+            left: 0;
+            top: 0;
+            margin-bottom: 20px;
+
+            color: rgba(255, 255, 255, .8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 46px;
+            height: 46px;
+
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(15px);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .sidebar-roteiros {
                 border-right: none;
@@ -311,6 +340,7 @@
             }
         }
     </style>
+
 </head>
 
 <body>
@@ -319,7 +349,13 @@
 
     <main class="hero">
         <div class="container plan-content">
-            
+            <a href="perfil_usuario.html" class="back-button">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
             <div class="welcome-box">
                 <h1>Olá, <span>Viajante</span>!</h1>
                 <p>Gerencie seus planejamentos e explore roteiros criados sob medida para você.</p>
@@ -327,10 +363,10 @@
 
             <div class="main-dashboard">
                 <div class="row g-0">
-                    
+
                     <div class="col-md-4 col-lg-3 sidebar-roteiros">
                         <div class="sidebar-title">Meus Roteiros</div>
-                        
+
                         <div class="menu-section-title">Pastas</div>
                         <div class="roteiro-item active">
                             <span>⭐ Salvos</span>
@@ -341,40 +377,47 @@
                             <span class="badge-count">1</span>
                         </div>
 
-                        <button class="btn-create">
+                        <button class="btn-create" onclick="window.location.href='roteiros_ia.html'">
                             ➕ Criar Novo Roteiro
                         </button>
                     </div>
 
                     <div class="col-md-8 col-lg-9 main-panel">
-                        
+
                         <div class="panel-header">
                             <span>Todos os Roteiros</span>
                         </div>
 
                         <div class="grid-roteiros">
-                            
+
                             <div class="card-destino">
                                 <div class="card-img-wrapper">
-                                    <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=80&w=600" alt="Rio de Janeiro">
+                                    <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=80&w=600"
+                                        alt="Rio de Janeiro">
                                     <span class="tag-duracao">4 Dias</span>
                                 </div>
                                 <div class="card-body-content">
                                     <h3>Rio de Janeiro</h3>
-                                    <p>Visita ao Cristo Redentor, Pão de Açúcar, praias da Zona Sul e jantar na Lapa.</p>
-                                    
+                                    <p>Visita ao Cristo Redentor, Pão de Açúcar, praias da Zona Sul e jantar na Lapa.
+                                    </p>
+
                                     <div class="card-actions">
                                         <a href="#" class="btn-visualizar">Ver Itinerário</a>
                                         <div class="action-icons">
                                             <button class="icon-btn edit" title="Editar">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                                    <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
                                                 </svg>
                                             </button>
                                             <button class="icon-btn delete" title="Excluir">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                    <path
+                                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
                                                 </svg>
                                             </button>
                                         </div>
@@ -384,25 +427,32 @@
 
                             <div class="card-destino">
                                 <div class="card-img-wrapper">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiq0YMTYQR09GVMaFOf6nh7ge54kjtyTeuo4HvHrnxDw&s=10" alt="Foz do Iguaçu">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiq0YMTYQR09GVMaFOf6nh7ge54kjtyTeuo4HvHrnxDw&s=10"
+                                        alt="Foz do Iguaçu">
                                     <span class="tag-duracao">3 Dias</span>
                                 </div>
                                 <div class="card-body-content">
                                     <h3>Foz do Iguaçu</h3>
-                                    <p>Trilhas das Cataratas, Macuco Safari de barco, Parque das Aves e visita à Usina de Itaipu.</p>
-                                    
+                                    <p>Trilhas das Cataratas, Macuco Safari de barco, Parque das Aves e visita à Usina
+                                        de Itaipu.</p>
+
                                     <div class="card-actions">
                                         <a href="#" class="btn-visualizar">Ver Itinerário</a>
                                         <div class="action-icons">
                                             <button class="icon-btn edit" title="Editar">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                                    <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
                                                 </svg>
                                             </button>
                                             <button class="icon-btn delete" title="Excluir">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                    <path
+                                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
                                                 </svg>
                                             </button>
                                         </div>
@@ -412,25 +462,32 @@
 
                             <div class="card-destino">
                                 <div class="card-img-wrapper">
-                                    <img src="https://lirp.cdn-website.com/f78219b8/dms3rep/multi/opt/Salvador-Farol-da-Barra-0e43e0af-640w.png" alt="Salvador">
+                                    <img src="https://lirp.cdn-website.com/f78219b8/dms3rep/multi/opt/Salvador-Farol-da-Barra-0e43e0af-640w.png"
+                                        alt="Salvador">
                                     <span class="tag-duracao">5 Dias</span>
                                 </div>
                                 <div class="card-body-content">
                                     <h3>Salvador</h3>
-                                    <p>Passeio pelo Pelourinho, Elevador Lacerda, pôr do sol no Farol da Barra e praias locais.</p>
-                                    
+                                    <p>Passeio pelo Pelourinho, Elevador Lacerda, pôr do sol no Farol da Barra e praias
+                                        locais.</p>
+
                                     <div class="card-actions">
                                         <a href="#" class="btn-visualizar">Ver Itinerário</a>
                                         <div class="action-icons">
                                             <button class="icon-btn edit" title="Editar">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                                    <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
                                                 </svg>
                                             </button>
                                             <button class="icon-btn delete" title="Excluir">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                    <path
+                                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
                                                 </svg>
                                             </button>
                                         </div>
@@ -451,14 +508,15 @@
 
 </body>
 <script>
-fetch('header.html')
-  .then(response => {
-    if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
-    return response.text();
-  })
-  .then(data => {
-    document.getElementById('header').innerHTML = data;
-  })
-  .catch(err => console.error(err));
+    fetch('header-cadastrado.html')
+        .then(response => {
+            if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+        .catch(err => console.error(err));
 </script>
+
 </html>

@@ -42,8 +42,9 @@
             min-height: 100vh;
             background:
                 linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-                url('assets/img/fundo.webp'), 
-                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920'); /* Reserva */
+                url('assets/img/fundo.webp'),
+                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920');
+            /* Reserva */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -175,6 +176,7 @@
         .main-panel-ia::-webkit-scrollbar {
             width: 6px;
         }
+
         .main-panel-ia::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.2);
             border-radius: 4px;
@@ -232,7 +234,7 @@
         .banner-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -304,12 +306,39 @@
             margin-right: 6px;
         }
 
+        .back-button {
+            position: relative;
+            left: 0;
+            top: 0;
+            margin-bottom: 20px;
+
+            color: rgba(255, 255, 255, .8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 46px;
+            height: 46px;
+
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(15px);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .sidebar-ia {
                 border-right: none;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.15);
                 min-height: auto;
             }
+
             .plan-content {
                 padding-top: 100px;
             }
@@ -323,14 +352,20 @@
 
     <main class="hero">
         <div class="container plan-content">
-            
+            <a href="meus-roteiros.html" class="back-button">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
             <div class="welcome-box">
                 <h1>Roteiro Inteligente com <span>IA</span></h1>
             </div>
 
             <div class="main-dashboard">
                 <div class="row g-0">
-                    
+
                     <div class="col-md-5 col-lg-4 sidebar-ia">
                         <div>
                             <div class="ia-status-title">📍 Destino Atual</div>
@@ -339,36 +374,44 @@
                                 <strong>Duração:</strong> 5 dias<br>
                                 <strong>Perfil:</strong> Cultural e Praias
                             </div>
-                            
-                            <div class="ia-status-title" style="font-size: 1.1rem; border: none; margin: 0; padding: 0;">Comandos de Ajuste</div>
-                            <small class="text-white-50">Peça para a IA adicionar atividades, focar em gastronomia ou alterar dias.</small>
+
+                            <div class="ia-status-title"
+                                style="font-size: 1.1rem; border: none; margin: 0; padding: 0;">Comandos de Ajuste</div>
+                            <small class="text-white-50">Peça para a IA adicionar atividades, focar em gastronomia ou
+                                alterar dias.</small>
                         </div>
 
                         <div class="input-chat-container">
-                            <input type="text" class="input-chat" placeholder="Ex: mude o dia 2 para focar em praias...">
+                            <input type="text" class="input-chat"
+                                placeholder="Ex: mude o dia 2 para focar em praias...">
                             <button class="btn-send-chat">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm-.708-.708L13.424 1.87 1.592 6.63l4.336 2.732Z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm-.708-.708L13.424 1.87 1.592 6.63l4.336 2.732Z" />
                                 </svg>
                             </button>
                         </div>
                     </div>
 
                     <div class="col-md-7 col-lg-8 main-panel-ia">
-                        
+
                         <div class="panel-ia-header">
                             <h2>Seu Itinerário</h2>
                             <a href="#" class="btn-save-roteiro">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                    <path
+                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
                                 Salvar Roteiro
                             </a>
                         </div>
 
                         <div class="banner-destino">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaysf9fHv9Mw8-xsjJRMa3e8pBj0A3m8DTQkFg0pLFfOvRbexvd-_9BQk&s=10" alt="Salvador">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaysf9fHv9Mw8-xsjJRMa3e8pBj0A3m8DTQkFg0pLFfOvRbexvd-_9BQk&s=10"
+                                alt="Salvador">
                             <div class="banner-overlay">
                                 <h3>Salvador, BA</h3>
                                 <p>Explorando a história, cores e o mar da primeira capital do Brasil.</p>
@@ -378,19 +421,26 @@
                         <div class="timeline-dia">
                             <div class="dia-title">🌅 Dia 1 - Centro Histórico & Cultura</div>
                             <ul class="atividades-list">
-                                <li class="atividade-item"><span class="atividade-time">09:00</span> Caminhada guiada pelo Pelourinho e visita à Igreja de São Francisco.</li>
-                                <li class="atividade-item"><span class="atividade-time">12:30</span> Almoço tradicional baiano no suntuoso Senac Pelourinho.</li>
-                                <li class="atividade-item"><span class="atividade-time">15:00</span> Descida pelo Elevador Lacerda e compras de artesanato no Mercado Modelo.</li>
-                                <li class="atividade-item"><span class="atividade-time">17:30</span> Pôr do sol inesquecível na Ponta de Humaitá.</li>
+                                <li class="atividade-item"><span class="atividade-time">09:00</span> Caminhada guiada
+                                    pelo Pelourinho e visita à Igreja de São Francisco.</li>
+                                <li class="atividade-item"><span class="atividade-time">12:30</span> Almoço tradicional
+                                    baiano no suntuoso Senac Pelourinho.</li>
+                                <li class="atividade-item"><span class="atividade-time">15:00</span> Descida pelo
+                                    Elevador Lacerda e compras de artesanato no Mercado Modelo.</li>
+                                <li class="atividade-item"><span class="atividade-time">17:30</span> Pôr do sol
+                                    inesquecível na Ponta de Humaitá.</li>
                             </ul>
                         </div>
 
                         <div class="timeline-dia">
                             <div class="dia-title">🏖️ Dia 2 - Mar e Cartões Postais</div>
                             <ul class="atividades-list">
-                                <li class="atividade-item"><span class="atividade-time">08:30</span> Manhã de sol e banho de mar na Praia do Porto da Barra.</li>
-                                <li class="atividade-item"><span class="atividade-time">14:00</span> Visita interna e fotos no Farol da Barra.</li>
-                                <li class="atividade-item"><span class="atividade-time">16:30</span> Visita à famosa Igreja de Nosso Senhor do Bonfim para amarrar as fitinhas.</li>
+                                <li class="atividade-item"><span class="atividade-time">08:30</span> Manhã de sol e
+                                    banho de mar na Praia do Porto da Barra.</li>
+                                <li class="atividade-item"><span class="atividade-time">14:00</span> Visita interna e
+                                    fotos no Farol da Barra.</li>
+                                <li class="atividade-item"><span class="atividade-time">16:30</span> Visita à famosa
+                                    Igreja de Nosso Senhor do Bonfim para amarrar as fitinhas.</li>
                             </ul>
                         </div>
 
@@ -401,18 +451,19 @@
         </div>
     </main>
 
-    
+
 
 </body>
 <script>
-fetch('header.html')
-  .then(response => {
-    if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
-    return response.text();
-  })
-  .then(data => {
-    document.getElementById('header').innerHTML = data;
-  })
-  .catch(err => console.error(err));
+    fetch('header-cadastrado.html')
+        .then(response => {
+            if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+        .catch(err => console.error(err));
 </script>
+
 </html>
