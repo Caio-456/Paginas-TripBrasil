@@ -220,6 +220,32 @@
                 height: 250px;
             }
         }
+
+                .back-button {
+            position: relative;
+            left: 0;
+            top: 0;
+            margin-bottom: 20px;
+
+            color: rgba(255, 255, 255, .8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 46px;
+            height: 46px;
+
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(15px);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
+            color: white;
+        }
     </style>
 </head>
 
@@ -229,7 +255,13 @@
 
     <main class="plano-page">
         <div class="container">
-            <a href="#" class="voltar">←</a>
+            <a href="home.html" class="back-button">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
             <h1 class="titulo">Obrigado por assinar o Plano Viajante!</h1>
 
             <div class="conteudo">
@@ -260,9 +292,9 @@
                     </div>
 
                     <div class="botoes">
-                        <button class="btn">Criar roteiro</button>
-                        <button class="btn">Roteiros</button>
-                        <button class="btn">Fazer sugestão</button>
+                        <button class="btn" onclick="window.location.href='roteiros_ia.html'">Criar roteiro</button>
+                        <button class="btn" onclick="window.location.href='meus-roteiros.html'">Seus Roteiros</button>
+                        <button class="btn" onclick="window.location.href='aumentar_catalogo.html'">Aumentar Catálogo</button>
                     </div>
                 </div>
 

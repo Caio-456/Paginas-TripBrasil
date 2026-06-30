@@ -279,6 +279,32 @@
         .btn-modal-close:hover {
             background: rgba(255, 255, 255, 0.3);
         }
+
+        .back-button {
+            position: relative;
+            left: 0;
+            top: 0;
+            margin-bottom: 20px;
+
+            color: rgba(255, 255, 255, .8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 46px;
+            height: 46px;
+
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(15px);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -286,6 +312,13 @@
     <div id="header"></div>
 
     <main class="main-container">
+        <a href="javascript:history.go(-1)" class="back-button">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
         <h1 class="page-title">Anuncie seu <span>estabelecimento</span> e impulsione seu negócio!</h1>
 
         <form id="form-estabelecimento" onsubmit="event.preventDefault(); openModal();">
@@ -380,7 +413,7 @@
         const selectCidade = document.getElementById('select-cidade');
 
         // 1. Carrega o Header
-        fetch('header.html')
+        fetch('header-cadastrado.html')
             .then(response => {
                 if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
                 return response.text();

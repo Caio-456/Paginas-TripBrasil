@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TripBrasil - Aumentar Nosso Catálogo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         * {
             margin: 0;
@@ -18,8 +20,8 @@
         }
 
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
-                        url('assets/img/fundo.webp') no-repeat center center fixed;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
+                url('assets/img/fundo.webp') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             color: #ffffff;
@@ -186,6 +188,32 @@
             font-size: 18px;
         }
 
+        .back-button {
+            position: relative;
+            left: 0;
+            top: 0;
+            margin-bottom: 20px;
+
+            color: rgba(255, 255, 255, .8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 46px;
+            height: 46px;
+
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(15px);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
+            color: white;
+        }
+
         /* Responsividade */
         @media (max-width: 768px) {
             .catalog-grid {
@@ -194,18 +222,27 @@
         }
     </style>
 </head>
+
 <body>
 
     <div id="header"></div>
 
     <main class="main-container">
+        <a href="javascript:history.go(-1)" class="back-button">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+        </a>
         <h1 class="page-title">Aumentar Nosso <span>Catálogo</span></h1>
         <p class="subtitle">
-            O TripBrasil cresce junto com a nossa comunidade! Se você conhece um canto incrível que ainda não está listado ou quer sugerir um novo negócio, selecione uma das opções abaixo para colaborar.
+            O TripBrasil cresce junto com a nossa comunidade! Se você conhece um canto incrível que ainda não está
+            listado ou quer sugerir um novo negócio, selecione uma das opções abaixo para colaborar.
         </p>
 
         <div class="catalog-grid">
-            
+
             <div class="option-card tourist-spot">
                 <div class="card-icon">
                     <i class="fa-solid fa-mountain-sun"></i>
@@ -213,10 +250,11 @@
                 <div>
                     <h2 class="card-title">Sugerir Ponto Turístico</h2>
                     <p class="card-description">
-                        Compartilhe praias, mirantes, cachoeiras, praças históricas ou qualquer lugar público e de interesse cultural/natural que mereça ser visitado.
+                        Compartilhe praias, mirantes, cachoeiras, praças históricas ou qualquer lugar público e de
+                        interesse cultural/natural que mereça ser visitado.
                     </p>
                 </div>
-                <a href="sugerir-ponto.html" class="btn-action btn-gold">
+                <a href="sugerir_ponto_turistico.html" class="btn-action btn-green">
                     <i class="fa-solid fa-plus"></i> Indicar Ponto Turístico
                 </a>
             </div>
@@ -228,10 +266,11 @@
                 <div>
                     <h2 class="card-title">Sugerir Estabelecimento</h2>
                     <p class="card-description">
-                        Indique restaurantes, pousadas, hotéis, lanchonetes ou comércios locais voltados ao suporte e experiência do viajante.
+                        Indique restaurantes, pousadas, hotéis, lanchonetes ou comércios locais voltados ao suporte e
+                        experiência do viajante.
                     </p>
                 </div>
-                <a href="sugerir-estabelecimento.html" class="btn-action btn-green">
+                <a href="sugerir_estabelecimento.html" class="btn-action btn-green">
                     <i class="fa-solid fa-plus"></i> Indicar Estabelecimento
                 </a>
             </div>
@@ -240,13 +279,14 @@
 
         <div class="footer-info">
             <i class="fa-solid fa-shield-heart"></i>
-            <span>Todas as sugestões passam por uma revisão da nossa equipe técnica antes de ficarem públicas na plataforma.</span>
+            <span>Todas as sugestões passam por uma revisão da nossa equipe técnica antes de ficarem públicas na
+                plataforma.</span>
         </div>
     </main>
 
     <script>
         // Carrega o Header dinamicamente conforme padrão do projeto
-        fetch('header.html')
+        fetch('header-cadastrado.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
@@ -255,4 +295,5 @@
     </script>
 
 </body>
+
 </html>
