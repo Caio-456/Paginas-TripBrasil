@@ -1,28 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TripBrasil - Moderação de Avaliações (Admin)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
+        :root {
+            --primary: #70AE6E;
+            --primary-hover: #5A9758;
+            --glass: rgba(255, 255, 255, .10);
+            --glass-border: rgba(255, 255, 255, .18);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
-                        url('assets/img/fundo.webp') no-repeat center center fixed;
+
+            font-family: 'Red Hat Display', sans-serif;
+
+            color: white;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, .55),
+                    rgba(0, 0, 0, .55)),
+                url('assets/img/fundo.webp');
+
             background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
             min-height: 100vh;
-            color: #ffffff;
         }
 
         /* --- CONTAINER PRINCIPAL --- */
@@ -75,12 +93,30 @@
             border-radius: 12px;
         }
 
-        .metric-box.danger i { background: rgba(235, 94, 94, 0.15); color: #eb5e5e; }
-        .metric-box.warning i { background: rgba(230, 197, 148, 0.15); color: #e6c594; }
-        .metric-box.success i { background: rgba(99, 184, 128, 0.15); color: #63b880; }
+        .metric-box.danger i {
+            background: rgba(235, 94, 94, 0.15);
+            color: #eb5e5e;
+        }
 
-        .metric-box div p { font-size: 13px; color: rgba(255,255,255,0.6); }
-        .metric-box div h3 { font-size: 20px; font-weight: 700; }
+        .metric-box.warning i {
+            background: rgba(230, 197, 148, 0.15);
+            color: #e6c594;
+        }
+
+        .metric-box.success i {
+            background: rgba(99, 184, 128, 0.15);
+            color: #63b880;
+        }
+
+        .metric-box div p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .metric-box div h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
 
         /* --- FILTROS DE ABAS --- */
         .filter-tabs {
@@ -103,7 +139,10 @@
             transition: 0.2s;
         }
 
-        .tab-btn:hover { background: rgba(255, 255, 255, 0.15); }
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
         .tab-btn.active {
             background: #e6c594;
             color: #1a241e;
@@ -143,10 +182,24 @@
             flex-wrap: wrap;
         }
 
-        .user-name { font-weight: 600; font-size: 15px; color: #ffffff; }
-        .target-place { color: #e6c594; font-size: 13px; font-weight: 500; }
-        
-        .stars { color: #ffca28; font-size: 12px; display: flex; gap: 2px; }
+        .user-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: #ffffff;
+        }
+
+        .target-place {
+            color: #e6c594;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .stars {
+            color: #ffca28;
+            font-size: 12px;
+            display: flex;
+            gap: 2px;
+        }
 
         .review-text {
             font-size: 14px;
@@ -155,7 +208,7 @@
             background: rgba(255, 255, 255, 0.03);
             padding: 12px;
             border-radius: 8px;
-            border-left: 3px solid rgba(255,255,255,0.2);
+            border-left: 3px solid rgba(255, 255, 255, 0.2);
         }
 
         /* Alerta de Denúncia */
@@ -197,47 +250,116 @@
             border: 1px solid rgba(99, 184, 128, 0.4);
             color: #63b880;
         }
-        .btn-approve:hover { background: #63b880; color: white; transform: scale(1.05); }
+
+        .btn-approve:hover {
+            background: #63b880;
+            color: white;
+            transform: scale(1.05);
+        }
 
         .btn-delete {
             background: rgba(235, 94, 94, 0.2);
             border: 1px solid rgba(235, 94, 94, 0.4);
             color: #eb5e5e;
         }
-        .btn-delete:hover { background: #eb5e5e; color: white; transform: scale(1.05); }
+
+        .btn-delete:hover {
+            background: #eb5e5e;
+            color: white;
+            transform: scale(1.05);
+        }
 
         /* --- MODAL --- */
         .modal-overlay {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(8px);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
             z-index: 9999;
         }
-        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
         .modal-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px; border-radius: 20px; text-align: center;
-            max-width: 400px; width: 90%; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
-        .modal-icon { font-size: 45px; margin-bottom: 15px; }
+
+        .modal-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
         .btn-modal-close {
             background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white; padding: 10px 25px; border-radius: 25px;
-            cursor: pointer; font-weight: 600; margin-top: 20px;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: -65px;
+            top: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
+            color: white;
         }
     </style>
 </head>
+
 <body>
 
     <div id="header"></div>
 
     <main class="main-container">
+
+        <a href="dashboard-admin.html" class="back-button">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+        </a>
+
         <h1 class="page-title">Painel Admin — <span>Moderação de Avaliações</span></h1>
 
         <div class="mod-metrics">
@@ -270,28 +392,35 @@
         </div>
 
         <div id="lista-avaliacoes">
-            
+
             <div class="review-card" id="rev-1">
                 <div class="review-main">
                     <div class="review-header">
                         <span class="user-name">Marcos Oliveira</span>
-                        <span class="target-place"><i class="fa-solid fa-location-dot"></i> Casa de shows Pitanguinha</span>
+                        <span class="target-place"><i class="fa-solid fa-location-dot"></i> Casa de shows
+                            Pitanguinha</span>
                         <div class="stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i
+                                class="fa-regular fa-star"></i>
                         </div>
                     </div>
                     <div class="review-text">
-                        "O local estava super lotado e a segurança foi muito grosseira na entrada. Não recomendo para famílias."
+                        "O local estava super lotado e a segurança foi muito grosseira na entrada. Não recomendo para
+                        famílias."
                     </div>
                     <div class="report-badge">
-                        <i class="fa-solid fa-flag"></i> Motivo da Denúncia: <b>Linguagem ofensiva relatada pelo proprietário</b>
+                        <i class="fa-solid fa-flag"></i> Motivo da Denúncia: <b>Linguagem ofensiva relatada pelo
+                            proprietário</b>
                     </div>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn-mod btn-approve" title="Ignorar denúncia e aprovar" onclick="moderarAction('rev-1', 'aprovada')">
+                    <button class="btn-mod btn-approve" title="Ignorar denúncia e aprovar"
+                        onclick="moderarAction('rev-1', 'aprovada')">
                         <i class="fa-solid fa-check"></i>
                     </button>
-                    <button class="btn-mod btn-delete" title="Excluir avaliação inadequada" onclick="moderarAction('rev-1', 'excluida')">
+                    <button class="btn-mod btn-delete" title="Excluir avaliação inadequada"
+                        onclick="moderarAction('rev-1', 'excluida')">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
@@ -301,9 +430,12 @@
                 <div class="review-main">
                     <div class="review-header">
                         <span class="user-name">Ana Júlia Ramos</span>
-                        <span class="target-place"><i class="fa-solid fa-location-dot"></i> Pousada Recanto do Sol</span>
+                        <span class="target-place"><i class="fa-solid fa-location-dot"></i> Pousada Recanto do
+                            Sol</span>
                         <div class="stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
                         </div>
                     </div>
                     <div class="review-text">
@@ -314,10 +446,12 @@
                     </div>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn-mod btn-approve" title="Ignorar denúncia e aprovar" onclick="moderarAction('rev-2', 'aprovada')">
+                    <button class="btn-mod btn-approve" title="Ignorar denúncia e aprovar"
+                        onclick="moderarAction('rev-2', 'aprovada')">
                         <i class="fa-solid fa-check"></i>
                     </button>
-                    <button class="btn-mod btn-delete" title="Excluir avaliação inadequada" onclick="moderarAction('rev-2', 'excluida')">
+                    <button class="btn-mod btn-delete" title="Excluir avaliação inadequada"
+                        onclick="moderarAction('rev-2', 'excluida')">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
@@ -380,6 +514,7 @@
     </script>
 
 </body>
+
 </html>
 
 <header>

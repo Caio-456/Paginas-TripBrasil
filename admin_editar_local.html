@@ -300,6 +300,30 @@
             font-weight: 600;
             transition: 0.2s;
         }
+
+        .back-button {
+            position: absolute;
+            left: -65px;
+            top: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -308,7 +332,13 @@
 
     <main class="main-container">
         <h1 class="page-title">Painel Admin - <span>Editar Local</span></h1>
-
+        <a href="dashboard-admin.html" class="back-button">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+        </a>
         <form id="form-admin-editar" onsubmit="event.preventDefault(); openModal();">
             <div class="form-grid">
                 
@@ -485,7 +515,7 @@
 </html>
 
 <header>
-    <a href="home.html">
+    <a href="admin-locais.html">
         <img src="./assets/img/logo_cabecario.svg" alt="Logo TripBrasil" class="logo">
     </a>
 

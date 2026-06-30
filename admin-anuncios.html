@@ -64,6 +64,8 @@
 
             box-shadow:
                 0 10px 30px rgba(0, 0, 0, .20);
+
+            position: relative;
         }
 
         .page-title {
@@ -203,7 +205,7 @@
         .form-control:focus,
         .form-select:focus {
 
-            
+
             background: rgba(50, 50, 50, .70);
 
             color: white;
@@ -302,6 +304,32 @@
 
             border-radius: 12px;
         }
+
+        .back-button {
+            position: relative;
+            left: 0;
+            top: 0;
+            margin-bottom: 20px;
+
+            color: rgba(255, 255, 255, .8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 46px;
+            height: 46px;
+
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(15px);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
+            color: white;
+        }
     </style>
 
 </head>
@@ -309,170 +337,69 @@
 <body>
 
     <div id="header"></div>
+    <main>
+        <div class="container admin-content">
+            
+            <a href="dashboard-admin.html" class="back-button">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <!-- TÍTULO -->
 
-    <div class="container admin-content">
+            <div class="glass-card mb-4">
 
-        <!-- TÍTULO -->
+                <h1 class="page-title">
+                    Gestão de Anúncios
+                </h1>
 
-        <div class="glass-card mb-4">
-
-            <h1 class="page-title">
-                Gestão de Anúncios
-            </h1>
-
-            <p class="subtitle">
-                Gerencie campanhas patrocinadas exibidas no TripBrasil.
-            </p>
-
-        </div>
-
-        <!-- MÉTRICAS -->
-
-        <div class="row g-4 mb-4">
-
-            <div class="col-md-4">
-
-                <div class="glass-card metric-card">
-
-                    <div class="metric-number">41</div>
-
-                    <div class="metric-label">
-                        Campanhas Ativas
-                    </div>
-
-                </div>
+                <p class="subtitle">
+                    Gerencie campanhas patrocinadas exibidas no TripBrasil.
+                </p>
 
             </div>
+            <!-- MÉTRICAS -->
 
-            <div class="col-md-4">
+            <div class="row g-4 mb-4">
 
-                <div class="glass-card metric-card">
+                <div class="col-md-4">
 
-                    <div class="metric-number">8</div>
+                    <div class="glass-card metric-card">
 
-                    <div class="metric-label">
-                        Pendentes de Aprovação
-                    </div>
+                        <div class="metric-number">41</div>
 
-                </div>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <div class="glass-card metric-card">
-
-                    <div class="metric-number">3</div>
-
-                    <div class="metric-label">
-                        Expiradas
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- FILTROS -->
-
-        <div class="glass-card mb-4">
-
-            <div class="row g-3">
-
-                <div class="col-md-6">
-
-                    <input type="text" class="form-control" placeholder="Pesquisar campanha ou anunciante">
-
-                </div>
-
-                <div class="col-md-3">
-
-                    <select class="form-select">
-
-                        <option>Status</option>
-
-                        <option>Ativo</option>
-
-                        <option>Pendente</option>
-
-                        <option>Expirado</option>
-
-                    </select>
-
-                </div>
-
-                <div class="col-md-3">
-
-                    <select class="form-select">
-
-                        <option>Categoria</option>
-
-                        <option>Hospedagem</option>
-
-                        <option>Restaurante</option>
-
-                        <option>Passeio</option>
-
-                        <option>Evento</option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="glass-card">
-
-            <h3 class="mb-4">
-                Campanhas Contratadas
-            </h3>
-
-            <div class="table-responsive">
-
-                <div class="campaign-list">
-
-                    <div class="campaign-card">
-
-                        <img src="assets/img/anuncio1.jpg" class="campaign-thumb">
-
-                        <div class="campaign-info">
-
-                            <h4>Hotel Costa Azul</h4>
-
-                            <p>
-                                Rede Costa Azul • Hospedagem
-                            </p>
-
-                            <span class="status active">
-                                Ativo
-                            </span>
-
+                        <div class="metric-label">
+                            Campanhas Ativas
                         </div>
 
-                        <div class="campaign-period">
+                    </div>
 
-                            <strong>Período</strong>
+                </div>
 
-                            <span>
-                                01/07 - 31/07
-                            </span>
+                <div class="col-md-4">
 
+                    <div class="glass-card metric-card">
+
+                        <div class="metric-number">8</div>
+
+                        <div class="metric-label">
+                            Pendentes de Aprovação
                         </div>
 
-                        <div class="campaign-actions">
+                    </div>
 
-                            <button class="btn-edit">
-                                Editar
-                            </button>
+                </div>
 
-                            <button class="btn-delete">
-                                Excluir
-                            </button>
+                <div class="col-md-4">
 
+                    <div class="glass-card metric-card">
+
+                        <div class="metric-number">3</div>
+
+                        <div class="metric-label">
+                            Expiradas
                         </div>
 
                     </div>
@@ -481,10 +408,117 @@
 
             </div>
 
+            <!-- FILTROS -->
+
+            <div class="glass-card mb-4">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <input type="text" class="form-control" placeholder="Pesquisar campanha ou anunciante">
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <select class="form-select">
+
+                            <option>Status</option>
+
+                            <option>Ativo</option>
+
+                            <option>Pendente</option>
+
+                            <option>Expirado</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <select class="form-select">
+
+                            <option>Categoria</option>
+
+                            <option>Hospedagem</option>
+
+                            <option>Restaurante</option>
+
+                            <option>Passeio</option>
+
+                            <option>Evento</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="glass-card">
+
+                <h3 class="mb-4">
+                    Campanhas Contratadas
+                </h3>
+
+                <div class="table-responsive">
+
+                    <div class="campaign-list">
+
+                        <div class="campaign-card">
+
+                            <img src="assets/img/anuncio1.jpg" class="campaign-thumb">
+
+                            <div class="campaign-info">
+
+                                <h4>Hotel Costa Azul</h4>
+
+                                <p>
+                                    Rede Costa Azul • Hospedagem
+                                </p>
+
+                                <span class="status active">
+                                    Ativo
+                                </span>
+
+                            </div>
+
+                            <div class="campaign-period">
+
+                                <strong>Período</strong>
+
+                                <span>
+                                    01/07 - 31/07
+                                </span>
+
+                            </div>
+
+                            <div class="campaign-actions">
+
+                                <button class="btn-edit" onclick="window.location.href='admin_editar_anuncio.html'">
+                                    Editar
+                                </button>
+
+                                <button class="btn-delete">
+                                    Excluir
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-
-    </div>
-
+    </main>
     <script>
 
         fetch('header.html')
