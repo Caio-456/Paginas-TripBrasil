@@ -24,25 +24,20 @@
             color: white;
         }
 
-.plano-page {
-    min-height: 100vh;
+        .plano-page {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)), url('assets/img/fundo.webp');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 130px 5% 60px;
+        }
 
-    background:
-        linear-gradient(rgba(0, 0, 0, .55),
-            rgba(0, 0, 0, .55)),
-        url('assets/img/fundo.webp');
-
-    background-size: cover;
-    background-position: center;
-
-    display: flex;
-    align-items: center;
-
-    padding: 130px 5% 60px;
-}
         .container {
             max-width: 1400px;
             margin: auto;
+            width: 100%;
         }
 
         .voltar {
@@ -54,71 +49,74 @@
         }
 
         .titulo {
-    font-family: 'Outfit', sans-serif;
-    font-size: 3rem;
-    margin-bottom: 40px;
-    color: white;
-}
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: white;
+        }
 
+        /* Ajustado para esticar os itens verticalmente (align-items: stretch).
+           Assim, a galeria sempre terá exatamente a mesma altura do bloco de cards.
+        */
         .conteudo {
             display: grid;
             grid-template-columns: 420px 1fr;
             gap: 50px;
-            align-items: start;
+            align-items: stretch; 
         }
 
-.card {
-    background: rgba(255, 255, 255, 0.10);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.20);
-    border-radius: 28px;
-    overflow: hidden;
-    margin-bottom: 25px;
-    color: white;
-}
+        .card {
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            border-radius: 28px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            color: white;
+        }
 
-.card-header {
-    background: transparent;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-    padding: 20px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: white;
-}
+        .card-header {
+            background: transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 20px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+        }
 
-.card-body {
-    padding: 25px;
-}
+        .card-body {
+            padding: 25px;
+        }
 
-.valor {
-    font-size: 2rem;
-    font-weight: 700;
-    color: white;
-}
+        .valor {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
 
-.linha {
-    border-top: 1px solid rgba(255,255,255,0.12);
-    margin: 20px 0;
-}
+        .linha {
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            margin: 20px 0;
+        }
 
-.subtitulo {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: white;
-}
+        .subtitulo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+        }
 
-.texto {
-    color: rgba(255,255,255,0.85);
-}
+        .texto {
+            color: rgba(255, 255, 255, 0.85);
+        }
 
         .pagamento {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 15px;
-}
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 15px;
+        }
 
         .botoes {
             display: flex;
@@ -127,32 +125,60 @@
         }
 
         .btn {
-    background: #70AE6E;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    border-radius: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-}
+            background: #70AE6E;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-.btn:hover {
-    background: #5A9758;
-    transform: translateY(-2px);
-}
+        .btn:hover {
+            background: #5A9758;
+            transform: translateY(-2px);
+        }
+
+        /* Configura a galeria para ocupar 100% da altura do container pai (.conteudo)
+        */
         .galeria {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 20px;
+            height: 100%; 
         }
 
-  .imagem {
-    overflow: hidden;
-    border-radius: 28px;
-    border: 1px solid rgba(255,255,255,0.20);
-    box-shadow: 0 8px 30px rgba(0,0,0,.25);
-}
+        /* As colunas internas também usam flexbox para esticar e preencher 
+           o espaço proporcionalmente (usando flex: 1)
+        */
+        .coluna {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .imagem {
+            overflow: hidden;
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .25);
+            width: 100%;
+        }
+
+        /* Removidas as alturas fixas (.vertical, .media, .pequena).
+           Agora o flex-grow (flex: 1) distribui o tamanho das imagens perfeitamente.
+        */
+        .coluna-unica {
+            height: 100%;
+            display: flex;
+        }
+
+        .coluna .imagem, .coluna-unica .imagem {
+            flex: 1; 
+            min-height: 0; /* Evita estouro de container no Firefox/Blink */
+        }
 
         .imagem img {
             width: 100%;
@@ -161,32 +187,23 @@
             display: block;
         }
 
-        .vertical {
-            height: 420px;
-        }
-
-        .media {
-            height: 190px;
-        }
-
-        .pequena {
-            height: 120px;
-        }
-
-        .coluna {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
+        /* Responsividade */
         @media(max-width: 992px) {
-
             .conteudo {
                 grid-template-columns: 1fr;
             }
 
             .galeria {
                 grid-template-columns: repeat(2, 1fr);
+                height: auto;
+            }
+            
+            .coluna, .coluna-unica {
+                height: auto;
+            }
+
+            .imagem {
+                height: 250px;
             }
 
             .titulo {
@@ -195,19 +212,12 @@
         }
 
         @media(max-width: 768px) {
-
             .galeria {
                 grid-template-columns: 1fr;
             }
 
-            .vertical,
-            .media,
-            .pequena {
+            .imagem {
                 height: 250px;
-            }
-
-            .pagamento {
-                flex-direction: column;
             }
         }
     </style>
@@ -218,132 +228,75 @@
     <div id="header"></div>
 
     <main class="plano-page">
-
         <div class="container">
-
             <a href="#" class="voltar">←</a>
-
-            <h1 class="titulo">
-                Obrigado por assinar o Plano Viajante!
-            </h1>
+            <h1 class="titulo">Obrigado por assinar o Plano Viajante!</h1>
 
             <div class="conteudo">
-
                 <div>
-
                     <div class="card">
-
-                        <div class="card-header">
-                            Seu Plano
-                        </div>
-
+                        <div class="card-header">Seu Plano</div>
                         <div class="card-body">
-
-                            <div class="valor">
-                                R$ 9,99 / mês
-                            </div>
-
+                            <div class="valor">R$ 9,99 / mês</div>
                             <div class="linha"></div>
-
-                            <div class="subtitulo">
-                                Próximo pagamento
-                            </div>
-
-                            <p class="texto">
-                                O valor de R$9,99 deve ser pago até a data:
-                                01/01/2027
-                            </p>
-
+                            <div class="subtitulo">Próximo pagamento</div>
+                            <p class="texto">O valor de R$9,99 deve ser pago até a data: 01/01/2027</p>
                         </div>
-
                     </div>
 
                     <div class="card">
-
-                        <div class="card-header">
-                            Pagamentos
-                        </div>
-
+                        <div class="card-header">Pagamentos</div>
                         <div class="card-body">
-
                             <div class="pagamento">
-
                                 <div>
-                                    <strong>Forma de pagamento</strong>
-                                    <br>
+                                    <strong>Forma de pagamento</strong><br>
                                     V****0101
                                 </div>
-
                                 <div>
-                                    <a href="#" style="color:#70AE6E;font-weight:700;text-decoration:none;">
-                                        Cancelar assinatura
-                                    </a>
+                                    <a href="#" style="color:#70AE6E;font-weight:700;text-decoration:none;">Cancelar assinatura</a>
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
 
                     <div class="botoes">
-
-                        <button class="btn">
-                            Criar roteiro
-                        </button>
-
-                        <button class="btn">
-                            Roteiros
-                        </button>
-
-                        <button class="btn">
-                            Fazer sugestão
-                        </button>
-
+                        <button class="btn">Criar roteiro</button>
+                        <button class="btn">Roteiros</button>
+                        <button class="btn">Fazer sugestão</button>
                     </div>
-
                 </div>
 
                 <div class="galeria">
-
-                    <div class="imagem vertical">
-                        <img src="assets/img/plano/cataratas.webp" alt="">
+                    <div class="coluna-unica">
+                        <div class="imagem">
+                            <img src="assets/img/minha-assinatura/img1.webp" alt="Cataratas">
+                        </div>
                     </div>
 
                     <div class="coluna">
-
-                        <div class="imagem media">
-                            <img src="assets/img/plano/cristo.webp" alt="">
+                        <div class="imagem">
+                            <img src="assets/img/minha-assinatura/img2.webp" alt="Cristo Redentor">
                         </div>
-
-                        <div class="imagem media">
-                            <img src="assets/img/plano/beto-carrero.webp" alt="">
+                        <div class="imagem">
+                            <img src="assets/img/minha-assinatura/img3.webp" alt="Beto Carrero">
                         </div>
-
                     </div>
 
                     <div class="coluna">
-
-                        <div class="imagem pequena">
-                            <img src="assets/img/plano/praia.webp" alt="">
+                        <div class="imagem">
+                            <img src="assets/img/minha-assinatura/img4.webp" alt="Praia">
                         </div>
-
-                        <div class="imagem pequena">
-                            <img src="assets/img/plano/barco.webp" alt="">
+                        <div class="imagem">
+                            <img src="assets/img/minha-assinatura/img5.webp" alt="Gramado">
                         </div>
-
-                        <div class="imagem pequena">
-                            <img src="assets/img/plano/pelourinho.webp" alt="">
+                        <div class="imagem">
+                            <img src="assets/img/minha-assinatura/img6.webp" alt="Pelourinho">
                         </div>
-
                     </div>
-
                 </div>
 
             </div>
-
         </div>
-
     </main>
 
     <script>
@@ -355,5 +308,4 @@
     </script>
 
 </body>
-
 </html>
