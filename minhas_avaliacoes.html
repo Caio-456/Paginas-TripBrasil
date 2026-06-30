@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TripBrasil - Minhas Avaliações</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         * {
             margin: 0;
@@ -19,8 +21,8 @@
 
         body {
             /* Background principal baseado na primeira imagem (imagem de floresta/rio com desfoque) */
-            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
-                        url('assets/img/fundo.webp') no-repeat center center fixed;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
+                url('assets/img/fundo.webp') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             color: #ffffff;
@@ -36,11 +38,11 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 24px;
             padding: 40px;
-            
+
             /* AJUSTE FIXO: Aumentamos a margem superior para 120px para empurrar o container 
                para baixo e tirá-lo de trás de um header fixo/absoluto */
-            margin: 120px auto 40px auto; 
-            
+            margin: 120px auto 40px auto;
+
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
@@ -84,7 +86,8 @@
         }
 
         .btn-filter.active {
-            background: #e6c594; /* Tom pastel para destaque do "Tudo" do wireframe */
+            background: #e6c594;
+            /* Tom pastel para destaque do "Tudo" do wireframe */
             color: #222;
             font-weight: 600;
             border-color: #e6c594;
@@ -247,19 +250,65 @@
             transition: transform 0.2s;
         }
 
-        .btn-action.thumbs-up { color: #2ecc71; }
-        .btn-action.thumbs-down { color: #e74c3c; }
+        .btn-action.thumbs-up {
+            color: #2ecc71;
+        }
+
+        .btn-action.thumbs-down {
+            color: #e74c3c;
+        }
 
         .btn-action:hover {
             transform: scale(1.15);
         }
+
+        .back-button {
+            position: relative;
+            left: 0;
+            top: 0;
+            margin-bottom: 20px;
+
+            color: rgba(255, 255, 255, .8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 46px;
+            height: 46px;
+
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(15px);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            /* removes underline */
+            color: inherit;
+            /* uses the parent text color */
+        }
     </style>
 </head>
+
 <body>
 
     <div id="header"></div>
-    
+
     <main class="main-container">
+        <a href="perfil_usuario.html" class="back-button">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+        </a>
         <div class="filter-section">
             <div class="top-filters">
                 <span class="filter-title">Filtros:</span>
@@ -274,7 +323,8 @@
                 </button>
 
                 <div style="margin-left: auto;">
-                    <label for="sort" style="font-size: 13px; color: rgba(255,255,255,0.6); margin-right: 5px;">Ordenar por:</label>
+                    <label for="sort" style="font-size: 13px; color: rgba(255,255,255,0.6); margin-right: 5px;">Ordenar
+                        por:</label>
                     <select id="sort" class="sort-select">
                         <option>Mais recente</option>
                         <option>Mais antiga</option>
@@ -290,110 +340,118 @@
         </div>
 
         <div class="reviews-list">
-            
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-title-area">
-                        <h3>Pão de Açúcar, Rio de Janeiro</h3>
-                        <span class="review-category">Categoria: Pontos Turísticos</span>
-                    </div>
-                    <div class="review-meta">
-                        <div class="stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star empty-star"></i>
+            <a href="avaliar_estabelecimento.html">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-title-area">
+                            <h3>Pão de Açúcar, Rio de Janeiro</h3>
+                            <span class="review-category">Categoria: Pontos Turísticos</span>
                         </div>
-                        <span class="review-date">Data: 12/05/2026</span>
-                    </div>
-                </div>
-                <p class="review-body">
-                    A vista é impressionante e vale cada centavo. O bondinho é seguro e rápido. Vá no final da tarde para ver o pôr do sol.
-                </p>
-                <div class="review-footer">
-                    <span class="attachments none">*Sem anexos</span>
-                    <div class="review-actions">
-                        <span>útil |</span>
-                        <button class="btn-action thumbs-up" title="Útil"><i class="fa-solid fa-circle-check"></i></button>
-                        <button class="btn-action thumbs-down" title="Não útil"><i class="fa-solid fa-circle-xmark"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-title-area">
-                        <h3>Restaurante Sabor Bahiano</h3>
-                        <span class="review-category">Categoria: Estabelecimentos</span>
-                    </div>
-                    <div class="review-meta">
-                        <div class="stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star empty-star"></i>
-                            <i class="fa-solid fa-star empty-star"></i>
+                        <div class="review-meta">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star empty-star"></i>
+                            </div>
+                            <span class="review-date">Data: 12/05/2026</span>
                         </div>
-                        <span class="review-date">Data: 28/04/2026</span>
                     </div>
-                </div>
-                <p class="review-body">
-                    Comida excelente, mas o tempo de espera foi de 40 minutos. O ambiente é acolhedor.
-                </p>
-                <div class="review-footer">
-                    <span class="attachments has">*Dois anexos</span>
-                    <div class="review-actions">
-                        <span>útil |</span>
-                        <button class="btn-action thumbs-up" title="Útil"><i class="fa-solid fa-circle-check"></i></button>
-                        <button class="btn-action thumbs-down" title="Não útil"><i class="fa-solid fa-circle-xmark"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-title-area">
-                        <h3>Museu do Amanhã</h3>
-                        <span class="review-category">Categoria: Pontos Turísticos</span>
-                    </div>
-                    <div class="review-meta">
-                        <div class="stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
+                    <p class="review-body">
+                        A vista é impressionante e vale cada centavo. O bondinho é seguro e rápido. Vá no final da tarde
+                        para ver o pôr do sol.
+                    </p>
+                    <div class="review-footer">
+                        <span class="attachments none">*Sem anexos</span>
+                        <div class="review-actions">
+                            <span>útil |</span>
+                            <button class="btn-action thumbs-up" title="Útil"><i
+                                    class="fa-solid fa-circle-check"></i></button>
+                            <button class="btn-action thumbs-down" title="Não útil"><i
+                                    class="fa-solid fa-circle-xmark"></i></button>
                         </div>
-                        <span class="review-date">Data: 21/04/2026</span>
                     </div>
                 </div>
-                <p class="review-body">
-                    Lugar excelente, há diversas exhibitions interessantes!
-                </p>
-                <div class="review-footer">
-                    <span class="attachments has">*Quatro anexos</span>
-                    <div class="review-actions">
-                        <span>útil |</span>
-                        <button class="btn-action thumbs-up" title="Útil"><i class="fa-solid fa-circle-check"></i></button>
-                        <button class="btn-action thumbs-down" title="Não útil"><i class="fa-solid fa-circle-xmark"></i></button>
-                    </div>
-                </div>
-            </div>
 
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-title-area">
+                            <h3>Restaurante Sabor Bahiano</h3>
+                            <span class="review-category">Categoria: Estabelecimentos</span>
+                        </div>
+                        <div class="review-meta">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star empty-star"></i>
+                                <i class="fa-solid fa-star empty-star"></i>
+                            </div>
+                            <span class="review-date">Data: 28/04/2026</span>
+                        </div>
+                    </div>
+                    <p class="review-body">
+                        Comida excelente, mas o tempo de espera foi de 40 minutos. O ambiente é acolhedor.
+                    </p>
+                    <div class="review-footer">
+                        <span class="attachments has">*Dois anexos</span>
+                        <div class="review-actions">
+                            <span>útil |</span>
+                            <button class="btn-action thumbs-up" title="Útil"><i
+                                    class="fa-solid fa-circle-check"></i></button>
+                            <button class="btn-action thumbs-down" title="Não útil"><i
+                                    class="fa-solid fa-circle-xmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-title-area">
+                            <h3>Museu do Amanhã</h3>
+                            <span class="review-category">Categoria: Pontos Turísticos</span>
+                        </div>
+                        <div class="review-meta">
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="review-date">Data: 21/04/2026</span>
+                        </div>
+                    </div>
+                    <p class="review-body">
+                        Lugar excelente, há diversas exhibitions interessantes!
+                    </p>
+                    <div class="review-footer">
+                        <span class="attachments has">*Quatro anexos</span>
+                        <div class="review-actions">
+                            <span>útil |</span>
+                            <button class="btn-action thumbs-up" title="Útil"><i
+                                    class="fa-solid fa-circle-check"></i></button>
+                            <button class="btn-action thumbs-down" title="Não útil"><i
+                                    class="fa-solid fa-circle-xmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
     </main>
 
 </body>
 <script>
-fetch('header-cadastrado.html')
-  .then(response => {
-    if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
-    return response.text();
-  })
-  .then(data => {
-    document.getElementById('header').innerHTML = data;
-  })
-  .catch(err => console.error(err));
+    fetch('header-cadastrado.html')
+        .then(response => {
+            if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+        .catch(err => console.error(err));
 </script>
+
 </html>

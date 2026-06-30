@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TripBrasil - Favoritos</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
+        rel="stylesheet">
 
     <style>
         * {
@@ -24,7 +26,7 @@
             min-height: 100vh;
 
             background:
-                linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+                linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
                 url('assets/img/fundo.webp');
 
             background-size: cover;
@@ -166,7 +168,7 @@
             user-select: none;
             transition: .3s;
         }
-        
+
         .favorito:hover {
             transform: scale(1.15);
         }
@@ -175,21 +177,46 @@
             color: black;
         }
 
-        @media(max-width:768px){
-            .titulo{
-                font-size:2.3rem;
+        @media(max-width:768px) {
+            .titulo {
+                font-size: 2.3rem;
             }
 
             .filtros {
                 flex-direction: column;
             }
-            
+
             select,
             .pesquisa {
                 width: 100%;
             }
         }
 
+        .back-button {
+            position: relative;
+            left: 0;
+            top: 0;
+            margin-bottom: 20px;
+
+            color: rgba(255, 255, 255, .8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 46px;
+            height: 46px;
+
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(15px);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(-4px);
+            color: white;
+        }
     </style>
 </head>
 
@@ -200,7 +227,13 @@
     <main class="favoritos">
 
         <div class="container">
-
+            <a href="perfil_usuario.html" class="back-button">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
             <h1 class="titulo">Meus favoritos</h1>
 
             <div class="categorias">
@@ -223,7 +256,7 @@
             <div class="cards">
 
                 <div class="card">
-                    <img src="assets/img/buscar-explorar/e1.webp">
+                    <a href="ponto_turistico.html"><img src="assets/img/buscar-explorar/e1.webp" alt=""></a>
                     <div class="card-content">
                         <span class="favorito">♥</span>
                         <h3>Pão de Açúcar, RJ</h3>
@@ -232,7 +265,7 @@
                 </div>
 
                 <div class="card">
-                    <img src="assets/img/buscar-explorar/e2.webp">
+                    <a href="ponto_turistico.html"><img src="assets/img/buscar-explorar/e2.webp" alt=""></a>
                     <div class="card-content">
                         <span class="favorito">♥</span>
                         <h3>Beto Carrero, SC</h3>
@@ -241,7 +274,7 @@
                 </div>
 
                 <div class="card">
-                    <img src="assets/img/buscar-explorar/e3.webp">
+                    <a href="ponto_turistico.html"><img src="assets/img/buscar-explorar/e3.webp" alt=""></a>
                     <div class="card-content">
                         <span class="favorito">♥</span>
                         <h3>10 dias em Gramado</h3>
@@ -250,7 +283,7 @@
                 </div>
 
                 <div class="card">
-                    <img src="assets/img/buscar-explorar/e4.webp">
+                    <a href="ponto_turistico.html"><img src="assets/img/buscar-explorar/e4.webp" alt=""></a>
                     <div class="card-content">
                         <span class="favorito">♥</span>
                         <h3>Terraço Itália, SP</h3>
@@ -259,7 +292,7 @@
                 </div>
 
                 <div class="card">
-                    <img src="assets/img/buscar-explorar/e5.webp">
+                    <a href="ponto_turistico.html"><img src="assets/img/buscar-explorar/e5.webp" alt=""></a>
                     <div class="card-content">
                         <span class="favorito">♥</span>
                         <h3>8 dias em Natal</h3>
@@ -268,7 +301,7 @@
                 </div>
 
                 <div class="card">
-                    <img src="assets/img/buscar-explorar/e6.webp">
+                    <a href="ponto_turistico.html"><img src="assets/img/buscar-explorar/e6.webp" alt=""></a>
                     <div class="card-content">
                         <span class="favorito">♥</span>
                         <h3>Coco Bambu, CE</h3>
@@ -277,7 +310,7 @@
                 </div>
 
                 <div class="card">
-                    <img src="assets/img/buscar-explorar/e7.webp">
+                    <a href="ponto_turistico.html"><img src="assets/img/buscar-explorar/e7.webp" alt=""></a>
                     <div class="card-content">
                         <span class="favorito">♥</span>
                         <h3>Parque Ibirapuera, SP</h3>
@@ -286,10 +319,10 @@
                 </div>
 
                 <div class="card">
-                    <img src="assets/img/resultados-pesquisa/img8.webp">
+                    <a href="ponto_turistico.html"><img src="assets/img/buscar-explorar/e8.webp" alt=""></a>
                     <div class="card-content">
                         <span class="favorito">♥</span>
-                        <h3>5 dias em Ouro Preto</h3>
+                        <h3>5 dias em Salvador</h3>
                         <p>Roteiro</p>
                     </div>
                 </div>
@@ -308,10 +341,11 @@
         document.querySelectorAll('.favorito').forEach(c => {
             c.addEventListener('click', () => {
                 c.classList.toggle('ativo');
-                c.textContent = c.classList.contains('ativo') ? '♥' : '♡';
+                c.textContent = c.classList.contains('ativo') ? '♥' : '♥';
             });
         });
     </script>
 
 </body>
+
 </html>
