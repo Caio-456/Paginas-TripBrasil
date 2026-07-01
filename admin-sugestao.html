@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TripBrasil - Analisar Sugestão</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            color: white;
+            background: #0c0c0c;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)),
+                url('https://images.unsplash.com/photo-1464146072230-91cabc968266?q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 120px 20px 40px;
+        }
+
+        .panel {
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(255, 255, 255, .05);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 32px;
+            padding: 35px;
+        }
+
+        .btn-back {
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, .08);
+            color: white;
+            margin-bottom: 25px;
+            transition: .3s;
+        }
+
+        .btn-back:hover {
+            background: white;
+            color: black;
+        }
+
+        .page-title {
+            font-family: 'Outfit';
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 35px;
+        }
+
+        .preview {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .preview img {
+            width: 100%;
+            border-radius: 20px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .status {
+            background: rgba(112, 174, 110, .15);
+            border: 1px solid rgba(112, 174, 110, .4);
+            color: #70AE6E;
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
+            font-family: 'Outfit';
+            margin-bottom: 20px;
+        }
+
+        .item {
+            margin-bottom: 15px;
+        }
+
+        .item strong {
+            display: block;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .item span {
+            color: rgba(255, 255, 255, .7);
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-admin {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Outfit';
+            font-weight: 600;
+            transition: .2s;
+        }
+
+        .btn-success {
+            background: #70AE6E;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #f0ad4e;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-edit {
+            background: rgba(255, 255, 255, .08);
+            color: white;
+        }
+
+        @media(max-width:991px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="hero">
+
+        <div class="panel">
+
+            <button class="btn-back" onclick="history.back()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <h1 class="page-title">Confeitaria Colombo</h1>
+
+            <div class="layout">
+
+                <div class="preview">
+
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200">
+
+                    <div class="status">
+                        <i class="fa-solid fa-clock"></i>
+                        Aguardando homologação
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <div class="info-card">
+                        <h3>Informações Gerais</h3>
+
+                        <div class="item">
+                            <strong>Categoria</strong>
+                            <span>Estabelecimento</span>
+                        </div>
+
+                        <div class="item">
+                            <strong>Cidade</strong>
+                            <span>Rio de Janeiro</span>
+                        </div>
+
+                        <div class="item">
+                            <strong>Estado</strong>
+                            <span>Rio de Janeiro</span>
+                        </div>
+
+                        <div class="item">
+                            <strong>Preço de entrada</strong>
+                            <span>Gratuito</span>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Descrição</h3>
+
+                        <p style="color:rgba(255,255,255,.7);line-height:1.7">
+                            Tradicional confeitaria histórica localizada no centro
+                            do Rio de Janeiro, conhecida pela arquitetura
+                            art nouveau, doces e importância cultural.
+                        </p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Dados do Envio</h3>
+
+                        <div class="item">
+                            <strong>Usuário</strong>
+                            <span>caio@email.com</span>
+                        </div>
+
+                        <div class="item">
+                            <strong>Data da sugestão</strong>
+                            <span>30/06/2026 às 20:15</span>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn-admin btn-success">
+                            <i class="fa-solid fa-check"></i>
+                            Aprovar
+                        </button>
+
+                        <button class="btn-admin btn-edit">
+                            <i class="fa-solid fa-pen"></i>
+                            Editar
+                        </button>
+
+                        <button class="btn-admin btn-warning">
+                            <i class="fa-solid fa-comment"></i>
+                            Solicitar Ajustes
+                        </button>
+
+                        <button class="btn-admin btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                            Rejeitar
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+<script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+</script>
+
+</html>
