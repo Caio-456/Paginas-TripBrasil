@@ -8,7 +8,7 @@
     <base href="../">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -472,7 +472,7 @@
 
     <script>
         // Carrega o Header unificado do TripBrasil
-        fetch('../header.html')
+        fetch('administrador/header-admin.html')
             .then(response => response.text())
             .then(data => { document.getElementById('header').innerHTML = data; })
             .catch(err => console.error(err));
@@ -517,37 +517,3 @@
 </body>
 
 </html>
-
-<header>
-    <a href="home.html">
-        <img src="./assets/img/logo_cabecario.svg" alt="Logo TripBrasil" class="logo">
-    </a>
-
-    <nav>
-        <a href="#">Explorar</a>
-        <a href="#">Anuncie seu estabelecimento</a>
-        <a href="plano-viajante.html">Plano viajante</a>
-        <a href="login.html">Entrar</a>
-
-        <a href="cadastro.html" class="btn-nav">
-            Cadastro
-        </a>
-    </nav>
-</header>
-
-<header>
-    <a href="home.html">
-        <img src="./assets/img/logo_cabecario.svg" alt="Logo TripBrasil" class="logo">
-    </a>
-
-    <nav>
-        <a href="buscar-explorar.html">Explorar</a>
-        <a href="cadastrar_estabelecimento.html">Anuncie seu estabelecimento</a>
-        <a href="assinar-plano.html">Plano viajante</a>
-        <a href="login.html">Entrar</a>
-
-        <a href="cadastro.html" class="btn-nav">
-            Cadastro
-        </a>
-    </nav>
-</header>

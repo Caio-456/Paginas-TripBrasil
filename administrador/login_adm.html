@@ -7,7 +7,7 @@
     <base href="../">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -15,7 +15,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Red Hat Display', sans-serif;
         }
 
         body {
@@ -30,15 +30,7 @@
             justify-content: center;
         }
 
-        /* --- CONTÊINER PARA RECONHECER O HEADER DINÂMICO --- */
-        #header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
+    
         /* --- CORREÇÃO DO ESPAÇAMENTO DO CONTEÚDO --- */
         .login-wrapper-content {
             flex: 1;
@@ -271,7 +263,7 @@
         }
 
         // Carregamento assíncrono do header original do seu projeto
-        fetch('../header.html')
+        fetch('administrador/header-admin.html')
           .then(response => {
             if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
             return response.text();

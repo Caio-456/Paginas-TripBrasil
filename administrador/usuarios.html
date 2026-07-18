@@ -25,16 +25,6 @@
             background-color: #121212;
         }
 
-        /* CONFIGURAÇÃO DO HEADER - Transparente e por cima da imagem */
-        #header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: transparent !important;
-        }
-
         /* HERO - Imagem de fundo online aplicada com escurecimento para leitura */
         .hero {
             min-height: 100vh;
@@ -393,7 +383,7 @@
 
 </body>
 <script>
-    fetch('../header.html')
+    fetch('administrador/header-admin.html')
         .then(response => {
             if (!response.ok) throw new Error("Erro ao carregar cabeçalho");
             return response.text();
