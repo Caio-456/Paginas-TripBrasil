@@ -403,7 +403,7 @@
         const selectCidade = document.getElementById('select-cidade');
 
         // Dados para simular o "Carregar do Banco"
-        const DADOS_SALVOS = {
+        const DADOS-SALVOS = {
             uf: "MG",
             cidade: "Araxá"
         };
@@ -425,12 +425,12 @@
                         const option = document.createElement('option');
                         option.value = estado.sigla;
                         option.textContent = `${estado.nome} (${estado.sigla})`;
-                        if(estado.sigla === DADOS_SALVOS.uf) option.selected = true;
+                        if(estado.sigla === DADOS-SALVOS.uf) option.selected = true;
                         selectEstado.appendChild(option);
                     });
 
                     // Se já tem estado, carrega cidades
-                    if(DADOS_SALVOS.uf) carregarCidades(DADOS_SALVOS.uf, DADOS_SALVOS.cidade);
+                    if(DADOS-SALVOS.uf) carregarCidades(DADOS-SALVOS.uf, DADOS-SALVOS.cidade);
                 });
         });
 

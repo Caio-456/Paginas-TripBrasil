@@ -442,7 +442,7 @@
         const selectCidade = document.getElementById('select-cidade');
 
         // Estado: Espírito Santo (ES), Cidade: Marataízes conforme o seu wireframe
-        const DADOS_INICIAIS = {
+        const DADOS-INICIAIS = {
             uf: "ES",
             cidade: "Marataízes"
         };
@@ -465,11 +465,11 @@
                         const option = document.createElement('option');
                         option.value = estado.sigla;
                         option.textContent = estado.nome;
-                        if(estado.sigla === DADOS_INICIAIS.uf) option.selected = true;
+                        if(estado.sigla === DADOS-INICIAIS.uf) option.selected = true;
                         selectEstado.appendChild(option);
                     });
 
-                    if(DADOS_INICIAIS.uf) carregarCidades(DADOS_INICIAIS.uf, DADOS_INICIAIS.cidade);
+                    if(DADOS-INICIAIS.uf) carregarCidades(DADOS-INICIAIS.uf, DADOS-INICIAIS.cidade);
                 });
         });
 
