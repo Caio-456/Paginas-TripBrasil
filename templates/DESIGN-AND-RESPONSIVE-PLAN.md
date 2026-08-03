@@ -13,7 +13,7 @@ TripBrasil/
 ├── anunciante/       # Advertiser pages
 ├── assinante/        # Subscriber pages
 ├── administrador/    # Admin pages
-├── assets/           # Images, fonts
+├── static/           # Images, fonts
 ├── header.html       # Public header (injected dynamically)
 ├── header-cadastrado.html  # Logged-in user header
 └── administrador/header-admin.html  # Admin header
@@ -168,7 +168,7 @@ Some pages use Bootstrap 5.3 (`login.html`, admin pages) while others use pure C
 
 ### Phase 1: Create Shared CSS Foundation (Week 1)
 
-#### 1.1 Create `assets/css/tripbrasil.css`
+#### 1.1 Create `static/css/tripbrasil.css`
 - [ ] CSS Custom Properties (design tokens above)
 - [ ] CSS Reset (modern, minimal)
 - [ ] Base typography (fluid type scale)
@@ -180,7 +180,7 @@ Some pages use Bootstrap 5.3 (`login.html`, admin pages) while others use pure C
 - [ ] Button component styles
 - [ ] **Single media query block** with all 5 breakpoints
 
-#### 1.2 Create `assets/css/components/`
+#### 1.2 Create `static/css/components/`
 ```
 components/
 ├── header.css        # Header + nav + mobile menu
@@ -208,9 +208,9 @@ components/
 ```html
 <!-- REMOVE: All <style>...</style> blocks -->
 <!-- ADD: -->
-<link rel="stylesheet" href="../assets/css/tripbrasil.css">
+<link rel="stylesheet" href="../static/css/tripbrasil.css">
 <!-- For pages needing special components: -->
-<link rel="stylesheet" href="../assets/css/components/admin.css">
+<link rel="stylesheet" href="../static/css/components/admin.css">
 ```
 
 #### 2.3 HTML Cleanup During Migration
@@ -271,7 +271,7 @@ components/
 
 #### 3.2 Hamburger Menu JavaScript (shared module)
 ```javascript
-// assets/js/header.js
+// static/js/header.js
 export function initHeader() {
   const hamburger = document.querySelector('.header__hamburger');
   const nav = document.querySelector('.header__nav');
@@ -392,7 +392,7 @@ export function initHeader() {
 
 ```
 TripBrasil/
-├── assets/
+├── static/
 │   ├── css/
 │   │   ├── tripbrasil.css          # Main design system (single file)
 │   │   └── components/
@@ -407,11 +407,11 @@ TripBrasil/
 │   │   └── utils.js                # Shared utilities
 │   └── img/...
 ├── publico/
-│   ├── home.html                   # Links to ../assets/css/tripbrasil.css
+│   ├── home.html                   # Links to ../static/css/tripbrasil.css
 │   ├── buscar-explorar.html
 │   └── ...
 ├── administrador/
-│   ├── dashboard-admin.html        # Links to ../../assets/css/tripbrasil.css + admin.css
+│   ├── dashboard-admin.html        # Links to ../../static/css/tripbrasil.css + admin.css
 │   └── ...
 └── header.html                     # Updated to use shared CSS classes
 ```
@@ -422,7 +422,7 @@ TripBrasil/
 
 For each HTML file:
 - [ ] Remove all `<style>...</style>` blocks
-- [ ] Add `<link rel="stylesheet" href="../assets/css/tripbrasil.css">` (adjust path)
+- [ ] Add `<link rel="stylesheet" href="../static/css/tripbrasil.css">` (adjust path)
 - [ ] Add component CSS if needed (e.g., `admin.css`)
 - [ ] Update class names to match design system (BEM)
 - [ ] Verify header injection works with new header CSS
@@ -456,7 +456,7 @@ For each HTML file:
 ## Next Steps
 
 1. **Approve this plan** - Confirm approach and timeline
-2. **Create `assets/css/tripbrasil.css`** - Start with design tokens and base styles
+2. **Create `static/css/tripbrasil.css`** - Start with design tokens and base styles
 3. **Migrate `publico/home.html` first** - As proof of concept
 4. **Batch migrate remaining public pages**
 5. **Migrate role-specific sections**
