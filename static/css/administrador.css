@@ -1,0 +1,55 @@
+/* Estilos comuns as paginas de templates/administrador/ */
+
+.subtitle {
+
+    color: rgba(255, 255, 255, .75);
+}
+
+.metric-card {
+
+    text-align: center;
+
+    transition: .3s;
+}
+
+.metric-card:hover {
+
+    transform: translateY(-4px);
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateX(-4px);
+    color: white;
+}
+
+/* --- CONTAINER PRINCIPAL --- */
+.main-container {
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    margin: 120px auto 40px auto;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.btn-submit {
+    background-color: var(--success);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background-color: #4fa36c;
+    transform: translateY(-2px);
+}

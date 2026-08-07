@@ -1,0 +1,183 @@
+/* CSS exclusivo de templates/publico/tornar-se-anunciante.html */
+
+/* CSS exclusivo de templates/publico/tornar-se-anunciante.html */
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    color: white;
+    min-height: 100vh;
+    background-color: #0c0c0c;
+}
+
+/* HERO / BACKGROUND */
+.hero {
+    min-height: 100vh;
+    width: 100%;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+        url('/static/img/fundo.webp'),
+        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920'); /* Fundo corporativo/cidade moderno */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* CARD DE VIDRO CENTRALIZADO */
+.advertiser-card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 40px;
+    padding: 50px 60px;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+/* BOTÃO VOLTAR */
+.btn-back {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    z-index: 20;
+}
+
+.btn-back:hover {
+    background: white;
+    color: black;
+    transform: translateX(-5px);
+}
+
+/* TÍTULO PRINCIPAL */
+.main-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+}
+
+/* BLOCO DE INFORMAÇÕES BÁSICAS */
+.info-block {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 35px;
+    margin-bottom: 35px;
+}
+
+.info-block-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* ESTILIZAÇÃO DOS INPUTS */
+.form-label-custom {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-control-custom {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: white;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 1.1rem;
+    padding: 12px 18px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.form-control-custom:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(112, 174, 110, 0.25);
+    outline: none;
+    color: white;
+}
+
+/* BOTÃO AGUARDAR APROVAÇÃO (VIDRO ESCURO) */
+.btn-submit-dark {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    padding: 14px 45px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-submit-dark:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(112, 174, 110, 0.2);
+}
+
+/* ELEMENTO GRÁFICO (MALAS NO CANTO INFERIOR DIREITO) */
+.bags-illustration {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    width: 110px;
+    height: auto;
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.custom-toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .advertiser-card {
+        padding: 40px 25px;
+        margin: 0 15px;
+    }
+    .main-title { font-size: 1.9rem; }
+    .info-block { padding: 20px; }
+    .bags-illustration { display: none; } /* Oculta em telas mobile para evitar sobreposição */
+    .custom-toast { left: 20px; right: 20px; bottom: 20px; text-align: center; justify-content: center; }
+}

@@ -1,0 +1,324 @@
+/* CSS exclusivo de templates/administrador/admin-locais.html */
+
+/* CSS exclusivo de templates/administrador/admin-locais.html */
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    color: white;
+    min-height: 100vh;
+    background-color: #0c0c0c;
+}
+
+/* HERO / BACKGROUND AREA */
+.admin-hero {
+    min-height: 100vh;
+    width: 100%;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+        url('/static/img/fundo.webp'),
+        url('https://images.unsplash.com/photo-1464146072230-91cabc968266?q=80&w=1920');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 110px;
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+
+/* PAINEL PRINCIPAL GLASSMORPHISM */
+.admin-panel-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 32px;
+    padding: 35px;
+    width: 100%;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* BARRA SUPERIOR DE BUSCA E AÇÕES */
+.admin-top-bar {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.search-wrapper {
+    position: relative;
+    flex-grow: 1;
+    max-width: 500px;
+}
+
+.search-wrapper input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 12px 20px 12px 45px;
+    border-radius: 50px;
+    color: white;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.search-wrapper input:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(112, 174, 110, 0.2);
+    outline: none;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.top-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-admin {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 50px;
+    padding: 12px 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border: none;
+}
+
+.btn-admin-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-admin-primary:hover {
+    background: #5c945a;
+    color: white;
+    box-shadow: 0 8px 20px rgba(112, 174, 110, 0.25);
+}
+
+/* GRID INTERNO: SIDEBAR + CONTEÚDO PRINCIPAL */
+.panel-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+}
+
+.sidebar-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.recentes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.recentes-item {
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recentes-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+/* CONTEÚDO PRINCIPAL: CARDS DE LOCAIS */
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 540px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.local-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.2s ease;
+}
+
+.local-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.local-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 40px;
+    flex-grow: 1;
+}
+
+.detail-line {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.detail-line strong {
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+}
+
+.detail-line b {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* COLUNA DA DIREITA: PREVIEW DA IMAGEM E AÇÕES */
+.right-side-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.actions-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-card-action {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.btn-card-action:hover {
+    background: white;
+    color: black;
+}
+
+.btn-card-action.delete:hover {
+    background: #ff5252;
+    color: white;
+    border-color: #ff5252;
+}
+
+.image-preview-box {
+    width: 100px;
+    height: 100px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.back-button {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin-bottom: 20px;
+
+    color: rgba(255, 255, 255, .8);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(15px);
+}
+
+@media (max-width: 768px) {
+    .local-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .local-details {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .right-side-card {
+        width: 100%;
+        justify-content: space-between;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 15px;
+    }
+
+    .actions-block {
+        flex-direction: row;
+    }
+}
+
+/* Mantem o colapso para uma coluna em telas estreitas. A regra equivalente
+   vive em style.css; declarada aqui para nao depender da ordem de carga. */
+@media (max-width: 991px) {
+    .panel-layout {
+        grid-template-columns: 1fr;
+    }
+}

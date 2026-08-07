@@ -1,0 +1,60 @@
+/* CSS exclusivo de templates/publico/recuperar-senha.html */
+
+/* CSS exclusivo de templates/publico/recuperar-senha.html */
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    color: white;
+}
+
+/* HERO / BACKGROUND IGUAL ÀS OUTRAS PÁGINAS */
+.hero {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url('/static/img/fundo.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* BOTAO VOLTAR DENTRO DO QUADRO */
+.btn-back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.btn-back:hover {
+    transform: translateX(-3px);
+    opacity: 0.8;
+}
+
+/* BOTAO ENVIAR LINK (Pílula amarela) */
+.btn-submit {
+    background: var(--warning);
+    border: none;
+    color: #121212;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase; /* Deixa em caixa alta como na imagem */
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}

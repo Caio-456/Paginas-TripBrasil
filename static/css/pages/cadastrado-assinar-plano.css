@@ -1,0 +1,166 @@
+/* CSS exclusivo de templates/cadastrado/assinar-plano.html */
+
+/* CSS exclusivo de templates/cadastrado/assinar-plano.html */
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    color: white;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url('/static/img/fundo.webp');
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+}
+
+/* CONTEÚDO */
+
+.plan-content {
+    margin-top: 100px;
+}
+
+/* TEXTO */
+
+.desc {
+    max-width: 500px;
+}
+
+.desc h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.desc p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.benefits-card,
+.payment-card {
+
+    background: rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 28px;
+
+    padding: 40px;
+}
+
+.benefits-card ul {
+
+    list-style: none;
+
+    margin-top: 25px;
+}
+
+.benefits-card li {
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.payment-card {
+
+    max-width: 550px;
+
+    margin: auto;
+}
+
+.payment-price {
+
+    margin: 20px 0;
+
+    font-size: 2rem;
+
+    font-weight: 700;
+}
+
+.payment-card form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.payment-card input,
+.payment-card select {
+
+    padding: 16px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    background: rgba(255, 255, 255, 0.12);
+
+    color: white;
+}
+
+.payment-card input::placeholder {
+
+    color: rgba(255, 255, 255, 0.60);
+}
+
+.payment-card small {
+
+    display: block;
+
+    margin-top: 20px;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    text-align: center;
+}
+
+.btn-primary {
+
+    background: var(--primary);
+
+    border: none;
+
+    color: white;
+
+    padding: 16px 32px;
+
+    border-radius: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+
+    background: var(--primary-hover);
+
+    transform: translateY(-2px);
+}

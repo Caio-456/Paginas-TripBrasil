@@ -1,0 +1,247 @@
+/* CSS exclusivo de templates/publico/roteiro.html */
+
+/* CSS exclusivo de templates/publico/roteiro.html */
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    color: white;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45)
+        ),
+        url('/static/img/fundo.webp');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    min-height: 100vh;
+}
+
+/* ESTRUTURA PRINCIPAL */
+
+.roteiro-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centraliza verticalmente e horizontalmente */
+    padding: 130px 20px 60px;
+}
+
+.roteiro-card {
+    width: 100%;
+    max-width: 1100px;
+    padding: 50px 60px;
+
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* CABEÇALHO DO CARD (TÍTULO E BOTÕES) */
+
+.roteiro-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.title-group {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.back-button {
+    color: #f8f8f871; /* <--- ADICIONE ESTA LINHA (muda a cor da seta) */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background: rgba(255,255,255,0.20);
+    transform: translateX(-4px);
+}
+
+.title-group h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3rem;
+}
+
+.btn-salvar {
+    padding: 12px 40px;
+    border: 2px solid white;
+    border-radius: 50px;
+    background: transparent;
+    color: white;
+    font-size: 1.1rem;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-salvar:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* --- ESTILIZAÇÃO DA MENSAGEM DE FAVORITO --- */
+.toast-favorito {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--primary); /* Cor verde para combinar com os detalhes */
+    color: white;
+    padding: 16px 28px;
+    border-radius: 16px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999;
+
+    /* Efeito de transição suave */
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Classe ativa que o JavaScript vai injetar */
+.toast-favorito.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+}
+
+/* ------------------------------------------- */
+
+/* CORPO DO ROTEIRO (DUAS COLUNAS) */
+
+.roteiro-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    position: relative;
+}
+
+/* LINHA TRACEJADA DIVISÓRIA */
+.roteiro-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    border-left: 2px dashed rgba(255, 255, 255, 0.25);
+}
+
+.dia-box {
+    margin-bottom: 35px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.dia-box h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #9bd799; /* Cor de destaque amigável com o fundo verde */
+}
+
+.dia-box ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.dia-box li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.dia-box li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.2rem;
+    top: -2px;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 992px) {
+    .roteiro-card {
+        padding: 40px;
+    }
+    .title-group h1 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .roteiro-page {
+        padding-top: 140px;
+        align-items: flex-start;
+    }
+
+    .roteiro-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    .btn-salvar {
+        width: 100%;
+    }
+
+    .roteiro-content {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    /* Remove a linha tracejada no mobile pois vira uma coluna só */
+    .roteiro-content::after {
+        display: none;
+    }
+
+    .dia-box {
+        margin-bottom: 20px;
+    }
+
+    .toast-favorito {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        justify-content: center;
+    }
+}

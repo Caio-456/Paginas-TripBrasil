@@ -1,0 +1,163 @@
+/* CSS exclusivo de templates/cadastrado/favoritos.html */
+
+/* CSS exclusivo de templates/cadastrado/favoritos.html */
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    color: white;
+}
+
+.favoritos {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
+        url('/static/img/fundo.webp');
+
+    background-size: cover;
+    background-position: center;
+
+    padding: 130px 5% 60px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: auto;
+}
+
+.titulo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* CATEGORIAS */
+
+.categorias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.categoria {
+    padding: 12px 24px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+
+    background: rgba(255, 255, 255, .15);
+    color: white;
+
+    backdrop-filter: blur(10px);
+
+    transition: .3s;
+}
+
+.categoria:hover {
+    background: rgba(255, 255, 255, .25);
+}
+
+.categoria.ativo {
+    background: #113601;
+}
+
+select,
+.pesquisa {
+    border: none;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+select {
+    padding: 14px 50px 14px 16px;
+
+    appearance: none;
+
+    background-color: white;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='%23666'%3E%3Cpath d='M4 6l5 5 5-5'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: rgba(255, 255, 255, .95);
+
+    border-radius: 24px;
+    overflow: hidden;
+
+    transition: .3s;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .2);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+    color: #222;
+    position: relative;
+}
+
+.card-content h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.card-content p {
+    color: #666;
+}
+
+.favorito {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #113601;
+    user-select: none;
+    transition: .3s;
+}
+
+.favorito:hover {
+    transform: scale(1.15);
+}
+
+.favorito.ativo {
+    color: black;
+}
+
+@media(max-width:768px) {
+    .titulo {
+        font-size: 2.3rem;
+    }
+
+    .filtros {
+        flex-direction: column;
+    }
+
+    select,
+    .pesquisa {
+        width: 100%;
+    }
+}

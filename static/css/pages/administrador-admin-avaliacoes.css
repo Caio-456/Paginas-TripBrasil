@@ -1,0 +1,302 @@
+/* CSS exclusivo de templates/administrador/admin-avaliacoes.html */
+
+/* CSS exclusivo de templates/administrador/admin-avaliacoes.html */
+
+body {
+
+    font-family: 'Red Hat Display', sans-serif;
+
+    color: white;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, .55),
+            rgba(0, 0, 0, .55)),
+        url('/static/img/fundo.webp');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    min-height: 100vh;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.page-title span {
+    color: var(--sand);
+    font-weight: 700;
+}
+
+/* --- METRICAS DE MODERAÇÃO --- */
+.mod-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.metric-box {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.metric-box i {
+    font-size: 24px;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.metric-box.danger i {
+    background: rgba(235, 94, 94, 0.15);
+    color: #eb5e5e;
+}
+
+.metric-box.warning i {
+    background: rgba(230, 197, 148, 0.15);
+    color: var(--sand);
+}
+
+.metric-box.success i {
+    background: rgba(99, 184, 128, 0.15);
+    color: var(--success);
+}
+
+.metric-box div p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.metric-box div h2 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* --- FILTROS DE ABAS --- */
+.filter-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.tab-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.tab-btn.active {
+    background: var(--sand);
+    color: #1a241e;
+    border-color: var(--sand);
+    font-weight: 600;
+}
+
+/* --- LISTA DE AVALIAÇÕES --- */
+.review-card {
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.review-card:hover {
+    background: rgba(0, 0, 0, 0.22);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.review-main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.target-place {
+    color: var(--sand);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.stars {
+    color: #ffca28;
+    font-size: 12px;
+    display: flex;
+    gap: 2px;
+}
+
+.review-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Alerta de Denúncia */
+.report-badge {
+    background: rgba(235, 94, 94, 0.12);
+    border: 1px solid rgba(235, 94, 94, 0.3);
+    color: #ff7676;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+/* --- BOTÕES DE AÇÃO --- */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-mod {
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: 0.2s;
+    color: white;
+}
+
+.btn-approve {
+    background: rgba(99, 184, 128, 0.2);
+    border: 1px solid rgba(99, 184, 128, 0.4);
+    color: var(--success);
+}
+
+.btn-approve:hover {
+    background: var(--success);
+    color: white;
+    transform: scale(1.05);
+}
+
+.btn-delete {
+    background: rgba(235, 94, 94, 0.2);
+    border: 1px solid rgba(235, 94, 94, 0.4);
+    color: #eb5e5e;
+}
+
+.btn-delete:hover {
+    background: #eb5e5e;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* --- MODAL --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 9999;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.modal-icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.btn-modal-close {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.back-button {
+    position: absolute;
+    left: -65px;
+    top: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    transition: 0.3s;
+    text-decoration: none;
+}

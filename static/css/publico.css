@@ -1,0 +1,93 @@
+/* Estilos comuns as paginas de templates/publico/ */
+
+.titulo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 25px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: rgba(255, 255, 255, .95);
+
+    border-radius: 24px;
+    overflow: hidden;
+
+    transition: .3s;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .2);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+
+    .explorar {
+        padding-top: 160px;
+    }
+
+    .titulo {
+        font-size: 2.3rem;
+    }
+
+    .filtros {
+        flex-direction: column;
+    }
+
+    select,
+    .pesquisa {
+        width: 100%;
+    }
+}
+
+/* CONTEÚDO PRINCIPAL (CARD DE VIDRO) */
+.main-content {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 32px;
+    padding: 40px;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.stars {
+    color: var(--warning);
+    font-size: 1.2rem;
+}
+
+/* CARD DE RECUPERAR SENHA (GLASSMORPHISM) */
+.password-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 28px;
+    padding: 40px;
+    padding-top: 50px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-submit:hover {
+    background: #E0A800;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}

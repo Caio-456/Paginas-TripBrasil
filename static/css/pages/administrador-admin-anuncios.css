@@ -1,0 +1,250 @@
+/* CSS exclusivo de templates/administrador/admin-anuncios.html */
+
+/* CSS exclusivo de templates/administrador/admin-anuncios.html */
+
+body {
+
+    font-family: 'Red Hat Display', sans-serif;
+
+    color: white;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, .55),
+            rgba(0, 0, 0, .55)),
+        url('/static/img/fundo.webp');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    min-height: 100vh;
+}
+
+.admin-content {
+
+    padding-top: 130px;
+    padding-bottom: 40px;
+}
+
+.glass-card {
+
+    background: rgba(255, 255, 255, .10);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, .20);
+
+    border-radius: 24px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, .20);
+
+    position: relative;
+}
+
+.page-title {
+
+    font-family: 'Outfit', sans-serif;
+
+    font-size: 3rem;
+}
+
+.metric-number {
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    color: var(--primary);
+}
+
+.campaign-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.campaign-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, .08);
+
+    border: 1px solid rgba(255, 255, 255, .15);
+
+    transition: .3s;
+}
+
+.campaign-card:hover {
+
+    transform: translateY(-3px);
+
+    border-color: rgba(112, 174, 110, .5);
+
+    background: rgba(255, 255, 255, .12);
+}
+
+.campaign-thumb {
+
+    width: 90px;
+
+    height: 90px;
+
+    object-fit: cover;
+
+    border-radius: 16px;
+}
+
+.campaign-info {
+
+    flex: 1;
+}
+
+.campaign-info h3 {
+
+    margin-bottom: 8px;
+
+    font-family: 'Outfit', sans-serif;
+}
+
+.campaign-info p {
+
+    color: rgba(255, 255, 255, .75);
+}
+
+.campaign-period {
+
+    text-align: center;
+
+    min-width: 140px;
+}
+
+.campaign-period span {
+
+    display: block;
+
+    color: rgba(255, 255, 255, .75);
+}
+
+.campaign-actions {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.form-control,
+.form-select {
+
+    background: rgba(255, 255, 255, .12);
+
+    border: 1px solid rgba(255, 255, 255, .15);
+
+    color: white;
+}
+
+.form-control:focus,
+.form-select:focus {
+
+    background: rgba(50, 50, 50, .70);
+
+    color: white;
+
+    border-color: var(--primary);
+
+    box-shadow: none;
+}
+
+.form-control::placeholder {
+
+    color: rgba(255, 255, 255, .6);
+}
+
+.status {
+
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 8px 16px;
+
+    border-radius: 999px;
+
+    font-size: .85rem;
+
+    font-weight: 600;
+}
+
+.active {
+
+    background: rgba(112, 174, 110, .25);
+
+    color: #9be198;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-approve {
+
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 12px;
+
+    color: white;
+
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+.btn-edit {
+
+    background: rgba(77, 142, 247, .85);
+}
+
+.btn-delete {
+
+    background: rgba(220, 53, 69, .85);
+}
+
+.btn-edit:hover,
+.btn-approve:hover,
+.btn-delete:hover {
+
+    transform: translateY(-2px);
+}
+
+.back-button {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin-bottom: 20px;
+
+    color: rgba(255, 255, 255, .8);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(15px);
+}

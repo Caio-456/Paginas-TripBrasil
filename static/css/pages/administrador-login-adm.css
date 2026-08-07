@@ -1,0 +1,184 @@
+/* CSS exclusivo de templates/administrador/login-adm.html */
+
+/* CSS exclusivo de templates/administrador/login-adm.html */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
+                url('/static/img/fundo.webp') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- CORREÇÃO DO ESPAÇAMENTO DO CONTEÚDO --- */
+.login-wrapper-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 120px; /* Garante que fique abaixo do cabeçalho de vidro */
+    padding: 20px;
+}
+
+/* --- CARD DE LOGIN GLASSMORPHISM --- */
+.login-container {
+    width: 100%;
+    max-width: 440px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* --- HEADER DO CARD --- */
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(230, 197, 148, 0.15);
+    color: var(--sand);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(230, 197, 148, 0.3);
+}
+
+.login-header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.login-header h1 span {
+    color: var(--sand);
+    font-weight: 700;
+}
+
+.login-header p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* --- FORMULÁRIO --- */
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i.input-icon {
+    position: absolute;
+    left: 15px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 12px 15px 12px 42px;
+    color: white;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--success);
+}
+
+.btn-toggle-pass {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.btn-toggle-pass:hover {
+    color: white;
+}
+
+/* --- BOTÃO ENTRAR --- */
+.btn-login {
+    width: 100%;
+    background-color: var(--success);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-login:hover {
+    background-color: #4fa36c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(99, 184, 128, 0.3);
+}
+
+/* --- FOOTER CARD --- */
+.login-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 12px;
+}
+
+.login-footer a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.login-footer a:hover {
+    color: var(--sand);
+    text-decoration: underline;
+}

@@ -1,0 +1,254 @@
+/* CSS exclusivo de templates/anunciante/area-anunciante.html */
+
+/* CSS exclusivo de templates/anunciante/area-anunciante.html */
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    color: white;
+    min-height: 100vh;
+    background-color: #0c0c0c;
+}
+
+/* HERO / BACKGROUND */
+.hero {
+    min-height: 100vh;
+    width: 100%;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('/static/img/fundo.webp'),
+        url('https://images.unsplash.com/photo-1464146072230-91cabc968266?q=80&w=1920');
+    /* Fundo panorâmico sofisticado */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* PAINEL PRINCIPAL AMPLIADO (GLASSMORPHISM) */
+.dashboard-card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 40px;
+    padding: 45px;
+    position: relative;
+    width: 100%;
+    max-width: 1150px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* BOTÃO VOLTAR */
+.btn-back {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    z-index: 20;
+}
+
+.btn-back:hover {
+    background: white;
+    color: black;
+    transform: translateX(-5px);
+}
+
+/* TÍTULO DE BOAS-VINDAS */
+.welcome-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 35px;
+    padding-left: 20px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* SEÇÃO DO GRÁFICO (COLUNA ESQUERDA) */
+.graph-box {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.graph-box-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* CONTAINER DOS BOTÕES DE AÇÃO */
+.action-buttons-gap {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-dash-action {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 50px;
+    padding: 12px 28px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    text-decoration: none;
+}
+
+.btn-dash-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-dash-primary:hover {
+    background: #5c945a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(112, 174, 110, 0.3);
+    color: white;
+}
+
+.btn-dash-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.btn-dash-secondary:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* LISTA DE ESTABELECIMENTOS (COLUNA DIREITA) */
+.list-box {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-box-header {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 12px;
+}
+
+.list-scroll-area {
+    max-height: 380px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Custom Scrollbar */
+.list-scroll-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.list-scroll-area::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.establishment-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.establishment-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.est-name {
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.est-status {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 2px;
+}
+
+.est-status span {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.est-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-action-icon {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-action-icon:hover {
+    color: white;
+}
+
+.btn-action-icon.delete:hover {
+    color: #ff5252;
+}
+
+@media (max-width: 991px) {
+    .dashboard-card {
+        padding: 40px 20px;
+    }
+
+    .welcome-title {
+        padding-left: 50px;
+        font-size: 1.7rem;
+    }
+
+    .list-box {
+        margin-top: 30px;
+    }
+}

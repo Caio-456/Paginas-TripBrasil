@@ -1,0 +1,226 @@
+/* CSS exclusivo de templates/administrador/usuarios.html */
+
+/* CSS exclusivo de templates/administrador/usuarios.html */
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    color: white;
+    background-color: #121212;
+}
+
+/* HERO - Imagem de fundo online aplicada com escurecimento para leitura */
+.hero {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+        url('/static/img/fundo.webp');
+    /* Imagem de teste. Quando quiser usar a sua, mude para '/static/img/fundo.webp' */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding-bottom: 60px;
+}
+
+/* CONTEÚDO principal */
+.users-content {
+    padding-top: 130px;
+    /* Joga o conteúdo para baixo do header */
+    max-width: 1400px !important;
+}
+
+/* BARRA DE PESQUISA */
+.search-box {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    padding: 14px 24px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-box svg {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* CONTAINER DO DASHBOARD */
+.main-dashboard {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(147, 51, 234, 0.35);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* COLUNA DA ESQUERDA */
+.sidebar-users {
+    background: rgba(0, 0, 0, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 30px 0;
+}
+
+.sidebar-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 0 30px 18px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 10px;
+}
+
+.user-menu-item {
+    padding: 14px 30px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: 0.2s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.user-menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Área de Filtros */
+.filter-area {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.filter-area span {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+}
+
+.form-check-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    width: 1.1em;
+    height: 1.1em;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* LISTA DE CARDS */
+.user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.user-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.user-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+/* Card Individual */
+.user-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.user-card:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.user-info p {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.user-info p:last-child {
+    margin-bottom: 0;
+}
+
+.user-info p strong {
+    color: white;
+}
+
+/* Botão Deletar */
+.btn-delete {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-delete:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.15);
+}
+
+.back-button {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin-bottom: 20px;
+
+    color: rgba(255, 255, 255, .8);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(15px);
+}
+
+@media (max-width: 768px) {
+    .sidebar-users {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+}

@@ -1,0 +1,100 @@
+/* CSS exclusivo de templates/administrador/dashboard-admin.html */
+
+/* CSS exclusivo de templates/administrador/dashboard-admin.html */
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, .55),
+            rgba(0, 0, 0, .55)),
+        url('/static/img/fundo.webp');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: white;
+    min-height: 100vh;
+}
+
+.dashboard {
+    padding-top: 130px;
+    padding-bottom: 40px;
+}
+
+.glass-card {
+
+    background: rgba(255, 255, 255, .10);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, .20);
+
+    border-radius: 24px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, .20);
+}
+
+.page-title {
+
+    font-family: 'Outfit', sans-serif;
+
+    font-size: 3rem;
+
+    margin-bottom: 10px;
+}
+
+.metric-number {
+
+    font-size: 2.3rem;
+
+    font-weight: 700;
+
+    color: var(--primary);
+}
+
+.quick-link {
+
+    text-decoration: none;
+
+    color: white;
+}
+
+.quick-link .glass-card {
+
+    height: 100%;
+
+    text-align: center;
+
+    transition: .3s;
+}
+
+.quick-link:hover .glass-card {
+
+    border-color: var(--primary);
+
+    transform: translateY(-5px);
+}
+
+.quick-icon {
+
+    font-size: 2rem;
+
+    margin-bottom: 15px;
+}
+
+.chart-container {
+
+    height: 350px;
+}
+
+.section-title {
+
+    font-family: 'Outfit', sans-serif;
+
+    margin-bottom: 20px;
+}

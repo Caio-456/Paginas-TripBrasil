@@ -1,226 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TripBrasil - Explorar roteiros</title>
-    <base href="../">
-
-    <link
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TripBrasil - Explorar roteiros</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Red Hat Display', sans-serif;
-            color: white;
-
-            background:
-                linear-gradient(rgba(0, 0, 0, 0.45),
-                    rgba(0, 0, 0, 0.45)),
-                url('../static/img/fundo.webp');
-
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .page {
-            height: 100vh;
-            padding: 140px 20px 40px;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* WRAPPER ADICIONADO PARA POSICIONAR A SETA DO LADO DE FORA */
-        .content-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            height: 100%;
-        }
-
-        .container-box {
-            width: 100%;
-            height: 100%;
-            max-height: calc(100vh - 180px);
-
-            padding: 45px;
-            border-radius: 28px;
-
-            background: rgba(255, 255, 255, 0.10);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.20);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-
-            display: flex;
-            flex-direction: column;
-
-            overflow-y: auto;
-        }
-
-        /* BOTÃO VOLTAR - POSICIONADO DO LADO DE FORA */
-        .btn-voltar {
-            position: absolute;
-            left: -65px;
-            /* Joga a seta para fora do container na esquerda */
-            top: 20px;
-
-            color: rgba(255, 255, 255, 0.8);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .btn-voltar:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateX(-4px);
-            color: white;
-        }
-
-        .container-box::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .container-box::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-        }
-
-        .title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.6rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .subtitle {
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 40px;
-            max-width: 600px;
-        }
-
-        .roteiros {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .roteiro-card {
-            display: flex;
-            gap: 20px;
-            padding: 22px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .roteiro-card:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .roteiro-img {
-            width: 180px;
-            height: 130px;
-            border-radius: 16px;
-            object-fit: cover;
-        }
-
-        .roteiro-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .roteiro-info h3 {
-            margin: 0;
-            font-size: 1.4rem;
-            font-family: 'Outfit', sans-serif;
-        }
-
-        .roteiro-info p {
-            margin: 0;
-            max-width: 500px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .badge-tipo {
-            align-self: flex-start;
-            padding: 6px 14px;
-            border-radius: 999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            background: rgba(112, 174, 110, 0.18);
-            border: 1px solid #70AE6E;
-            color: #9bd799;
-        }
-
-        a {
-            all: unset;
-            /* Resets all inherited and non-inherited properties */
-            cursor: pointer;
-            /* Restore pointer cursor for usability */
-        }
-
-        .badge-user {
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: white;
-        }
-
-        /* AJUSTES DE RESPONSIVIDADE */
-        @media (max-width: 1340px) {
-
-            /* Evita que a seta suma para fora da tela se a janela do navegador for menor que o container + a seta */
-            .btn-voltar {
-                left: 0;
-                top: -60px;
-            }
-
-            .page {
-                padding-top: 180px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                overflow: auto;
-            }
-
-            .container-box {
-                max-height: none;
-            }
-
-            .roteiro-card {
-                flex-direction: column;
-            }
-
-            .roteiro-img {
-                width: 100%;
-                height: 180px;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/publico.css">
+  <link rel="stylesheet" href="/static/css/pages/publico-header.css">
+  <link rel="stylesheet" href="/static/css/pages/publico-roteiros-predefinidos.css">
 </head>
 
 <body>
@@ -231,7 +23,7 @@
 
         <div class="content-wrapper">
 
-            <button class="btn-voltar" onclick="history.back()">
+            <button class="btn-voltar" onclick="history.back()" aria-label="Voltar">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                     stroke-linecap="round" stroke-linejoin="round">
                     <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -248,58 +40,59 @@
 
                 <div class="roteiros">
 
-                    <a href="roteiro.html">
+                    <a href="/roteiro">
+                        <!-- repeticao: 5 roteiro-card iguais, candidato a {% for %} -->
                         <div class="roteiro-card">
-                            <a href="roteiro.html"><img src="../static/img/roteiros-predefinidos/img1.webp"
-                                    class="roteiro-img">
+                            <a href="/roteiro"><img src="/static/img/roteiros-predefinidos/img1.webp"
+                                    class="roteiro-img" alt="Rio de Janeiro em 5 dias">
                                 <div class="roteiro-info">
                                     <span class="badge-tipo">Pré-definido</span>
-                                    <h3>Rio de Janeiro em 5 dias</h3>
+                                    <h2>Rio de Janeiro em 5 dias</h2>
                                     <p>Praias, Cristo Redentor e vida noturna.</p>
                                 </div>
                         </div>
                     </a>
 
-                    <a href="roteiro.html">
+                    <a href="/roteiro">
                         <div class="roteiro-card">
-                            <a href="roteiro.html"><img src="../static/img/roteiros-predefinidos/img2.webp"
-                                    class="roteiro-img">
+                            <a href="/roteiro"><img src="/static/img/roteiros-predefinidos/img2.webp"
+                                    class="roteiro-img" alt="Nordeste paradisíaco">
                                 <div class="roteiro-info">
                                     <span class="badge-tipo">Pré-definido</span>
-                                    <h3>Nordeste paradisíaco</h3>
+                                    <h2>Nordeste paradisíaco</h2>
                                     <p>Dunas, praias e águas cristalinas.</p>
                                 </div>
                         </div>
                     </a>
 
-                    <a href="roteiro.html">
+                    <a href="/roteiro">
                         <div class="roteiro-card">
-                            <img src="../static/img/roteiros-predefinidos/img3.webp" class="roteiro-img">
+                            <img src="/static/img/roteiros-predefinidos/img3.webp" class="roteiro-img" alt="Gramado econômico">
                             <div class="roteiro-info">
                                 <span class="badge-tipo badge-user">Criado por usuário</span>
-                                <h3>Gramado econômico</h3>
+                                <h2>Gramado econômico</h2>
                                 <p>Viagem incrível gastando pouco.</p>
                             </div>
                         </div>
                     </a>
 
-                    <a href="roteiro.html">
+                    <a href="/roteiro">
                         <div class="roteiro-card">
-                            <img src="../static/img/roteiros-predefinidos/img4.webp" class="roteiro-img">
+                            <img src="/static/img/roteiros-predefinidos/img4.webp" class="roteiro-img" alt="Amazônia selvagem">
                             <div class="roteiro-info">
                                 <span class="badge-tipo">Pré-definido</span>
-                                <h3>Amazônia selvagem</h3>
+                                <h2>Amazônia selvagem</h2>
                                 <p>Experiência imersiva na floresta.</p>
                             </div>
                         </div>
                     </a>
 
-                    <a href="roteiro.html">
+                    <a href="/roteiro">
                         <div class="roteiro-card">
-                            <img src="../static/img/roteiros-predefinidos/img5.webp" class="roteiro-img">
+                            <img src="/static/img/roteiros-predefinidos/img5.webp" class="roteiro-img" alt="Rio alternativo">
                             <div class="roteiro-info">
                                 <span class="badge-tipo badge-user">Criado por usuário</span>
-                                <h3>Rio alternativo</h3>
+                                <h2>Rio alternativo</h2>
                                 <p>Locais escondidos e menos turísticos.</p>
                             </div>
                         </div>
@@ -312,12 +105,9 @@
 
     </main>
 
-    <script>
-        fetch('../header.html')
-            .then(r => r.text())
-            .then(data => document.getElementById('header').innerHTML = data);
-    </script>
-
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/header.js"></script>
+  <script src="/static/js/pages/publico-roteiros-predefinidos.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,66 @@
+/* CSS exclusivo de templates/assinante/sugerir-estabelecimento.html */
+
+/* CSS exclusivo de templates/assinante/sugerir-estabelecimento.html */
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    color: white;
+    min-height: 100vh;
+    background-color: #0c0c0c;
+}
+
+/* HEADER FIXO E TRANSLÚCIDO */
+
+/* HERO / BACKGROUND */
+.hero {
+    min-height: 100vh;
+    width: 100%;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+        url('/static/img/fundo.webp'),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* BOTÃO VOLTAR */
+.btn-back {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    z-index: 20;
+}
+
+.btn-back:hover {
+    background: white;
+    color: black;
+    transform: translateX(-5px);
+}
+
+select.form-control-custom option {
+    background: #1a1a1a;
+    color: white;
+}
+
+.custom-toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}

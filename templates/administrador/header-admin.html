@@ -1,94 +1,19 @@
-<style>
-    /* HEADER ADMIN */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Red Hat Display', sans-serif;
-    color: white;
-}
-
-header {
-    position: fixed;
-
-    top: 20px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 95%;
-    max-width: 1400px;
-
-    padding: 15px 35px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    background: rgba(255, 255, 255, 0.12);
-
-    backdrop-filter: blur(15px);
-
-    border: 1px solid rgba(255, 255, 255, 0.2);
-
-    border-radius: 20px;
-
-    z-index: 1000;
-}
-
-.logo {
-    height: 50px;
-}
-
-nav {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-
-    font-weight: 500;
-
-    transition: 0.3s;
-}
-
-nav a:hover {
-    opacity: 0.75;
-}
-
-.btn-nav {
-    background: #70AE6E;
-
-    padding: 12px 24px;
-
-    border-radius: 10px;
-}
-</style>
-
-
 <header>
-    <a href="../publico/home.html">
-        <img src="../static/img/logo-cabecario.svg" alt="Logo TripBrasil" class="logo">
+    <a href="/">
+        <img src="/static/img/logo-cabecario.svg" alt="Logo TripBrasil" class="logo">
     </a>
 
     <nav>
-        <a href="administrador/dashboard-admin.html">Dashboard</a>
-        <a href="administrador/admin-anuncios.html">Anúncios</a>
-        <a href="administrador/admin-locais.html">Locais</a>
-        <a href="administrador/admin-sugestao.html">Sugestões</a>
-        <a href="administrador/admin-avaliacoes.html">Avaliações</a>
-        <a href="administrador/usuarios.html">Usuários</a>
-        <a href="administrador/admin-cadastrar-local.html" class="btn-nav">
+        <a href="/admin/dashboard">Dashboard</a>
+        <a href="/admin/anuncios">Anúncios</a>
+        <a href="/admin/locais">Locais</a>
+        <a href="/admin/sugestao">Sugestões</a>
+        <a href="/admin/avaliacoes">Avaliações</a>
+        <a href="/admin/usuarios">Usuários</a>
+        <a href="/admin/cadastrar-local" class="btn-nav">
             Cadastrar Local
         </a>
-        <a href="../publico/home.html" class="btn-nav" style="background: #dc3545;">
+        <a href="/" class="btn-nav" style="background: #dc3545;">
             Sair
         </a>
     </nav>

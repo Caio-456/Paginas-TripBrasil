@@ -1,0 +1,176 @@
+/* CSS exclusivo de templates/assinante/aumentar-catalogo.html */
+
+/* CSS exclusivo de templates/assinante/aumentar-catalogo.html */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
+        url('/static/img/fundo.webp') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: #ffffff;
+}
+
+/* --- CONTAINER PRINCIPAL --- */
+.main-container {
+    width: 90%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 50px 40px;
+    margin: 120px auto 40px auto;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.page-title {
+    font-size: 32px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.page-title span {
+    color: var(--sand);
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 650px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+}
+
+/* --- CARDS GRID --- */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.option-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 35px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(230, 197, 148, 0.15);
+    color: var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.option-card:hover .card-icon {
+    background: var(--sand);
+    color: #1a241e;
+}
+
+/* Variação de cor para o segundo card para equilibrar o design */
+.option-card.establishment .card-icon {
+    background: rgba(99, 184, 128, 0.15);
+    color: var(--success);
+}
+
+.option-card.establishment:hover .card-icon {
+    background: var(--success);
+    color: #1a241e;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.card-description {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    min-height: 70px;
+}
+
+/* --- BOTÕES --- */
+.btn-action {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-green {
+    background: var(--success);
+    color: white;
+    border: none;
+}
+
+.btn-green:hover {
+    background: #4fa36c;
+}
+
+/* --- FOOTER BANNER --- */
+.footer-info {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-info i {
+    color: var(--sand);
+    font-size: 18px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
+}

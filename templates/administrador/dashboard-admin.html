@@ -2,202 +2,18 @@
 <html lang="pt-BR">
 
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TripBrasil - Painel Administrativo</title>
-    <base href="../">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TripBrasil - Painel Administrativo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
+  <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
-
-    <style>
-        :root {
-            --primary: #70AE6E;
-            --primary-hover: #5A9758;
-        }
-
-        body {
-            font-family: 'Red Hat Display', sans-serif;
-
-            background:
-                linear-gradient(rgba(0, 0, 0, .55),
-                    rgba(0, 0, 0, .55)),
-                url('../static/img/fundo.webp');
-
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-
-            color: white;
-            min-height: 100vh;
-        }
-
-        .dashboard {
-            padding-top: 130px;
-            padding-bottom: 40px;
-        }
-
-        .glass-card {
-
-            background: rgba(255, 255, 255, .10);
-
-            backdrop-filter: blur(15px);
-
-            border: 1px solid rgba(255, 255, 255, .20);
-
-            border-radius: 24px;
-
-            padding: 25px;
-
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, .20);
-        }
-
-        .page-title {
-
-            font-family: 'Outfit', sans-serif;
-
-            font-size: 3rem;
-
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-
-            color: rgba(255, 255, 255, .75);
-        }
-
-        .metric-card {
-
-            text-align: center;
-
-            transition: .3s;
-        }
-
-        .metric-card:hover {
-
-            transform: translateY(-4px);
-        }
-
-        .metric-number {
-
-            font-size: 2.3rem;
-
-            font-weight: 700;
-
-            color: var(--primary);
-        }
-
-        .metric-label {
-
-            color: rgba(255, 255, 255, .8);
-        }
-
-        .quick-link {
-
-            text-decoration: none;
-
-            color: white;
-        }
-
-        .quick-link .glass-card {
-
-            height: 100%;
-
-            text-align: center;
-
-            transition: .3s;
-        }
-
-        .quick-link:hover .glass-card {
-
-            border-color: var(--primary);
-
-            transform: translateY(-5px);
-        }
-
-        .quick-icon {
-
-            font-size: 2rem;
-
-            margin-bottom: 15px;
-        }
-
-        .chart-container {
-
-            height: 350px;
-        }
-
-        .section-title {
-
-            font-family: 'Outfit', sans-serif;
-
-            margin-bottom: 20px;
-        }
-
-        .btn-admin {
-
-            background: var(--primary);
-
-            border: none;
-
-            color: white;
-
-            padding: 12px 20px;
-
-            border-radius: 12px;
-
-            font-weight: 600;
-        }
-
-        .btn-admin:hover {
-
-            background: var(--primary-hover);
-        }
-
-        .section-header {
-
-            text-align: center;
-
-            margin-bottom: 50px;
-        }
-
-        .section-header span {
-
-            color: var(--primary);
-
-            font-weight: 700;
-
-            text-transform: uppercase;
-
-            letter-spacing: 2px;
-        }
-
-        .section-header h2 {
-
-            font-family: 'Outfit', sans-serif;
-
-            font-size: 2.8rem;
-
-            margin-top: 10px;
-        }
-
-        .section-header p {
-
-            max-width: 700px;
-
-            margin: 20px auto 0;
-
-            color: rgba(255, 255, 255, .75);
-        }
-    </style>
-
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/administrador.css">
+  <link rel="stylesheet" href="/static/css/pages/administrador-header-admin.css">
+  <link rel="stylesheet" href="/static/css/pages/administrador-dashboard-admin.css">
 </head>
 
 <body>
@@ -226,6 +42,7 @@
 
             <div class="col-lg-3 col-md-6">
                 <div class="glass-card metric-card">
+                    <!-- numeros fixos: viram variavel de contexto quando houver banco -->
                     <div class="metric-number">1.248</div>
                     <div class="metric-label">Usuários</div>
                 </div>
@@ -258,12 +75,12 @@
 
         <div class="glass-card mb-4">
 
-            <h3 class="section-title">
+            <h2 class="section-title h3">
                 Novos usuários por mês
-            </h3>
+            </h2>
 
             <div class="chart-container">
-                <img src="../static/img/dashboard-adm/Exemplo-grafico1.png" alt="Exemplo de gráficos de novos usuários"
+                <img src="/static/img/dashboard-adm/Exemplo-grafico1.png" alt="Exemplo de gráficos de novos usuários"
                     width="831" height="239">
             </div>
 
@@ -273,13 +90,13 @@
 
         <div class="glass-card mb-4">
 
-            <h3 class="section-title">
+            <h2 class="section-title h3">
                 Distribuição dos anúncios
-            </h3>
+            </h2>
 
             <div class="chart-container">
 
-                <img src="../static/img/dashboard-adm/Exemplo-grafico2.png" alt="Exemplo de gráficos de novos usuários"
+                <img src="/static/img/dashboard-adm/Exemplo-grafico2.png" alt="Exemplo de gráficos de novos usuários"
                     width="831" height="239">
 
             </div>
@@ -290,21 +107,21 @@
 
         <div class="glass-card">
 
-            <h3 class="section-title">
+            <h2 class="section-title h3">
                 Gestão da Plataforma
-            </h3>
+            </h2>
 
             <div class="row g-3">
 
                 <div class="col-md-2">
 
-                    <a href="usuarios.html" class="quick-link">
+                    <a href="/admin/usuarios" class="quick-link">
 
                         <div class="glass-card">
 
                             <div class="quick-icon"><i class="bi bi-people-fill"></i></div>
 
-                            <h5>Usuários</h5>
+                            <h3 class="h5">Usuários</h3>
 
                             <p>
                                 Gerenciar contas.
@@ -318,13 +135,13 @@
 
                 <div class="col-md-2">
 
-                    <a href="admin-locais.html" class="quick-link">
+                    <a href="/admin/locais" class="quick-link">
 
                         <div class="glass-card">
 
                             <div class="quick-icon"><i class="bi bi-geo-alt-fill"></i></div>
 
-                            <h5>Locais</h5>
+                            <h3 class="h5">Locais</h3>
 
                             <p>
                                 Revisar destinos.
@@ -338,13 +155,13 @@
 
                 <div class="col-md-2">
 
-                    <a href="admin-avaliacoes.html" class="quick-link">
+                    <a href="/admin/avaliacoes" class="quick-link">
 
                         <div class="glass-card">
 
                             <div class="quick-icon"><i class="bi bi-star-fill"></i></div>
 
-                            <h5>Avaliações</h5>
+                            <h3 class="h5">Avaliações</h3>
 
                             <p>
                                 Moderação.
@@ -358,13 +175,13 @@
 
                 <div class="col-md-2">
 
-                    <a href="admin-anuncios.html" class="quick-link">
+                    <a href="/admin/anuncios" class="quick-link">
 
                         <div class="glass-card">
 
                             <div class="quick-icon"><i class="bi bi-megaphone-fill"></i></div>
 
-                            <h5>Anúncios</h5>
+                            <h3 class="h5">Anúncios</h3>
 
                             <p>
                                 Aprovar campanhas.
@@ -375,13 +192,13 @@
                     </a>
                 </div>
                 <div class="col-md-2">
-                    <a href="admin-ver-sugestoes.html" class="quick-link">
+                    <a href="/admin/ver-sugestoes" class="quick-link">
 
                         <div class="glass-card">
 
                             <div class="quick-icon"><i class="bi bi-lightbulb-fill"></i></div>
 
-                            <h5>Sugestões</h5>
+                            <h3 class="h5">Sugestões</h3>
 
                             <p>
                                 Analisar sugestões.
@@ -399,22 +216,9 @@
 
     </div>
 
-    <script>
-
-        fetch('administrador/header-admin.html')
-            .then(response => {
-                if (!response.ok)
-                    throw new Error("Erro ao carregar cabeçalho");
-
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            })
-            .catch(err => console.error(err));
-
-    </script>
-
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/header.js"></script>
+  <script src="/static/js/pages/administrador-dashboard-admin.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,286 @@
+/* CSS exclusivo de templates/assinante/roteiros-ia.html */
+
+/* CSS exclusivo de templates/assinante/roteiros-ia.html */
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    color: white;
+    background-color: #121212;
+}
+
+/* HERO - Imagem de fundo local com imagem reserva da internet */
+.hero {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+        url('/static/img/fundo.webp'),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920');
+    /* Reserva */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+
+/* CONTEÚDO PRINCIPAL */
+.plan-content {
+    padding-top: 130px;
+    max-width: 1400px !important;
+    width: 100%;
+}
+
+/* TITULO DA PÁGINA */
+.welcome-box {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.welcome-box h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* CONTAINER DO DASHBOARD (GLASSMORPHISM) */
+.main-dashboard {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* SIDEBAR DA ESQUERDA (CHAT COM IA) */
+.sidebar-ia {
+    background: rgba(0, 0, 0, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 550px;
+}
+
+.ia-status-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ia-prompt-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* INPUT DE DIGITAÇÃO ESTILO CHAT */
+.input-chat-container {
+    position: relative;
+    margin-top: 20px;
+}
+
+.input-chat {
+    width: 100%;
+    padding: 16px 50px 16px 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.input-chat:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(112, 174, 110, 0.3);
+}
+
+.input-chat::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-send-chat {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.btn-send-chat:hover {
+    color: var(--primary-hover);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* PAINEL DA DIREITA (EXIBIÇÃO DO ROTEIRO) */
+.main-panel-ia {
+    padding: 30px;
+    max-height: 650px;
+    overflow-y: auto;
+}
+
+.main-panel-ia::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-panel-ia::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.panel-ia-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.panel-ia-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.btn-save-roteiro {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-save-roteiro:hover {
+    background: white;
+    color: black;
+}
+
+/* CARD DE DESTINO EM DESTAQUE */
+.banner-destino {
+    position: relative;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.banner-destino img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.banner-overlay h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.banner-overlay p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 4px 0 0 0;
+}
+
+/* CRONOGRAMA POR DIAS */
+.timeline-dia {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.dia-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.atividades-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.atividade-item {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.atividade-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.atividade-time {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    margin-right: 6px;
+}
+
+@media (max-width: 768px) {
+    .sidebar-ia {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        min-height: auto;
+    }
+
+    .plan-content {
+        padding-top: 100px;
+    }
+}
